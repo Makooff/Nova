@@ -3,7 +3,7 @@ import ScrollIndicator from "@/components/ui/ScrollIndicator";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-svh flex flex-col items-center justify-center text-center px-5 pt-[52px]">
+    <section className="relative min-h-svh flex flex-col items-center justify-center text-center px-5">
       <div className="flex flex-col items-center gap-6 max-w-4xl">
         <p className="font-mono text-[10px] uppercase tracking-wider text-light">
           Production Vidéo Publicitaire — Belgique &amp; France

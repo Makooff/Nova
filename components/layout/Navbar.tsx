@@ -7,6 +7,7 @@ import QwillioName from "@/components/ui/QwillioName";
 import MobileMenu from "./MobileMenu";
 
 const navLinks = [
+  { label: "Accueil", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Réalisations", href: "/realisations" },
   { label: "Process", href: "/process" },
