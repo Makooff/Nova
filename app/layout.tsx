@@ -3,6 +3,7 @@ import { Sora, Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import PreventZoom from "@/components/ui/PreventZoom";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -65,6 +66,7 @@ export default function RootLayout({
       <body
         className={`${sora.variable} ${jakarta.variable} ${dmMono.variable} font-sora antialiased`}
       >
+        <PreventZoom />
         <Navbar />
         {children}
         <Footer />
