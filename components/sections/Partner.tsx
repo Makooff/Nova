@@ -19,7 +19,6 @@ const features = [
   {
     title: "Sites web sur mesure",
     desc: "Non proposé sur Qwillio.com — exclusif clients Nova",
-    exclusive: true,
   },
 ];
 
@@ -44,47 +43,33 @@ export default function Partner() {
               <QwillioLogo size={44} />
               <QwillioName size="44px" />
             </div>
-            <p className="font-sora font-light text-sm text-mid leading-relaxed mb-6 max-w-md">
+            <p className="font-sora font-light text-sm text-mid leading-relaxed mb-8 max-w-md">
               Qwillio propose au grand public une réceptionniste IA, un agent Email AI
               et un agent Payments AI. En plus de ça, Qwillio conçoit des sites web
               sur mesure — mais uniquement pour les clients Nova, sans les proposer
               sur leur site public. Un avantage exclusif inclus dans le partenariat Nova.
             </p>
-            <div className="inline-flex items-center gap-2 rounded-full bg-ghost px-4 py-2 mb-6">
-              <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#5B6BF5" }} />
-              <span className="font-sora font-light text-xs text-mid">
-                Sites web exclusifs clients Nova
-              </span>
-            </div>
-            <div>
-              <Link
-                href="https://qwillio.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center font-sora font-light text-sm text-black underline underline-offset-4 hover:text-mid transition-colors"
-              >
-                Visiter Qwillio.com
-                <ArrowRight />
-              </Link>
-            </div>
+            <Link
+              href="https://qwillio.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center font-sora font-light text-sm text-black underline underline-offset-4 hover:text-mid transition-colors"
+            >
+              Visiter Qwillio.com
+              <ArrowRight />
+            </Link>
           </RevealWrapper>
 
           <div className="flex flex-col divide-y divide-border">
             {features.map((f, i) => (
               <RevealWrapper key={i} delay={i * 80}>
-                <div className="flex items-start gap-3 py-4">
-                  <span
-                    className="w-1.5 h-1.5 rounded-full mt-[6px] shrink-0"
-                    style={{ background: f.exclusive ? "#5B6BF5" : "#aeaeb2" }}
-                  />
-                  <div>
-                    <p className="font-sora font-medium text-sm text-black leading-snug">
-                      {f.title}
-                    </p>
-                    <p className="font-sora font-light text-xs text-mid leading-relaxed mt-0.5">
-                      {f.desc}
-                    </p>
-                  </div>
+                <div className="py-4">
+                  <p className="font-sora font-medium text-sm text-black leading-snug mb-0.5">
+                    {f.title}
+                  </p>
+                  <p className="font-sora font-light text-xs text-mid leading-relaxed">
+                    {f.desc}
+                  </p>
                 </div>
               </RevealWrapper>
             ))}
