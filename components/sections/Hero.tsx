@@ -3,10 +3,10 @@ import Marquee from "@/components/ui/Marquee";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-svh flex flex-col justify-between text-center pt-[90px]">
-      <div className="flex flex-col items-center gap-6 max-w-4xl mx-auto px-5">
+    <section className="min-h-svh flex flex-col pt-[52px]">
+      <div className="flex-1 flex flex-col items-center justify-center text-center px-5 py-10">
         <h1
-          className="font-sora font-thin leading-[1.08]"
+          className="font-sora font-thin leading-[1.08] mb-6"
           style={{
             fontSize: "clamp(44px, 9vw, 100px)",
             letterSpacing: "-0.04em",
@@ -19,12 +19,12 @@ export default function Hero() {
           <span className="text-light">Vos clients regardent.</span>
         </h1>
 
-        <p className="font-sora font-light text-[17px] text-mid max-w-[420px] leading-relaxed">
+        <p className="font-sora font-light text-[17px] text-mid max-w-[420px] leading-relaxed mb-8">
           Vidéos publicitaires tournées et montées pour convertir, campagnes Ads
           et accès exclusif aux agents IA Qwillio.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 mt-2">
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <Button href="/realisations" variant="fill" size="lg">
             Voir le showreel
           </Button>
@@ -34,16 +34,16 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="w-full">
-        <div className="flex justify-center mb-6">
-          <div className="flex flex-col items-center gap-2">
-            <div className="w-px h-10 bg-black origin-top scroll-line" />
-            <span className="font-mono text-[9px] uppercase tracking-wider text-light">
-              Scroll
-            </span>
-          </div>
+      <div className="flex flex-col items-center gap-3 pb-4">
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-px h-8 bg-black origin-top scroll-line" />
+          <span className="font-mono text-[9px] uppercase tracking-wider text-light">
+            Scroll
+          </span>
         </div>
-        <Marquee />
+        <div className="w-full">
+          <Marquee />
+        </div>
       </div>
     </section>
   );
