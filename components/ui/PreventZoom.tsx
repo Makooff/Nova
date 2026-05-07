@@ -4,48 +4,53 @@ import { useEffect } from "react";
 
 export default function PreventZoom() {
   useEffect(() => {
-    const meta = document.querySelector('meta[name="viewport"]');
-
-    const resetZoom = () => {
+    const forceReset = () => {
+      const meta = document.querySelector('meta[name="viewport"]');
       if (!meta) return;
-      if (window.visualViewport && window.visualViewport.scale !== 1) {
-        meta.setAttribute(
-          "content",
-          "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-        );
-        setTimeout(() => {
-          meta.setAttribute(
-            "content",
-            "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-          );
-        }, 50);
+      meta.setAttribute("content", "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no");
+    };
+
+    const checkZoom = () => {
+      const scale = window.visualViewport?.scale ?? 1;
+      if (scale < 0.99) {
+        forceReset();
+        // Force browser to re-evaluate by toggling the value
+        setTimeout(forceReset, 30);
+        setTimeout(forceReset, 100);
       }
     };
 
-    const preventTouchZoom = (e: TouchEvent) => {
-      if (e.touches.length > 1) {
-        e.preventDefault();
-      }
+    const blockMultiTouch = (e: TouchEvent) => {
+      if (e.touches.length > 1) e.preventDefault();
     };
 
-    const preventGesture = (e: Event) => {
-      e.preventDefault();
-    };
+    const blockGesture = (e: Event) => e.preventDefault();
 
-    window.visualViewport?.addEventListener("resize", resetZoom);
-    document.addEventListener("touchmove", preventTouchZoom, { passive: false });
-    document.addEventListener("touchstart", preventTouchZoom, { passive: false });
-    document.addEventListener("gesturestart", preventGesture);
-    document.addEventListener("gesturechange", preventGesture);
-    document.addEventListener("gestureend", preventGesture);
+    window.visualViewport?.addEventListener("resize", checkZoom);
+    window.visualViewport?.addEventListener("scroll", checkZoom);
+    document.addEventListener("touchstart", blockMultiTouch, { passive: false });
+    document.addEventListener("touchmove", blockMultiTouch, { passive: false });
+    document.addEventListener("gesturestart", blockGesture);
+    document.addEventListener("gesturechange", blockGesture);
+    document.addEventListener("gestureend", blockGesture);
+
+    // Reset on page focus (e.g. coming back from AA menu)
+    window.addEventListener("focus", forceReset);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) forceReset();
+    });
+
+    forceReset();
 
     return () => {
-      window.visualViewport?.removeEventListener("resize", resetZoom);
-      document.removeEventListener("touchmove", preventTouchZoom);
-      document.removeEventListener("touchstart", preventTouchZoom);
-      document.removeEventListener("gesturestart", preventGesture);
-      document.removeEventListener("gesturechange", preventGesture);
-      document.removeEventListener("gestureend", preventGesture);
+      window.visualViewport?.removeEventListener("resize", checkZoom);
+      window.visualViewport?.removeEventListener("scroll", checkZoom);
+      document.removeEventListener("touchstart", blockMultiTouch);
+      document.removeEventListener("touchmove", blockMultiTouch);
+      document.removeEventListener("gesturestart", blockGesture);
+      document.removeEventListener("gesturechange", blockGesture);
+      document.removeEventListener("gestureend", blockGesture);
+      window.removeEventListener("focus", forceReset);
     };
   }, []);
 

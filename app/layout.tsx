@@ -31,6 +31,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -47,6 +48,12 @@ export const metadata: Metadata = {
     "Meta Ads",
     "agents IA",
   ],
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Nova",
+  },
   openGraph: {
     title: "Nova — Production Vidéo Publicitaire",
     description:

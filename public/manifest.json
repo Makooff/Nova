@@ -1,0 +1,17 @@
+{
+  "name": "Nova — Production Vidéo",
+  "short_name": "Nova",
+  "description": "Agence de production vidéo publicitaire — Belgique & France",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d1d1f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
