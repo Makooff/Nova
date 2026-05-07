@@ -4,7 +4,7 @@ import Marquee from "@/components/ui/Marquee";
 export default function Hero() {
   return (
     <section className="min-h-svh flex flex-col pt-[52px]">
-      <div className="flex-1 flex flex-col items-center justify-center text-center px-5 py-10">
+      <div className="flex-1 flex flex-col items-center text-center px-5 pt-10 pb-6">
         <h1
           className="font-sora font-thin leading-[1.08] mb-6"
           style={{

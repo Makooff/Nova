@@ -6,21 +6,30 @@ import QwillioName from "@/components/ui/QwillioName";
 const features = [
   {
     title: "Réceptionniste IA",
-    desc: "Agent vocal et textuel — accueil, qualification et redirection de vos prospects 24h/24",
+    desc: "Agent vocal et textuel — accueil, qualification et redirection 24h/24",
   },
   {
     title: "Email AI",
-    desc: "Votre boîte mail entièrement automatisée : lecture, classification, réponses et relances sans intervention humaine",
+    desc: "Boîte mail automatisée — lecture, classification, réponses et relances",
   },
   {
     title: "Payments AI",
-    desc: "Liens de paiement SMS, dépôts automatiques, intégration Stripe native et dashboard revenus en temps réel",
+    desc: "Paiements SMS via Stripe, dépôts automatiques, dashboard revenus",
   },
   {
-    title: "Sites web sur mesure (exclusif Nova)",
-    desc: "Non proposé sur Qwillio.com — conçu uniquement pour les clients Nova",
+    title: "Sites web sur mesure",
+    desc: "Non proposé sur Qwillio.com — exclusif clients Nova",
+    exclusive: true,
   },
 ];
+
+function ArrowRight() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="inline-block ml-1.5 shrink-0">
+      <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 export default function Partner() {
   return (
@@ -42,12 +51,9 @@ export default function Partner() {
               sur leur site public. Un avantage exclusif inclus dans le partenariat Nova.
             </p>
             <div className="inline-flex items-center gap-2 rounded-full bg-ghost px-4 py-2 mb-6">
-              <span
-                className="w-2 h-2 rounded-full"
-                style={{ background: "#5B6BF5" }}
-              />
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#5B6BF5" }} />
               <span className="font-sora font-light text-xs text-mid">
-                Sites web accessibles uniquement aux clients Nova
+                Sites web exclusifs clients Nova
               </span>
             </div>
             <div>
@@ -55,28 +61,27 @@ export default function Partner() {
                 href="https://qwillio.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-sora font-light text-sm text-black underline underline-offset-4 hover:text-mid transition-colors"
+                className="inline-flex items-center font-sora font-light text-sm text-black underline underline-offset-4 hover:text-mid transition-colors"
               >
-                Visiter Qwillio.com &#8599;
+                Visiter Qwillio.com
+                <ArrowRight />
               </Link>
             </div>
           </RevealWrapper>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col divide-y divide-border">
             {features.map((f, i) => (
-              <RevealWrapper key={i} delay={i * 100}>
-                <div className="flex items-start gap-4 p-5 rounded-2xl">
-                  <div
-                    className="w-10 h-10 rounded-xl shrink-0 flex items-center justify-center"
-                    style={{ background: "linear-gradient(135deg, #5B6BF5, #9B5CF6)" }}
-                  >
-                    <QwillioLogo size={16} />
-                  </div>
+              <RevealWrapper key={i} delay={i * 80}>
+                <div className="flex items-start gap-3 py-4">
+                  <span
+                    className="w-1.5 h-1.5 rounded-full mt-[6px] shrink-0"
+                    style={{ background: f.exclusive ? "#5B6BF5" : "#aeaeb2" }}
+                  />
                   <div>
-                    <p className="font-sora font-medium text-sm text-black mb-1">
+                    <p className="font-sora font-medium text-sm text-black leading-snug">
                       {f.title}
                     </p>
-                    <p className="font-sora font-light text-xs text-mid leading-relaxed">
+                    <p className="font-sora font-light text-xs text-mid leading-relaxed mt-0.5">
                       {f.desc}
                     </p>
                   </div>

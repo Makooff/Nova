@@ -76,9 +76,12 @@ export default function PartenairePage() {
                 href="https://qwillio.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-sora font-light text-sm text-black underline underline-offset-4 hover:text-mid transition-colors"
+                className="inline-flex items-center font-sora font-light text-sm text-black underline underline-offset-4 hover:text-mid transition-colors"
               >
-                Visiter Qwillio.com &#8599;
+                Visiter Qwillio.com
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="inline-block ml-1.5 shrink-0">
+                  <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </Link>
             </div>
           </RevealWrapper>
