@@ -1,6 +1,4 @@
 import RevealWrapper from "@/components/ui/RevealWrapper";
-import QwillioLogo from "@/components/ui/QwillioLogo";
-import QwillioName from "@/components/ui/QwillioName";
 import Link from "next/link";
 
 function ArrowIcon() {
@@ -49,7 +47,7 @@ export default function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border rounded-[18px] overflow-hidden bg-white">
           <RevealWrapper
-            className="service-card relative p-8 border-b border-r border-border md:border-b-0"
+            className="service-card relative p-8 border-b border-b-border md:border-b-0 md:border-r md:border-r-border"
             delay={0}
           >
             <Link href="/services#video" className="absolute inset-0" aria-label="Production Vidéo Publicitaire" />
@@ -73,7 +71,7 @@ export default function Services() {
             </div>
           </RevealWrapper>
 
-          <RevealWrapper className="service-card relative p-8 border-b border-border" delay={80}>
+          <RevealWrapper className="service-card relative p-8" delay={80}>
             <Link href="/services#ads" className="absolute inset-0" aria-label="Campagnes Publicitaires Ads" />
             <div className="flex items-start justify-between mb-6">
               <p className="font-mono text-[10px] uppercase tracking-wider text-light">
@@ -90,33 +88,6 @@ export default function Services() {
             </p>
             <div className="flex flex-wrap gap-2">
               {["Google Ads", "Meta Ads", "LinkedIn", "TikTok"].map((p) => (
-                <Pill key={p} label={p} />
-              ))}
-            </div>
-          </RevealWrapper>
-
-          <RevealWrapper className="service-card relative p-8 md:col-span-2" delay={160}>
-            <Link href="/services#ia" className="absolute inset-0" aria-label="Agents IA de Gestion" />
-            <div className="flex items-start justify-between mb-6">
-              <div className="flex items-center gap-2.5">
-                <QwillioLogo size={18} />
-                <QwillioName size="13px" />
-                <span className="font-sora font-light text-xs text-mid">
-                  — Exclusif clients Nova
-                </span>
-              </div>
-              <ArrowIcon />
-            </div>
-            <h3 className="font-sora font-light text-[22px] text-black mb-3 leading-snug">
-              Réceptionniste IA · Email AI · Payments AI
-            </h3>
-            <p className="font-sora font-light text-sm text-mid leading-relaxed mb-6 max-w-xl">
-              Via Qwillio : réceptionniste vocale et textuelle 24h/24, boîte mail
-              entièrement automatisée, et paiements SMS via Stripe. Plus des sites web
-              sur mesure réservés exclusivement aux clients Nova.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {["Réceptionniste IA", "Email AI", "Payments AI", "Sites sur mesure", "Exclusif Nova"].map((p) => (
                 <Pill key={p} label={p} />
               ))}
             </div>
