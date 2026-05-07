@@ -1,16 +1,12 @@
 import Button from "@/components/ui/Button";
-import ScrollIndicator from "@/components/ui/ScrollIndicator";
+import Marquee from "@/components/ui/Marquee";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-svh flex flex-col items-center justify-start text-center px-5 pt-[90px]">
-      <div className="flex flex-col items-center gap-6 max-w-4xl">
-        <p className="font-mono text-[10px] uppercase tracking-wider text-light">
-          Production Vidéo Publicitaire — Belgique &amp; France
-        </p>
-
+    <section className="relative min-h-svh flex flex-col justify-between text-center pt-[90px]">
+      <div className="flex flex-col items-center gap-6 max-w-4xl mx-auto px-5">
         <h1
-          className="font-sora font-thin leading-[1.08] tracking-tighter"
+          className="font-sora font-thin leading-[1.08]"
           style={{
             fontSize: "clamp(44px, 9vw, 100px)",
             letterSpacing: "-0.04em",
@@ -38,7 +34,17 @@ export default function Hero() {
         </div>
       </div>
 
-      <ScrollIndicator />
+      <div className="w-full">
+        <div className="flex justify-center mb-6">
+          <div className="flex flex-col items-center gap-2">
+            <div className="w-px h-10 bg-black origin-top scroll-line" />
+            <span className="font-mono text-[9px] uppercase tracking-wider text-light">
+              Scroll
+            </span>
+          </div>
+        </div>
+        <Marquee />
+      </div>
     </section>
   );
 }

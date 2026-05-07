@@ -65,7 +65,7 @@ export default function Partner() {
           <div className="flex flex-col gap-4">
             {features.map((f, i) => (
               <RevealWrapper key={i} delay={i * 100}>
-                <div className="flex items-start gap-4 p-5 rounded-2xl border border-border">
+                <div className="flex items-start gap-4 p-5 rounded-2xl">
                   <div
                     className="w-10 h-10 rounded-xl shrink-0 flex items-center justify-center"
                     style={{ background: "linear-gradient(135deg, #5B6BF5, #9B5CF6)" }}
