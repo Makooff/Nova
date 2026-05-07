@@ -6,9 +6,9 @@ import QwillioName from "@/components/ui/QwillioName";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Partenaire Qwillio — Nova | Agents IA Exclusifs",
+  title: "Partenaire Qwillio — Nova | Email AI, Payments AI & Sites sur mesure",
   description:
-    "Qwillio est le partenaire exclusif de Nova. Réceptionnistes IA, agents de gestion et sites web — accessibles uniquement aux clients Nova.",
+    "Qwillio est le partenaire exclusif de Nova. Réceptionniste IA, Email AI, Payments AI disponibles sur Qwillio.com — et des sites web sur mesure exclusivement pour les clients Nova.",
 };
 
 const features = [
@@ -16,16 +16,25 @@ const features = [
     title: "Réceptionniste IA",
     desc: "Agent vocal et textuel disponible 24h/24 pour accueillir, qualifier et rediriger vos prospects. Zéro appel manqué, zéro opportunité perdue.",
     pills: ["Vocal", "Textuel", "24h/24", "Qualification"],
+    public: true,
   },
   {
-    title: "Agents IA de gestion",
-    desc: "Automatisez votre gestion interne : suivi des dossiers clients, relances automatiques, reporting consolidé et coordination d'équipe sans effort.",
-    pills: ["Suivi dossiers", "Relances auto", "Reporting", "Coordination"],
+    title: "Email AI",
+    desc: "Votre boîte mail entièrement automatisée. L'IA lit, classe, répond et relance — confirmations de rendez-vous, séquences de suivi, détection de spam.",
+    pills: ["Gmail & Outlook", "Classification IA", "Réponses auto", "Analytics"],
+    public: true,
   },
   {
-    title: "Sites web (exclusif Nova)",
-    desc: "Qwillio conçoit des sites web performants — mais uniquement pour les clients Nova. Cette prestation n'est pas proposée sur le site public de Qwillio.",
-    pills: ["Design", "Performance", "SEO", "Exclusif Nova"],
+    title: "Payments AI",
+    desc: "Liens de paiement SMS via Stripe, dépôts automatiques, enforcement des no-shows, facturation automatique et dashboard revenus en temps réel.",
+    pills: ["Stripe natif", "SMS payment", "Facturation auto", "Dashboard"],
+    public: true,
+  },
+  {
+    title: "Sites web sur mesure",
+    desc: "Qwillio conçoit des sites web performants — mais cette prestation n'est pas proposée sur Qwillio.com. Elle est réservée exclusivement aux clients Nova.",
+    pills: ["Design sur mesure", "Performance", "SEO", "Exclusif Nova"],
+    public: false,
   },
 ];
 
@@ -51,16 +60,15 @@ export default function PartenairePage() {
               <QwillioName size="56px" />
             </div>
             <p className="font-sora font-light text-sm text-mid max-w-xl mx-auto leading-relaxed mb-6">
-              Qwillio vend au grand public des réceptionnistes IA, des agents IA et des
-              solutions de gestion d&apos;entreprise par IA. En dehors de ça, Qwillio
-              crée également des sites web — mais uniquement pour les clients Nova, sans
-              les proposer sur leur site public. Un avantage exclusif inclus dans le
-              partenariat Nova.
+              Qwillio propose au grand public une réceptionniste IA, un agent Email AI
+              et un agent Payments AI. En plus de ça, Qwillio conçoit des sites web
+              sur mesure — uniquement pour les clients Nova, sans les proposer sur
+              Qwillio.com. Un avantage exclusif inclus dans votre partenariat Nova.
             </p>
             <div className="inline-flex items-center gap-2 rounded-full bg-ghost px-4 py-2 mb-6">
               <span className="w-2 h-2 rounded-full" style={{ background: "#5B6BF5" }} />
               <span className="font-sora font-light text-xs text-mid">
-                Accessible uniquement aux clients Nova
+                Sites web accessibles uniquement aux clients Nova
               </span>
             </div>
             <div className="flex justify-center">
@@ -75,15 +83,26 @@ export default function PartenairePage() {
             </div>
           </RevealWrapper>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {features.map((f, i) => (
               <RevealWrapper key={i} delay={i * 100}>
                 <div className="p-7 rounded-2xl border border-border h-full flex flex-col">
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 shrink-0"
-                    style={{ background: "linear-gradient(135deg, #5B6BF5, #9B5CF6)" }}
-                  >
-                    <QwillioLogo size={18} />
+                  <div className="flex items-start justify-between mb-5">
+                    <div
+                      className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ background: "linear-gradient(135deg, #5B6BF5, #9B5CF6)" }}
+                    >
+                      <QwillioLogo size={18} />
+                    </div>
+                    {f.public ? (
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-mid border border-border rounded-full px-2.5 py-1">
+                        Qwillio.com
+                      </span>
+                    ) : (
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-white rounded-full px-2.5 py-1" style={{ background: "#5B6BF5" }}>
+                        Exclusif Nova
+                      </span>
+                    )}
                   </div>
                   <h3 className="font-sora font-light text-[20px] text-black mb-3 leading-snug">
                     {f.title}
@@ -116,9 +135,9 @@ export default function PartenairePage() {
               Un avantage inclus dans votre partenariat Nova
             </h2>
             <p className="font-sora font-light text-sm text-mid leading-relaxed mb-8 max-w-md mx-auto">
-              Ces outils Qwillio ne sont pas disponibles séparément. Ils font partie
-              intégrante de la collaboration Nova — un avantage que vous activez dès
-              le début de votre projet.
+              La réceptionniste IA, l&apos;Email AI et le Payments AI sont disponibles
+              sur Qwillio.com. Les sites web sur mesure, eux, sont réservés aux
+              clients Nova — un avantage que vous activez dès le début de votre projet.
             </p>
             <Link
               href="/contact"

@@ -108,14 +108,15 @@ export default function Services() {
               <ArrowIcon />
             </div>
             <h3 className="font-sora font-light text-[22px] text-black mb-3 leading-snug">
-              Agents IA de Gestion
+              Réceptionniste IA · Email AI · Payments AI
             </h3>
             <p className="font-sora font-light text-sm text-mid leading-relaxed mb-6 max-w-xl">
-              Agents IA qui automatisent la gestion interne — suivi, relances,
-              reporting, coordination. Réservé aux clients Nova.
+              Via Qwillio : réceptionniste vocale et textuelle 24h/24, boîte mail
+              entièrement automatisée, et paiements SMS via Stripe. Plus des sites web
+              sur mesure réservés exclusivement aux clients Nova.
             </p>
             <div className="flex flex-wrap gap-2">
-              {["Gestion IA", "Reporting", "Automatisation", "Coordination", "Exclusif Nova"].map((p) => (
+              {["Réceptionniste IA", "Email AI", "Payments AI", "Sites sur mesure", "Exclusif Nova"].map((p) => (
                 <Pill key={p} label={p} />
               ))}
             </div>

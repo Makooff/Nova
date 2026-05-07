@@ -139,17 +139,17 @@ export default function ServicesPage() {
                   Agents IA de Gestion
                 </h2>
                 <p className="font-sora font-light text-sm text-mid leading-relaxed mb-6">
-                  En partenariat exclusif avec Qwillio, les clients Nova ont accès à des
-                  agents IA qui automatisent la gestion interne : suivi de dossiers,
-                  relances automatiques, reporting en temps réel et coordination d&apos;équipe.
+                  En partenariat exclusif avec Qwillio, les clients Nova bénéficient
+                  de la suite complète d&apos;agents IA : réceptionniste vocale et textuelle,
+                  Email AI (boîte mail entièrement automatisée) et Payments AI (liens de
+                  paiement SMS, Stripe natif, facturation automatique).
                 </p>
                 <p className="font-sora font-light text-sm text-mid leading-relaxed mb-8">
-                  Ces outils ne sont pas vendus au grand public. Ils sont inclus dans le
-                  partenariat Nova, ce qui vous donne un avantage opérationnel concret
-                  dès le début de notre collaboration.
+                  En plus de ça, Qwillio crée des sites web sur mesure exclusivement
+                  pour les clients Nova — une prestation non disponible sur Qwillio.com.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-8">
-                  {["Gestion IA", "Reporting", "Automatisation", "Coordination", "Exclusif Nova"].map((p) => (
+                  {["Réceptionniste IA", "Email AI", "Payments AI", "Sites sur mesure", "Exclusif Nova"].map((p) => (
                     <Pill key={p} label={p} />
                   ))}
                 </div>

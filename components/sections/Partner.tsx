@@ -6,15 +6,19 @@ import QwillioName from "@/components/ui/QwillioName";
 const features = [
   {
     title: "Réceptionniste IA",
-    desc: "Agent vocal et textuel — accueil et qualification 24h/24",
+    desc: "Agent vocal et textuel — accueil, qualification et redirection de vos prospects 24h/24",
   },
   {
-    title: "Agents IA de gestion",
-    desc: "Automatisation des process — suivi, relances, reporting",
+    title: "Email AI",
+    desc: "Votre boîte mail entièrement automatisée : lecture, classification, réponses et relances sans intervention humaine",
   },
   {
-    title: "Sites web (exclusif Nova)",
-    desc: "Non vendu au public — uniquement pour les clients Nova",
+    title: "Payments AI",
+    desc: "Liens de paiement SMS, dépôts automatiques, intégration Stripe native et dashboard revenus en temps réel",
+  },
+  {
+    title: "Sites web sur mesure (exclusif Nova)",
+    desc: "Non proposé sur Qwillio.com — conçu uniquement pour les clients Nova",
   },
 ];
 
@@ -32,11 +36,10 @@ export default function Partner() {
               <QwillioName size="44px" />
             </div>
             <p className="font-sora font-light text-sm text-mid leading-relaxed mb-6 max-w-md">
-              Qwillio vend au grand public des réceptionnistes IA, des agents IA
-              et des solutions de gestion d&apos;entreprise par IA. En dehors de
-              ça, Qwillio crée également des sites web — mais uniquement pour
-              les clients Nova, sans les proposer sur leur site public. Un
-              avantage exclusif inclus dans le partenariat Nova.
+              Qwillio propose au grand public une réceptionniste IA, un agent Email AI
+              et un agent Payments AI. En plus de ça, Qwillio conçoit des sites web
+              sur mesure — mais uniquement pour les clients Nova, sans les proposer
+              sur leur site public. Un avantage exclusif inclus dans le partenariat Nova.
             </p>
             <div className="inline-flex items-center gap-2 rounded-full bg-ghost px-4 py-2 mb-6">
               <span
@@ -44,7 +47,7 @@ export default function Partner() {
                 style={{ background: "#5B6BF5" }}
               />
               <span className="font-sora font-light text-xs text-mid">
-                Accessible uniquement aux clients Nova
+                Sites web accessibles uniquement aux clients Nova
               </span>
             </div>
             <div>
