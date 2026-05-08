@@ -4,53 +4,57 @@ import { useEffect } from "react";
 
 export default function PreventZoom() {
   useEffect(() => {
-    const forceReset = () => {
-      const meta = document.querySelector('meta[name="viewport"]');
+    const getMetaViewport = () =>
+      document.querySelector('meta[name="viewport"]');
+
+    const resetScale = () => {
+      const meta = getMetaViewport();
       if (!meta) return;
-      meta.setAttribute("content", "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no");
+      // Toggle minimum-scale to force iOS Safari to snap back to 1
+      meta.setAttribute(
+        "content",
+        "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
+      );
     };
 
-    const checkZoom = () => {
+    const handleTouchEnd = () => {
       const scale = window.visualViewport?.scale ?? 1;
-      if (scale < 0.99) {
-        forceReset();
-        // Force browser to re-evaluate by toggling the value
-        setTimeout(forceReset, 30);
-        setTimeout(forceReset, 100);
+      if (scale !== 1) {
+        resetScale();
       }
     };
 
-    const blockMultiTouch = (e: TouchEvent) => {
-      if (e.touches.length > 1) e.preventDefault();
+    const handleViewportResize = () => {
+      const scale = window.visualViewport?.scale ?? 1;
+      if (scale < 0.99 || scale > 1.01) {
+        // Small delay to let the gesture finish, then snap back
+        setTimeout(resetScale, 0);
+        setTimeout(resetScale, 100);
+        setTimeout(resetScale, 300);
+      }
     };
 
     const blockGesture = (e: Event) => e.preventDefault();
 
-    window.visualViewport?.addEventListener("resize", checkZoom);
-    window.visualViewport?.addEventListener("scroll", checkZoom);
-    document.addEventListener("touchstart", blockMultiTouch, { passive: false });
-    document.addEventListener("touchmove", blockMultiTouch, { passive: false });
+    window.visualViewport?.addEventListener("resize", handleViewportResize);
+    document.addEventListener("touchend", handleTouchEnd);
     document.addEventListener("gesturestart", blockGesture);
     document.addEventListener("gesturechange", blockGesture);
-    document.addEventListener("gestureend", blockGesture);
-
-    // Reset on page focus (e.g. coming back from AA menu)
-    window.addEventListener("focus", forceReset);
+    document.addEventListener("gestureend", resetScale);
+    window.addEventListener("focus", resetScale);
     document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) forceReset();
+      if (!document.hidden) resetScale();
     });
 
-    forceReset();
+    resetScale();
 
     return () => {
-      window.visualViewport?.removeEventListener("resize", checkZoom);
-      window.visualViewport?.removeEventListener("scroll", checkZoom);
-      document.removeEventListener("touchstart", blockMultiTouch);
-      document.removeEventListener("touchmove", blockMultiTouch);
+      window.visualViewport?.removeEventListener("resize", handleViewportResize);
+      document.removeEventListener("touchend", handleTouchEnd);
       document.removeEventListener("gesturestart", blockGesture);
       document.removeEventListener("gesturechange", blockGesture);
-      document.removeEventListener("gestureend", blockGesture);
-      window.removeEventListener("focus", forceReset);
+      document.removeEventListener("gestureend", resetScale);
+      window.removeEventListener("focus", resetScale);
     };
   }, []);
 
