@@ -28,7 +28,7 @@ export default function Showreel() {
         >
           {/* Background photo */}
           <Image
-            src="https://picsum.photos/seed/nova-showreel/1920/1080"
+            src="https://images.unsplash.com/photo-1536240478613-bf4ad1e4f9e0?w=1920&auto=format&fit=crop"
             alt="Nova showreel"
             fill
             className="object-cover opacity-40 group-hover:opacity-55 transition-opacity duration-500"
@@ -77,7 +77,7 @@ export default function Showreel() {
               style={{ border: "1px solid oklch(0.22 0 0)" }}
             >
               <Image
-                src="https://picsum.photos/seed/nova-showreel/1280/720"
+                src="https://images.unsplash.com/photo-1536240478613-bf4ad1e4f9e0?w=1280&auto=format&fit=crop"
                 alt="Showreel Nova"
                 fill
                 className="object-cover"

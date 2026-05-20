@@ -7,11 +7,11 @@ import { motion, useInView, cubicBezier, type Variants } from "framer-motion";
 const easeExpo = cubicBezier(0.16, 1, 0.3, 1);
 
 const items = [
-  { title: "Campagne Printemps", category: "Production Vidéo", seed: "nova-p1", cols: "md:col-span-7" },
-  { title: "Retail Brand Film",  category: "Motion Design",    seed: "nova-p2", cols: "md:col-span-5" },
-  { title: "Google Ads Series",  category: "Campagnes Ads",    seed: "nova-p3", cols: "md:col-span-4" },
-  { title: "Corporate Story",    category: "Production Vidéo", seed: "nova-p4", cols: "md:col-span-5" },
-  { title: "Social Creatives",   category: "Meta Ads",         seed: "nova-p5", cols: "md:col-span-3" },
+  { title: "Campagne Printemps", category: "Production Vidéo", photo: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=900&auto=format&fit=crop", cols: "md:col-span-7" },
+  { title: "Retail Brand Film",  category: "Motion Design",    photo: "https://images.unsplash.com/photo-1536240478613-bf4ad1e4f9e0?w=700&auto=format&fit=crop", cols: "md:col-span-5" },
+  { title: "Google Ads Series",  category: "Campagnes Ads",    photo: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop", cols: "md:col-span-4" },
+  { title: "Corporate Story",    category: "Production Vidéo", photo: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=700&auto=format&fit=crop", cols: "md:col-span-5" },
+  { title: "Social Creatives",   category: "Meta Ads",         photo: "https://images.unsplash.com/photo-1598550476439-6a1c3cda0655?w=500&auto=format&fit=crop", cols: "md:col-span-3" },
 ];
 
 const itemVariants: Variants = {
@@ -22,8 +22,8 @@ const itemVariants: Variants = {
   }),
 };
 
-function PortfolioItem({ title, category, seed, cols, index, inView }: {
-  title: string; category: string; seed: string; cols: string; index: number; inView: boolean;
+function PortfolioItem({ title, category, photo, cols, index, inView }: {
+  title: string; category: string; photo: string; cols: string; index: number; inView: boolean;
 }) {
   return (
     <motion.div
@@ -37,7 +37,7 @@ function PortfolioItem({ title, category, seed, cols, index, inView }: {
       transition={{ duration: 0.3 }}
     >
       <Image
-        src={`https://picsum.photos/seed/${seed}/800/500`}
+        src={photo}
         alt={title}
         fill
         className="object-cover group-hover:scale-105 transition-transform duration-700"

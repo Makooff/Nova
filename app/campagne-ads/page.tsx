@@ -15,25 +15,25 @@ const platforms = [
     name: "Meta Ads",
     desc: "Facebook & Instagram — Reels, Stories, Carrousels. Ciblage audience précis, lookalike, retargeting. Créatifs vidéo optimisés pour le feed mobile.",
     metrics: [{ label: "ROAS moyen", value: "4.2×" }, { label: "CPM moyen", value: "6.40€" }],
-    seed: "nova-meta",
+    photo: "https://images.unsplash.com/photo-1611162617263-4ec3d24e3b95?w=800&auto=format&fit=crop",
   },
   {
     name: "Google Ads",
     desc: "Search, Display, YouTube, Performance Max. Campagnes axées intention d'achat avec créatifs vidéo adaptés à chaque format Google.",
     metrics: [{ label: "CTR moyen", value: "3.8%" }, { label: "CPC moyen", value: "0.72€" }],
-    seed: "nova-google",
+    photo: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800&auto=format&fit=crop",
   },
   {
     name: "TikTok Ads",
     desc: "TopView, In-Feed, Spark Ads. Contenus natifs conçus pour stopper le scroll. Production vidéo verticale incluse dans chaque campagne.",
     metrics: [{ label: "Taux de vue", value: "68%" }, { label: "CPM moyen", value: "4.10€" }],
-    seed: "nova-tiktok",
+    photo: "https://images.unsplash.com/photo-1598550476439-6a1c3cda0655?w=800&auto=format&fit=crop",
   },
   {
     name: "LinkedIn Ads",
     desc: "Sponsored Content, Video Ads, Lead Gen. Idéal pour le B2B, les marques employeur et les lancements de produits SaaS ou services pro.",
     metrics: [{ label: "Taux conv.", value: "2.4%" }, { label: "CPL moyen", value: "18€" }],
-    seed: "nova-linkedin",
+    photo: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format&fit=crop",
   },
 ];
 
@@ -45,9 +45,9 @@ const process = [
 ];
 
 const results = [
-  { client: "Groupe Belux", sector: "Retail BE", stat: "+347%", label: "ROAS en 3 mois", seed: "nova-r1" },
-  { client: "TechStart Brussels", sector: "SaaS B2B", stat: "2.3M", label: "Vues organiques", seed: "nova-r2" },
-  { client: "ModeMarket", sector: "E-commerce FR", stat: "−62%", label: "CPA vs avant Nova", seed: "nova-r3" },
+  { client: "Groupe Belux", sector: "Retail BE", stat: "+347%", label: "ROAS en 3 mois", photo: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=640&auto=format&fit=crop" },
+  { client: "TechStart Brussels", sector: "SaaS B2B", stat: "2.3M", label: "Vues organiques", photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&auto=format&fit=crop" },
+  { client: "ModeMarket", sector: "E-commerce FR", stat: "−62%", label: "CPA vs avant Nova", photo: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=640&auto=format&fit=crop" },
 ];
 
 function Pill({ label }: { label: string }) {
@@ -104,7 +104,7 @@ export default function CampagneAdsPage() {
                 style={{ aspectRatio: "4/3", background: "oklch(0.10 0 0)", border: "1px solid oklch(0.16 0 0)" }}
               >
                 <Image
-                  src="https://picsum.photos/seed/nova-ads-hero/800/600"
+                  src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&auto=format&fit=crop"
                   alt="Campagnes Ads Nova"
                   fill
                   className="object-cover"
@@ -151,7 +151,7 @@ export default function CampagneAdsPage() {
                 >
                   <div className="relative w-full" style={{ aspectRatio: "16/7", background: "oklch(0.10 0 0)" }}>
                     <Image
-                      src={`https://picsum.photos/seed/${p.seed}/800/350`}
+                      src={p.photo}
                       alt={p.name}
                       fill
                       className="object-cover opacity-50"
@@ -253,7 +253,7 @@ export default function CampagneAdsPage() {
                 >
                   <div className="relative w-full" style={{ aspectRatio: "16/9", background: "oklch(0.10 0 0)" }}>
                     <Image
-                      src={`https://picsum.photos/seed/${r.seed}/640/360`}
+                      src={r.photo}
                       alt={r.client}
                       fill
                       className="object-cover opacity-50"

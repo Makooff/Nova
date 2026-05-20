@@ -16,7 +16,7 @@ const projects = [
     client: "Groupe Belux",
     category: "Production Vidéo",
     year: "2024",
-    seed: "nova-reel-belux",
+    photo: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=900&auto=format&fit=crop",
     span: "md:col-span-7",
   },
   {
@@ -24,7 +24,7 @@ const projects = [
     client: "Atelier Nord",
     category: "Motion Design",
     year: "2024",
-    seed: "nova-brand-nord",
+    photo: "https://images.unsplash.com/photo-1536240478613-bf4ad1e4f9e0?w=700&auto=format&fit=crop",
     span: "md:col-span-5",
   },
   {
@@ -32,7 +32,7 @@ const projects = [
     client: "TechStart Brussels",
     category: "Campagnes Ads",
     year: "2025",
-    seed: "nova-ads-tech",
+    photo: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop",
     span: "md:col-span-4",
   },
   {
@@ -40,7 +40,7 @@ const projects = [
     client: "InnovateBE",
     category: "Production Vidéo",
     year: "2025",
-    seed: "nova-corp-innovate",
+    photo: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=700&auto=format&fit=crop",
     span: "md:col-span-5",
   },
   {
@@ -48,7 +48,7 @@ const projects = [
     client: "ModeMarket",
     category: "Meta Ads",
     year: "2025",
-    seed: "nova-social-mode",
+    photo: "https://images.unsplash.com/photo-1598550476439-6a1c3cda0655?w=500&auto=format&fit=crop",
     span: "md:col-span-3",
   },
   {
@@ -56,7 +56,7 @@ const projects = [
     client: "NordicFR",
     category: "TikTok Ads",
     year: "2025",
-    seed: "nova-tiktok-nordic",
+    photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&auto=format&fit=crop",
     span: "md:col-span-5",
   },
   {
@@ -64,7 +64,7 @@ const projects = [
     client: "Volta Concept",
     category: "Production Vidéo",
     year: "2024",
-    seed: "nova-film-volta",
+    photo: "https://images.unsplash.com/photo-1551817958-d9d86fb29431?w=900&auto=format&fit=crop",
     span: "md:col-span-7",
   },
 ];
@@ -119,7 +119,7 @@ export default function RealisationsPage() {
                 delay={i * 50}
               >
                 <Image
-                  src={`https://picsum.photos/seed/${p.seed}/900/563`}
+                  src={p.photo}
                   alt={p.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
