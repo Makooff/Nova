@@ -4,14 +4,8 @@ import { useRef } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 
 function MagneticButton({
-  href,
-  children,
-  primary = false,
-}: {
-  href: string;
-  children: React.ReactNode;
-  primary?: boolean;
-}) {
+  href, children, primary = false,
+}: { href: string; children: React.ReactNode; primary?: boolean }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -22,36 +16,21 @@ function MagneticButton({
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    x.set((e.clientX - cx) * 0.3);
-    y.set((e.clientY - cy) * 0.3);
+    x.set((e.clientX - (rect.left + rect.width / 2)) * 0.3);
+    y.set((e.clientY - (rect.top + rect.height / 2)) * 0.3);
   };
 
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  const primaryStyle = {
-    x: springX,
-    y: springY,
-    background: "oklch(0.93 0.012 70)",
-    color: "oklch(0.13 0.008 55)",
-  };
-
-  const outlineStyle = {
-    x: springX,
-    y: springY,
-    border: "1px solid oklch(0.26 0.008 55)",
-    color: "oklch(0.78 0.010 68)",
-  };
+  const handleMouseLeave = () => { x.set(0); y.set(0); };
 
   return (
     <motion.a
       ref={ref}
       href={href}
-      style={primary ? primaryStyle : outlineStyle}
+      style={
+        primary
+          ? { x: springX, y: springY, background: "oklch(0.96 0 0)", color: "oklch(0.06 0 0)" }
+          : { x: springX, y: springY, border: "1px solid oklch(0.22 0 0)", color: "oklch(0.65 0 0)" }
+      }
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-7 py-3.5 transition-colors duration-200 cursor-pointer select-none"
@@ -70,21 +49,12 @@ export default function CTA() {
     <section
       ref={ref}
       className="py-32 px-5 relative overflow-hidden"
-      style={{ background: "oklch(0.13 0.008 55)" }}
+      style={{ background: "oklch(0.06 0 0)" }}
     >
-      {/* Ambient top glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 55% 45% at 50% 0%, oklch(0.72 0.11 55 / 0.06) 0%, transparent 65%)",
-        }}
-      />
-
       {/* Rule top */}
       <motion.div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-px"
-        style={{ background: "oklch(0.26 0.008 55)", height: "80px" }}
+        style={{ background: "oklch(0.22 0 0)", height: "80px" }}
         initial={{ scaleY: 0, originY: 0 }}
         animate={inView ? { scaleY: 1 } : {}}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -93,7 +63,7 @@ export default function CTA() {
       <div className="max-w-4xl mx-auto text-center relative">
         <motion.p
           className="font-mono text-[10px] uppercase tracking-[3px] mb-8"
-          style={{ color: "oklch(0.42 0.007 62)" }}
+          style={{ color: "oklch(0.38 0 0)" }}
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.2, duration: 0.6 }}
@@ -107,7 +77,7 @@ export default function CTA() {
             fontSize: "clamp(42px, 8vw, 96px)",
             letterSpacing: "-0.04em",
             lineHeight: 1.06,
-            color: "oklch(0.93 0.012 70)",
+            color: "oklch(0.96 0 0)",
           }}
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -115,7 +85,7 @@ export default function CTA() {
         >
           Votre prochaine
           <br />
-          <span style={{ color: "oklch(0.35 0.008 55)" }}>
+          <span style={{ color: "oklch(0.28 0 0)" }}>
             vidéo commence ici.
           </span>
         </motion.h2>

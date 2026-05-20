@@ -67,13 +67,13 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <main className="pt-[52px]" style={{ background: "oklch(0.13 0.008 55)" }}>
+    <main className="pt-[52px]" style={{ background: "oklch(0.06 0 0)" }}>
       <section className="py-20 px-5">
         <div className="max-w-6xl mx-auto">
           <RevealWrapper className="mb-14">
             <p
               className="font-mono text-[10px] uppercase tracking-wider mb-4"
-              style={{ color: "oklch(0.42 0.007 62)" }}
+              style={{ color: "oklch(0.38 0 0)" }}
             >
               Ressources
             </p>
@@ -82,7 +82,7 @@ export default function BlogPage() {
               style={{
                 fontSize: "clamp(40px, 6vw, 72px)",
                 letterSpacing: "-0.04em",
-                color: "oklch(0.93 0.012 70)",
+                color: "oklch(0.96 0 0)",
               }}
             >
               Blog
@@ -96,39 +96,39 @@ export default function BlogPage() {
                   href={`/blog/${post.slug}`}
                   className="group flex flex-col h-full rounded-2xl p-6 transition-colors duration-200"
                   style={{
-                    background: "oklch(0.17 0.009 55)",
-                    border: "1px solid oklch(0.26 0.008 55)",
+                    background: "oklch(0.10 0 0)",
+                    border: "1px solid oklch(0.22 0 0)",
                   }}
                 >
                   <div className="flex items-center justify-between mb-4">
                     <span
                       className="font-mono text-[9px] uppercase tracking-wider"
-                      style={{ color: "oklch(0.42 0.007 62)" }}
+                      style={{ color: "oklch(0.38 0 0)" }}
                     >
                       {post.category}
                     </span>
                     <span
                       className="font-mono text-[9px] uppercase tracking-wider"
-                      style={{ color: "oklch(0.42 0.007 62)" }}
+                      style={{ color: "oklch(0.38 0 0)" }}
                     >
                       {post.readTime}
                     </span>
                   </div>
                   <h2
                     className="font-sora font-light text-[18px] leading-snug mb-3 flex-1 transition-colors duration-200"
-                    style={{ color: "oklch(0.93 0.012 70)" }}
+                    style={{ color: "oklch(0.96 0 0)" }}
                   >
                     {post.title}
                   </h2>
                   <p
                     className="font-sora font-light text-sm leading-relaxed mb-4"
-                    style={{ color: "oklch(0.52 0.008 65)" }}
+                    style={{ color: "oklch(0.45 0 0)" }}
                   >
                     {post.excerpt}
                   </p>
                   <p
                     className="font-mono text-[9px] uppercase tracking-wider"
-                    style={{ color: "oklch(0.32 0.007 60)" }}
+                    style={{ color: "oklch(0.28 0 0)" }}
                   >
                     {post.date}
                   </p>

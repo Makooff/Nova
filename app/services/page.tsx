@@ -15,7 +15,7 @@ function Pill({ label }: { label: string }) {
   return (
     <span
       className="inline-flex items-center rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-wider"
-      style={{ border: "1px solid oklch(0.26 0.008 55)", color: "oklch(0.52 0.008 65)" }}
+      style={{ border: "1px solid oklch(0.22 0 0)", color: "oklch(0.45 0 0)" }}
     >
       {label}
     </span>
@@ -24,13 +24,13 @@ function Pill({ label }: { label: string }) {
 
 export default function ServicesPage() {
   return (
-    <main className="pt-[52px]" style={{ background: "oklch(0.13 0.008 55)" }}>
+    <main className="pt-[52px]" style={{ background: "oklch(0.06 0 0)" }}>
       <section className="py-20 px-5">
         <div className="max-w-6xl mx-auto">
           <RevealWrapper className="mb-16">
             <p
               className="font-mono text-[10px] uppercase tracking-wider mb-4"
-              style={{ color: "oklch(0.42 0.007 62)" }}
+              style={{ color: "oklch(0.38 0 0)" }}
             >
               Ce que nous faisons
             </p>
@@ -39,7 +39,7 @@ export default function ServicesPage() {
               style={{
                 fontSize: "clamp(40px, 6vw, 72px)",
                 letterSpacing: "-0.04em",
-                color: "oklch(0.93 0.012 70)",
+                color: "oklch(0.96 0 0)",
               }}
             >
               Nos services
@@ -50,13 +50,13 @@ export default function ServicesPage() {
           <RevealWrapper
             id="video"
             className="mb-16 pb-16"
-            style={{ borderBottom: "1px solid oklch(0.26 0.008 55)" }}
+            style={{ borderBottom: "1px solid oklch(0.22 0 0)" }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div>
                 <p
                   className="font-mono text-[10px] uppercase tracking-wider mb-4"
-                  style={{ color: "oklch(0.42 0.007 62)" }}
+                  style={{ color: "oklch(0.38 0 0)" }}
                 >
                   Service 01
                 </p>
@@ -65,14 +65,14 @@ export default function ServicesPage() {
                   style={{
                     fontSize: "clamp(28px, 4vw, 48px)",
                     letterSpacing: "-0.04em",
-                    color: "oklch(0.93 0.012 70)",
+                    color: "oklch(0.96 0 0)",
                   }}
                 >
                   Production Vidéo Publicitaire
                 </h2>
                 <p
                   className="font-sora font-light text-sm leading-relaxed mb-6"
-                  style={{ color: "oklch(0.52 0.008 65)" }}
+                  style={{ color: "oklch(0.45 0 0)" }}
                 >
                   Chaque vidéo est conçue avec un objectif publicitaire précis. De la
                   stratégie créative au montage final, nous produisons des contenus vidéo
@@ -80,7 +80,7 @@ export default function ServicesPage() {
                 </p>
                 <p
                   className="font-sora font-light text-sm leading-relaxed mb-8"
-                  style={{ color: "oklch(0.52 0.008 65)" }}
+                  style={{ color: "oklch(0.45 0 0)" }}
                 >
                   Nos équipes opèrent en Belgique et en France, avec un studio de
                   référence et la capacité de tourner sur le terrain de vos clients.
@@ -96,8 +96,8 @@ export default function ServicesPage() {
                   href="/contact"
                   className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-colors"
                   style={{
-                    background: "oklch(0.72 0.11 55)",
-                    color: "oklch(0.13 0.008 55)",
+                    background: "oklch(0.96 0 0)",
+                    color: "oklch(0.06 0 0)",
                   }}
                 >
                   Demander un devis vidéo
@@ -108,7 +108,7 @@ export default function ServicesPage() {
                 style={{
                   aspectRatio: "4/3",
                   background: "oklch(0.17 0.010 55)",
-                  border: "1px solid oklch(0.26 0.008 55)",
+                  border: "1px solid oklch(0.22 0 0)",
                 }}
               />
             </div>
@@ -118,7 +118,7 @@ export default function ServicesPage() {
           <RevealWrapper
             id="ads"
             className="mb-16 pb-16"
-            style={{ borderBottom: "1px solid oklch(0.26 0.008 55)" }}
+            style={{ borderBottom: "1px solid oklch(0.22 0 0)" }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div
@@ -126,13 +126,13 @@ export default function ServicesPage() {
                 style={{
                   aspectRatio: "4/3",
                   background: "oklch(0.17 0.010 55)",
-                  border: "1px solid oklch(0.26 0.008 55)",
+                  border: "1px solid oklch(0.22 0 0)",
                 }}
               />
               <div className="order-1 md:order-2">
                 <p
                   className="font-mono text-[10px] uppercase tracking-wider mb-4"
-                  style={{ color: "oklch(0.42 0.007 62)" }}
+                  style={{ color: "oklch(0.38 0 0)" }}
                 >
                   Service 02
                 </p>
@@ -141,14 +141,14 @@ export default function ServicesPage() {
                   style={{
                     fontSize: "clamp(28px, 4vw, 48px)",
                     letterSpacing: "-0.04em",
-                    color: "oklch(0.93 0.012 70)",
+                    color: "oklch(0.96 0 0)",
                   }}
                 >
                   Campagnes Publicitaires Ads
                 </h2>
                 <p
                   className="font-sora font-light text-sm leading-relaxed mb-6"
-                  style={{ color: "oklch(0.52 0.008 65)" }}
+                  style={{ color: "oklch(0.45 0 0)" }}
                 >
                   Nous lançons et gérons vos campagnes publicitaires sur toutes les
                   plateformes majeures. Les créatifs vidéo sont inclus dans notre offre,
@@ -157,7 +157,7 @@ export default function ServicesPage() {
                 </p>
                 <p
                   className="font-sora font-light text-sm leading-relaxed mb-8"
-                  style={{ color: "oklch(0.52 0.008 65)" }}
+                  style={{ color: "oklch(0.45 0 0)" }}
                 >
                   Notre objectif est simple : maximiser votre ROAS. Nous analysons, testons
                   et optimisons en continu pour que chaque euro investi travaille davantage.
@@ -171,8 +171,8 @@ export default function ServicesPage() {
                   href="/contact"
                   className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-colors"
                   style={{
-                    background: "oklch(0.72 0.11 55)",
-                    color: "oklch(0.13 0.008 55)",
+                    background: "oklch(0.96 0 0)",
+                    color: "oklch(0.06 0 0)",
                   }}
                 >
                   Lancer une campagne
@@ -190,7 +190,7 @@ export default function ServicesPage() {
                   <QwillioName size="13px" />
                   <span
                     className="font-sora font-light text-xs"
-                    style={{ color: "oklch(0.42 0.007 62)" }}
+                    style={{ color: "oklch(0.38 0 0)" }}
                   >
                     — Exclusif clients Nova
                   </span>
@@ -200,14 +200,14 @@ export default function ServicesPage() {
                   style={{
                     fontSize: "clamp(28px, 4vw, 48px)",
                     letterSpacing: "-0.04em",
-                    color: "oklch(0.93 0.012 70)",
+                    color: "oklch(0.96 0 0)",
                   }}
                 >
                   Agents IA de Gestion
                 </h2>
                 <p
                   className="font-sora font-light text-sm leading-relaxed mb-6"
-                  style={{ color: "oklch(0.52 0.008 65)" }}
+                  style={{ color: "oklch(0.45 0 0)" }}
                 >
                   En partenariat exclusif avec Qwillio, les clients Nova bénéficient
                   de la suite complète d&apos;agents IA : réceptionniste vocale et textuelle,
@@ -216,7 +216,7 @@ export default function ServicesPage() {
                 </p>
                 <p
                   className="font-sora font-light text-sm leading-relaxed mb-8"
-                  style={{ color: "oklch(0.52 0.008 65)" }}
+                  style={{ color: "oklch(0.45 0 0)" }}
                 >
                   En plus de ça, Qwillio crée des sites web sur mesure exclusivement
                   pour les clients Nova — une prestation non disponible sur Qwillio.com.
@@ -230,8 +230,8 @@ export default function ServicesPage() {
                   href="/partenaire"
                   className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-colors"
                   style={{
-                    border: "1px solid oklch(0.26 0.008 55)",
-                    color: "oklch(0.78 0.010 68)",
+                    border: "1px solid oklch(0.22 0 0)",
+                    color: "oklch(0.65 0 0)",
                   }}
                 >
                   En savoir plus sur Qwillio
@@ -242,7 +242,7 @@ export default function ServicesPage() {
                 style={{
                   aspectRatio: "4/3",
                   background: "oklch(0.17 0.010 55)",
-                  border: "1px solid oklch(0.26 0.008 55)",
+                  border: "1px solid oklch(0.22 0 0)",
                 }}
               />
             </div>

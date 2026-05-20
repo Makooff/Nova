@@ -66,13 +66,13 @@ const steps = [
 
 export default function ProcessPage() {
   return (
-    <main className="pt-[52px]" style={{ background: "oklch(0.10 0.007 55)" }}>
+    <main className="pt-[52px]" style={{ background: "oklch(0.04 0 0)" }}>
       <section className="py-20 px-5">
         <div className="max-w-3xl mx-auto">
           <RevealWrapper className="mb-16">
             <p
               className="font-mono text-[10px] uppercase tracking-wider mb-4"
-              style={{ color: "oklch(0.42 0.007 62)" }}
+              style={{ color: "oklch(0.38 0 0)" }}
             >
               Comment on travaille
             </p>
@@ -81,7 +81,7 @@ export default function ProcessPage() {
               style={{
                 fontSize: "clamp(40px, 6vw, 72px)",
                 letterSpacing: "-0.04em",
-                color: "oklch(0.93 0.012 70)",
+                color: "oklch(0.96 0 0)",
               }}
             >
               Notre process
@@ -99,11 +99,11 @@ export default function ProcessPage() {
                 <div className="flex flex-col items-center">
                   <div
                     className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                    style={{ border: "1px solid oklch(0.26 0.008 55)" }}
+                    style={{ border: "1px solid oklch(0.22 0 0)" }}
                   >
                     <span
                       className="font-mono text-[11px]"
-                      style={{ color: "oklch(0.72 0.11 55)" }}
+                      style={{ color: "oklch(0.96 0 0)" }}
                     >
                       {step.num}
                     </span>
@@ -111,26 +111,26 @@ export default function ProcessPage() {
                   {i < steps.length - 1 && (
                     <div
                       className="flex-1 w-px mt-3"
-                      style={{ background: "oklch(0.21 0.007 55)", minHeight: "40px" }}
+                      style={{ background: "oklch(0.16 0 0)", minHeight: "40px" }}
                     />
                   )}
                 </div>
                 <div className="pb-4">
                   <p
                     className="font-mono text-[9px] uppercase tracking-wider mb-2"
-                    style={{ color: "oklch(0.42 0.007 62)" }}
+                    style={{ color: "oklch(0.38 0 0)" }}
                   >
                     {step.label}
                   </p>
                   <h2
                     className="font-sora font-light text-[28px] mb-3 leading-snug"
-                    style={{ color: "oklch(0.93 0.012 70)" }}
+                    style={{ color: "oklch(0.96 0 0)" }}
                   >
                     {step.title}
                   </h2>
                   <p
                     className="font-sora font-light text-sm leading-relaxed mb-5"
-                    style={{ color: "oklch(0.52 0.008 65)" }}
+                    style={{ color: "oklch(0.45 0 0)" }}
                   >
                     {step.desc}
                   </p>
@@ -139,11 +139,11 @@ export default function ProcessPage() {
                       <li key={j} className="flex items-center gap-2.5">
                         <span
                           className="w-1 h-1 rounded-full shrink-0"
-                          style={{ background: "oklch(0.42 0.007 62)" }}
+                          style={{ background: "oklch(0.38 0 0)" }}
                         />
                         <span
                           className="font-sora font-light text-sm"
-                          style={{ color: "oklch(0.52 0.008 65)" }}
+                          style={{ color: "oklch(0.45 0 0)" }}
                         >
                           {d}
                         </span>

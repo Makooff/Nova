@@ -40,23 +40,23 @@ export default function ContactPage() {
   };
 
   const inputStyle = {
-    background: "oklch(0.17 0.009 55)",
-    border: "1px solid oklch(0.26 0.008 55)",
-    color: "oklch(0.93 0.012 70)",
+    background: "oklch(0.10 0 0)",
+    border: "1px solid oklch(0.22 0 0)",
+    color: "oklch(0.96 0 0)",
   };
 
   const inputClass =
     "w-full font-sora font-light text-sm rounded-xl px-4 py-3 focus:outline-none transition-colors placeholder:text-[oklch(0.32_0.007_60)]";
 
   return (
-    <main className="pt-[52px]" style={{ background: "oklch(0.13 0.008 55)" }}>
+    <main className="pt-[52px]" style={{ background: "oklch(0.06 0 0)" }}>
       <section className="py-20 px-5">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <div>
               <p
                 className="font-mono text-[10px] uppercase tracking-wider mb-4"
-                style={{ color: "oklch(0.42 0.007 62)" }}
+                style={{ color: "oklch(0.38 0 0)" }}
               >
                 Parlons de votre projet
               </p>
@@ -65,14 +65,14 @@ export default function ContactPage() {
                 style={{
                   fontSize: "clamp(36px, 5vw, 60px)",
                   letterSpacing: "-0.04em",
-                  color: "oklch(0.93 0.012 70)",
+                  color: "oklch(0.96 0 0)",
                 }}
               >
                 Demander un devis
               </h1>
               <p
                 className="font-sora font-light text-sm leading-relaxed mb-10"
-                style={{ color: "oklch(0.52 0.008 65)" }}
+                style={{ color: "oklch(0.45 0 0)" }}
               >
                 Remplissez le formulaire et nous vous recontactons sous 24h ouvrées.
                 Chaque projet est unique — nous adaptons notre offre à vos objectifs.
@@ -87,13 +87,13 @@ export default function ContactPage() {
                   <div key={item.label}>
                     <p
                       className="font-mono text-[9px] uppercase tracking-wider mb-1"
-                      style={{ color: "oklch(0.42 0.007 62)" }}
+                      style={{ color: "oklch(0.38 0 0)" }}
                     >
                       {item.label}
                     </p>
                     <p
                       className="font-sora font-light text-sm"
-                      style={{ color: "oklch(0.78 0.010 68)" }}
+                      style={{ color: "oklch(0.65 0 0)" }}
                     >
                       {item.value}
                     </p>
@@ -107,12 +107,12 @@ export default function ContactPage() {
                 <div className="flex flex-col items-center justify-center h-full text-center py-16">
                   <div
                     className="w-14 h-14 rounded-full flex items-center justify-center mb-5"
-                    style={{ background: "oklch(0.72 0.11 55 / 0.15)", border: "1px solid oklch(0.72 0.11 55 / 0.4)" }}
+                    style={{ background: "oklch(0.96 0 0)", border: "1px solid oklch(0.96 0 0)" }}
                   >
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path
                         d="M4 10L8.5 14.5L16 6"
-                        stroke="oklch(0.72 0.11 55)"
+                        stroke="oklch(0.96 0 0)"
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -121,13 +121,13 @@ export default function ContactPage() {
                   </div>
                   <h2
                     className="font-sora font-light text-2xl mb-3"
-                    style={{ color: "oklch(0.93 0.012 70)" }}
+                    style={{ color: "oklch(0.96 0 0)" }}
                   >
                     Message envoyé
                   </h2>
                   <p
                     className="font-sora font-light text-sm"
-                    style={{ color: "oklch(0.52 0.008 65)" }}
+                    style={{ color: "oklch(0.45 0 0)" }}
                   >
                     Nous vous recontactons sous 24h ouvrées.
                   </p>
@@ -214,8 +214,8 @@ export default function ContactPage() {
                     disabled={status === "sending"}
                     className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{
-                      background: "oklch(0.72 0.11 55)",
-                      color: "oklch(0.13 0.008 55)",
+                      background: "oklch(0.96 0 0)",
+                      color: "oklch(0.06 0 0)",
                     }}
                   >
                     {status === "sending" ? "Envoi en cours..." : "Envoyer le message"}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   motion,
@@ -19,11 +20,7 @@ const wordVariants: Variants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: {
-      delay: i * 0.09,
-      duration: 0.75,
-      ease: easeExpo,
-    },
+    transition: { delay: i * 0.09, duration: 0.75, ease: easeExpo },
   }),
 };
 
@@ -44,17 +41,8 @@ export default function Hero() {
     <section
       ref={containerRef}
       className="relative flex flex-col"
-      style={{ minHeight: "100dvh" }}
+      style={{ minHeight: "100dvh", background: "oklch(0.06 0 0)" }}
     >
-      {/* Ambient glow — fixed pseudo, GPU safe */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 55% at 15% 60%, oklch(0.72 0.11 55 / 0.07) 0%, transparent 65%)",
-        }}
-      />
-
       <motion.div
         className="flex-1 flex flex-col md:flex-row items-center max-w-6xl mx-auto w-full px-5 pt-[56px]"
         style={{ y, opacity }}
@@ -63,7 +51,7 @@ export default function Hero() {
         <div className="flex-1 flex flex-col justify-center py-16 md:py-0 md:pr-16">
           <motion.p
             className="font-mono text-[10px] uppercase tracking-[3px] mb-8"
-            style={{ color: "oklch(0.52 0.008 65)" }}
+            style={{ color: "oklch(0.45 0 0)" }}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -73,21 +61,13 @@ export default function Hero() {
 
           <h1
             className="font-sora font-thin leading-[1.06] mb-8"
-            style={{
-              fontSize: "clamp(42px, 7.5vw, 88px)",
-              letterSpacing: "-0.04em",
-            }}
+            style={{ fontSize: "clamp(42px, 7.5vw, 88px)", letterSpacing: "-0.04em" }}
           >
             {lines.map((line, i) => (
               <motion.span
                 key={i}
                 className="block"
-                style={{
-                  color:
-                    i === 2
-                      ? "oklch(0.52 0.008 65)"
-                      : "oklch(0.93 0.012 70)",
-                }}
+                style={{ color: i === 2 ? "oklch(0.38 0 0)" : "oklch(0.96 0 0)" }}
                 custom={i}
                 variants={wordVariants}
                 initial="hidden"
@@ -100,7 +80,7 @@ export default function Hero() {
 
           <motion.p
             className="font-sora font-light text-[16px] leading-relaxed mb-10 max-w-[400px]"
-            style={{ color: "oklch(0.52 0.008 65)" }}
+            style={{ color: "oklch(0.48 0 0)" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -118,29 +98,23 @@ export default function Hero() {
             <Link
               href="/realisations"
               className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-all duration-200 active:scale-[0.97]"
-              style={{
-                background: "oklch(0.72 0.11 55)",
-                color: "oklch(0.13 0.008 55)",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "oklch(0.80 0.10 55)")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "oklch(0.72 0.11 55)")}
+              style={{ background: "oklch(0.96 0 0)", color: "oklch(0.06 0 0)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "oklch(0.85 0 0)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "oklch(0.96 0 0)")}
             >
               Voir le showreel
             </Link>
             <Link
               href="/services"
               className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-all duration-200 active:scale-[0.97]"
-              style={{
-                border: "1px solid oklch(0.26 0.008 55)",
-                color: "oklch(0.78 0.010 68)",
-              }}
+              style={{ border: "1px solid oklch(0.22 0 0)", color: "oklch(0.65 0 0)" }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "oklch(0.52 0.008 65)";
-                e.currentTarget.style.color = "oklch(0.93 0.012 70)";
+                e.currentTarget.style.borderColor = "oklch(0.45 0 0)";
+                e.currentTarget.style.color = "oklch(0.96 0 0)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "oklch(0.26 0.008 55)";
-                e.currentTarget.style.color = "oklch(0.78 0.010 68)";
+                e.currentTarget.style.borderColor = "oklch(0.22 0 0)";
+                e.currentTarget.style.color = "oklch(0.65 0 0)";
               }}
             >
               Nos services
@@ -148,7 +122,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT — visual accent */}
+        {/* RIGHT — real photo */}
         <motion.div
           className="hidden md:flex flex-col justify-center items-end shrink-0"
           style={{ width: "340px" }}
@@ -158,49 +132,24 @@ export default function Hero() {
         >
           <div
             className="relative w-full rounded-[20px] overflow-hidden"
-            style={{
-              aspectRatio: "3/4",
-              background: "oklch(0.17 0.009 55)",
-              border: "1px solid oklch(0.26 0.008 55)",
-            }}
+            style={{ aspectRatio: "3/4" }}
           >
-            {/* Decorative grid lines */}
-            <div className="absolute inset-0 pointer-events-none" style={{
-              backgroundImage: "linear-gradient(oklch(0.26 0.008 55 / 0.4) 1px, transparent 1px), linear-gradient(90deg, oklch(0.26 0.008 55 / 0.4) 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
-            }} />
-            {/* Amber orb */}
-            <motion.div
-              className="absolute"
-              style={{
-                width: "180px",
-                height: "180px",
-                borderRadius: "50%",
-                background: "oklch(0.72 0.11 55 / 0.15)",
-                filter: "blur(50px)",
-                top: "20%",
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-              animate={{
-                scale: [1, 1.15, 1],
-                opacity: [0.7, 1, 0.7],
-              }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            <Image
+              src="https://picsum.photos/seed/nova-crew/680/906"
+              alt="Équipe Nova en tournage"
+              fill
+              className="object-cover grayscale"
+              priority
             />
-            {/* Center text */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-              <motion.div
-                className="font-sora font-thin text-center"
-                style={{ fontSize: "54px", letterSpacing: "-0.04em", color: "oklch(0.72 0.11 55)" }}
-                animate={{ opacity: [0.6, 1, 0.6] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              >
-                NOVA
-              </motion.div>
-              <div className="font-mono text-[9px] uppercase tracking-[4px]" style={{ color: "oklch(0.52 0.008 65)" }}>
-                Production
-              </div>
+            {/* Dark overlay + label */}
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(to top, oklch(0.06 0 0 / 0.7) 0%, transparent 50%)" }}
+            />
+            <div className="absolute bottom-5 left-5 right-5">
+              <p className="font-mono text-[9px] uppercase tracking-wider" style={{ color: "oklch(0.45 0 0)" }}>
+                Nova Production · Tournage
+              </p>
             </div>
           </div>
         </motion.div>
@@ -216,9 +165,9 @@ export default function Hero() {
         <div className="flex flex-col items-center gap-1.5">
           <div
             className="w-px h-8 origin-top scroll-line"
-            style={{ background: "oklch(0.72 0.11 55)" }}
+            style={{ background: "oklch(0.75 0 0)" }}
           />
-          <span className="font-mono text-[9px] uppercase tracking-wider" style={{ color: "oklch(0.42 0.007 62)" }}>
+          <span className="font-mono text-[9px] uppercase tracking-wider" style={{ color: "oklch(0.38 0 0)" }}>
             Scroll
           </span>
         </div>

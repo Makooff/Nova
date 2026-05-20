@@ -42,7 +42,7 @@ function Pill({ label }: { label: string }) {
   return (
     <span
       className="inline-flex items-center rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-wider"
-      style={{ border: "1px solid oklch(0.26 0.008 55)", color: "oklch(0.52 0.008 65)" }}
+      style={{ border: "1px solid oklch(0.22 0 0)", color: "oklch(0.45 0 0)" }}
     >
       {label}
     </span>
@@ -51,13 +51,13 @@ function Pill({ label }: { label: string }) {
 
 export default function PartenairePage() {
   return (
-    <main className="pt-[52px]" style={{ background: "oklch(0.13 0.008 55)" }}>
+    <main className="pt-[52px]" style={{ background: "oklch(0.06 0 0)" }}>
       <section className="py-20 px-5">
         <div className="max-w-6xl mx-auto">
           <RevealWrapper className="mb-16 text-center">
             <p
               className="font-mono text-[10px] uppercase tracking-wider mb-6"
-              style={{ color: "oklch(0.42 0.007 62)" }}
+              style={{ color: "oklch(0.38 0 0)" }}
             >
               Partenaire exclusif
             </p>
@@ -67,7 +67,7 @@ export default function PartenairePage() {
             </div>
             <p
               className="font-sora font-light text-sm max-w-xl mx-auto leading-relaxed mb-6"
-              style={{ color: "oklch(0.52 0.008 65)" }}
+              style={{ color: "oklch(0.45 0 0)" }}
             >
               Qwillio propose au grand public une réceptionniste IA, un agent Email AI
               et un agent Payments AI. En plus de ça, Qwillio conçoit des sites web
@@ -76,15 +76,15 @@ export default function PartenairePage() {
             </p>
             <div
               className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-6"
-              style={{ background: "oklch(0.17 0.009 55)", border: "1px solid oklch(0.26 0.008 55)" }}
+              style={{ background: "oklch(0.10 0 0)", border: "1px solid oklch(0.22 0 0)" }}
             >
               <span
                 className="w-2 h-2 rounded-full"
-                style={{ background: "oklch(0.72 0.11 55)" }}
+                style={{ background: "oklch(0.96 0 0)" }}
               />
               <span
                 className="font-sora font-light text-xs"
-                style={{ color: "oklch(0.52 0.008 65)" }}
+                style={{ color: "oklch(0.45 0 0)" }}
               >
                 Sites web accessibles uniquement aux clients Nova
               </span>
@@ -95,7 +95,7 @@ export default function PartenairePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center font-sora font-light text-sm transition-colors"
-                style={{ color: "oklch(0.72 0.11 55)" }}
+                style={{ color: "oklch(0.96 0 0)" }}
               >
                 Visiter Qwillio.com
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="inline-block ml-1.5 shrink-0">
@@ -111,28 +111,28 @@ export default function PartenairePage() {
                 <div
                   className="p-7 rounded-2xl h-full flex flex-col"
                   style={{
-                    background: "oklch(0.17 0.009 55)",
-                    border: "1px solid oklch(0.26 0.008 55)",
+                    background: "oklch(0.10 0 0)",
+                    border: "1px solid oklch(0.22 0 0)",
                   }}
                 >
                   <div className="flex items-start justify-between mb-5">
                     <div
                       className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-                      style={{ background: "oklch(0.72 0.11 55 / 0.15)", border: "1px solid oklch(0.72 0.11 55 / 0.3)" }}
+                      style={{ background: "oklch(0.96 0 0)", border: "1px solid oklch(0.96 0 0)" }}
                     >
                       <QwillioLogo size={18} />
                     </div>
                     {f.public ? (
                       <span
                         className="font-mono text-[9px] uppercase tracking-wider rounded-full px-2.5 py-1"
-                        style={{ border: "1px solid oklch(0.26 0.008 55)", color: "oklch(0.42 0.007 62)" }}
+                        style={{ border: "1px solid oklch(0.22 0 0)", color: "oklch(0.38 0 0)" }}
                       >
                         Qwillio.com
                       </span>
                     ) : (
                       <span
                         className="font-mono text-[9px] uppercase tracking-wider rounded-full px-2.5 py-1"
-                        style={{ background: "oklch(0.72 0.11 55)", color: "oklch(0.13 0.008 55)" }}
+                        style={{ background: "oklch(0.96 0 0)", color: "oklch(0.06 0 0)" }}
                       >
                         Exclusif Nova
                       </span>
@@ -140,13 +140,13 @@ export default function PartenairePage() {
                   </div>
                   <h3
                     className="font-sora font-light text-[20px] mb-3 leading-snug"
-                    style={{ color: "oklch(0.93 0.012 70)" }}
+                    style={{ color: "oklch(0.96 0 0)" }}
                   >
                     {f.title}
                   </h3>
                   <p
                     className="font-sora font-light text-sm leading-relaxed mb-5 flex-1"
-                    style={{ color: "oklch(0.52 0.008 65)" }}
+                    style={{ color: "oklch(0.45 0 0)" }}
                   >
                     {f.desc}
                   </p>
@@ -164,13 +164,13 @@ export default function PartenairePage() {
 
       <section
         className="py-16 px-5"
-        style={{ background: "oklch(0.10 0.007 55)" }}
+        style={{ background: "oklch(0.04 0 0)" }}
       >
         <div className="max-w-3xl mx-auto text-center">
           <RevealWrapper>
             <p
               className="font-mono text-[10px] uppercase tracking-wider mb-4"
-              style={{ color: "oklch(0.42 0.007 62)" }}
+              style={{ color: "oklch(0.38 0 0)" }}
             >
               Comment y accéder
             </p>
@@ -179,14 +179,14 @@ export default function PartenairePage() {
               style={{
                 fontSize: "clamp(28px, 4vw, 48px)",
                 letterSpacing: "-0.04em",
-                color: "oklch(0.93 0.012 70)",
+                color: "oklch(0.96 0 0)",
               }}
             >
               Un avantage inclus dans votre partenariat Nova
             </h2>
             <p
               className="font-sora font-light text-sm leading-relaxed mb-8 max-w-md mx-auto"
-              style={{ color: "oklch(0.52 0.008 65)" }}
+              style={{ color: "oklch(0.45 0 0)" }}
             >
               La réceptionniste IA, l&apos;Email AI et le Payments AI sont disponibles
               sur Qwillio.com. Les sites web sur mesure, eux, sont réservés aux
@@ -196,8 +196,8 @@ export default function PartenairePage() {
               href="/contact"
               className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-colors"
               style={{
-                background: "oklch(0.72 0.11 55)",
-                color: "oklch(0.13 0.008 55)",
+                background: "oklch(0.96 0 0)",
+                color: "oklch(0.06 0 0)",
               }}
             >
               Démarrer avec Nova

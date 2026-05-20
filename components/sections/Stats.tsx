@@ -5,20 +5,14 @@ import { motion, useInView } from "framer-motion";
 
 const stats = [
   { value: 120, suffix: "+", label: "Vidéos produites" },
-  { value: 85,  suffix: "+", label: "Clients" },
+  { value: 85,  suffix: "+", label: "Clients satisfaits" },
   { value: 4,   suffix: "×", label: "ROAS moyen" },
   { value: 2,   suffix: "",  label: "Marchés BE & FR" },
 ];
 
 const CountUp = memo(function CountUp({
-  target,
-  suffix,
-  active,
-}: {
-  target: number;
-  suffix: string;
-  active: boolean;
-}) {
+  target, suffix, active,
+}: { target: number; suffix: string; active: boolean }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -35,12 +29,7 @@ const CountUp = memo(function CountUp({
     requestAnimationFrame(tick);
   }, [active, target]);
 
-  return (
-    <span>
-      {count}
-      {suffix}
-    </span>
-  );
+  return <span>{count}{suffix}</span>;
 });
 
 export default function Stats() {
@@ -48,10 +37,7 @@ export default function Stats() {
   const inView = useInView(ref, { once: true, margin: "-20%" });
 
   return (
-    <section
-      ref={ref}
-      style={{ background: "oklch(0.10 0.007 55)" }}
-    >
+    <section ref={ref} style={{ background: "oklch(0.06 0 0)" }}>
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4">
           {stats.map((stat, i) => (
@@ -60,31 +46,18 @@ export default function Stats() {
               className="flex flex-col items-center justify-center py-14 px-6"
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                delay: i * 0.1,
-                duration: 0.7,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              style={{
-                borderRight:
-                  i < stats.length - 1
-                    ? "1px solid oklch(0.21 0.007 55)"
-                    : undefined,
-              }}
+              transition={{ delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              style={{ borderRight: i < stats.length - 1 ? "1px solid oklch(0.14 0 0)" : undefined }}
             >
               <p
                 className="font-sora font-thin leading-none mb-2 font-mono tabular-nums"
-                style={{
-                  fontSize: "52px",
-                  letterSpacing: "-0.04em",
-                  color: "oklch(0.72 0.11 55)",
-                }}
+                style={{ fontSize: "52px", letterSpacing: "-0.04em", color: "oklch(0.96 0 0)" }}
               >
                 <CountUp target={stat.value} suffix={stat.suffix} active={inView} />
               </p>
               <p
                 className="font-sora text-[12px] text-center tracking-wide"
-                style={{ color: "oklch(0.42 0.007 62)" }}
+                style={{ color: "oklch(0.38 0 0)" }}
               >
                 {stat.label}
               </p>

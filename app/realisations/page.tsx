@@ -72,13 +72,13 @@ const categories = ["Tous", "Production Vidéo", "Motion Design", "Campagnes Ads
 
 export default function RealisationsPage() {
   return (
-    <main className="pt-[52px]" style={{ background: "oklch(0.13 0.008 55)" }}>
+    <main className="pt-[52px]" style={{ background: "oklch(0.06 0 0)" }}>
       <section className="py-20 px-5">
         <div className="max-w-6xl mx-auto">
           <RevealWrapper className="mb-12">
             <p
               className="font-mono text-[10px] uppercase tracking-wider mb-4"
-              style={{ color: "oklch(0.42 0.007 62)" }}
+              style={{ color: "oklch(0.38 0 0)" }}
             >
               Notre travail
             </p>
@@ -87,7 +87,7 @@ export default function RealisationsPage() {
               style={{
                 fontSize: "clamp(40px, 6vw, 72px)",
                 letterSpacing: "-0.04em",
-                color: "oklch(0.93 0.012 70)",
+                color: "oklch(0.96 0 0)",
               }}
             >
               Réalisations
@@ -99,8 +99,8 @@ export default function RealisationsPage() {
                   className="inline-flex items-center rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-wider cursor-pointer transition-colors"
                   style={
                     cat === "Tous"
-                      ? { background: "oklch(0.72 0.11 55)", color: "oklch(0.13 0.008 55)" }
-                      : { border: "1px solid oklch(0.26 0.008 55)", color: "oklch(0.42 0.007 62)" }
+                      ? { background: "oklch(0.96 0 0)", color: "oklch(0.06 0 0)" }
+                      : { border: "1px solid oklch(0.22 0 0)", color: "oklch(0.38 0 0)" }
                   }
                 >
                   {cat}
@@ -114,7 +114,7 @@ export default function RealisationsPage() {
               <RevealWrapper
                 key={i}
                 className={`${p.span} rounded-[14px] overflow-hidden relative cursor-pointer group`}
-                style={{ aspectRatio: "16/10", background: p.bg, border: "1px solid oklch(0.26 0.008 55)" } as CSSProperties}
+                style={{ aspectRatio: "16/10", background: p.bg, border: "1px solid oklch(0.22 0 0)" } as CSSProperties}
                 delay={i * 50}
               >
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -133,19 +133,19 @@ export default function RealisationsPage() {
                 >
                   <p
                     className="font-mono text-[9px] uppercase tracking-wider mb-1"
-                    style={{ color: "oklch(0.52 0.008 65)" }}
+                    style={{ color: "oklch(0.45 0 0)" }}
                   >
                     {p.category} · {p.year}
                   </p>
                   <p
                     className="font-sora font-light text-sm"
-                    style={{ color: "oklch(0.93 0.012 70)" }}
+                    style={{ color: "oklch(0.96 0 0)" }}
                   >
                     {p.title}
                   </p>
                   <p
                     className="font-sora font-light text-xs mt-0.5"
-                    style={{ color: "oklch(0.42 0.007 62)" }}
+                    style={{ color: "oklch(0.38 0 0)" }}
                   >
                     {p.client}
                   </p>
