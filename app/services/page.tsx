@@ -13,7 +13,10 @@ export const metadata: Metadata = {
 
 function Pill({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-border px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-mid">
+    <span
+      className="inline-flex items-center rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-wider"
+      style={{ border: "1px solid oklch(0.26 0.008 55)", color: "oklch(0.52 0.008 65)" }}
+    >
       {label}
     </span>
   );
@@ -21,40 +24,64 @@ function Pill({ label }: { label: string }) {
 
 export default function ServicesPage() {
   return (
-    <main className="pt-[52px]">
-      <section className="py-20 px-5 bg-white">
+    <main className="pt-[52px]" style={{ background: "oklch(0.13 0.008 55)" }}>
+      <section className="py-20 px-5">
         <div className="max-w-6xl mx-auto">
           <RevealWrapper className="mb-16">
-            <p className="font-mono text-[10px] uppercase tracking-wider text-light mb-4">
+            <p
+              className="font-mono text-[10px] uppercase tracking-wider mb-4"
+              style={{ color: "oklch(0.42 0.007 62)" }}
+            >
               Ce que nous faisons
             </p>
             <h1
               className="font-sora font-thin tracking-tighter"
-              style={{ fontSize: "clamp(40px, 6vw, 72px)", letterSpacing: "-0.04em" }}
+              style={{
+                fontSize: "clamp(40px, 6vw, 72px)",
+                letterSpacing: "-0.04em",
+                color: "oklch(0.93 0.012 70)",
+              }}
             >
               Nos services
             </h1>
           </RevealWrapper>
 
           {/* Service 01 */}
-          <RevealWrapper id="video" className="mb-16 pb-16 border-b border-border">
+          <RevealWrapper
+            id="video"
+            className="mb-16 pb-16"
+            style={{ borderBottom: "1px solid oklch(0.26 0.008 55)" }}
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-wider text-light mb-4">
+                <p
+                  className="font-mono text-[10px] uppercase tracking-wider mb-4"
+                  style={{ color: "oklch(0.42 0.007 62)" }}
+                >
                   Service 01
                 </p>
                 <h2
                   className="font-sora font-thin tracking-tighter mb-5"
-                  style={{ fontSize: "clamp(28px, 4vw, 48px)", letterSpacing: "-0.04em" }}
+                  style={{
+                    fontSize: "clamp(28px, 4vw, 48px)",
+                    letterSpacing: "-0.04em",
+                    color: "oklch(0.93 0.012 70)",
+                  }}
                 >
                   Production Vidéo Publicitaire
                 </h2>
-                <p className="font-sora font-light text-sm text-mid leading-relaxed mb-6">
+                <p
+                  className="font-sora font-light text-sm leading-relaxed mb-6"
+                  style={{ color: "oklch(0.52 0.008 65)" }}
+                >
                   Chaque vidéo est conçue avec un objectif publicitaire précis. De la
                   stratégie créative au montage final, nous produisons des contenus vidéo
                   qui convertissent — pas seulement qui impressionnent.
                 </p>
-                <p className="font-sora font-light text-sm text-mid leading-relaxed mb-8">
+                <p
+                  className="font-sora font-light text-sm leading-relaxed mb-8"
+                  style={{ color: "oklch(0.52 0.008 65)" }}
+                >
                   Nos équipes opèrent en Belgique et en France, avec un studio de
                   référence et la capacité de tourner sur le terrain de vos clients.
                   Chaque livrable est décliné aux formats requis : Reels, Stories,
@@ -67,42 +94,71 @@ export default function ServicesPage() {
                 </div>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center rounded-full bg-black text-white font-sora font-medium text-sm px-6 py-3 hover:bg-dark transition-colors"
+                  className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-colors"
+                  style={{
+                    background: "oklch(0.72 0.11 55)",
+                    color: "oklch(0.13 0.008 55)",
+                  }}
                 >
                   Demander un devis vidéo
                 </Link>
               </div>
               <div
-                className="w-full rounded-2xl bg-gradient-to-br from-[#1a1a2e] to-[#16213e]"
-                style={{ aspectRatio: "4/3" }}
+                className="w-full rounded-2xl"
+                style={{
+                  aspectRatio: "4/3",
+                  background: "oklch(0.17 0.010 55)",
+                  border: "1px solid oklch(0.26 0.008 55)",
+                }}
               />
             </div>
           </RevealWrapper>
 
           {/* Service 02 */}
-          <RevealWrapper id="ads" className="mb-16 pb-16 border-b border-border">
+          <RevealWrapper
+            id="ads"
+            className="mb-16 pb-16"
+            style={{ borderBottom: "1px solid oklch(0.26 0.008 55)" }}
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div
-                className="w-full rounded-2xl bg-gradient-to-br from-[#1e3a5f] to-[#0d2137] order-2 md:order-1"
-                style={{ aspectRatio: "4/3" }}
+                className="w-full rounded-2xl order-2 md:order-1"
+                style={{
+                  aspectRatio: "4/3",
+                  background: "oklch(0.17 0.010 55)",
+                  border: "1px solid oklch(0.26 0.008 55)",
+                }}
               />
               <div className="order-1 md:order-2">
-                <p className="font-mono text-[10px] uppercase tracking-wider text-light mb-4">
+                <p
+                  className="font-mono text-[10px] uppercase tracking-wider mb-4"
+                  style={{ color: "oklch(0.42 0.007 62)" }}
+                >
                   Service 02
                 </p>
                 <h2
                   className="font-sora font-thin tracking-tighter mb-5"
-                  style={{ fontSize: "clamp(28px, 4vw, 48px)", letterSpacing: "-0.04em" }}
+                  style={{
+                    fontSize: "clamp(28px, 4vw, 48px)",
+                    letterSpacing: "-0.04em",
+                    color: "oklch(0.93 0.012 70)",
+                  }}
                 >
                   Campagnes Publicitaires Ads
                 </h2>
-                <p className="font-sora font-light text-sm text-mid leading-relaxed mb-6">
+                <p
+                  className="font-sora font-light text-sm leading-relaxed mb-6"
+                  style={{ color: "oklch(0.52 0.008 65)" }}
+                >
                   Nous lançons et gérons vos campagnes publicitaires sur toutes les
                   plateformes majeures. Les créatifs vidéo sont inclus dans notre offre,
                   ce qui vous garantit une cohérence totale entre le message et
                   l&apos;exécution.
                 </p>
-                <p className="font-sora font-light text-sm text-mid leading-relaxed mb-8">
+                <p
+                  className="font-sora font-light text-sm leading-relaxed mb-8"
+                  style={{ color: "oklch(0.52 0.008 65)" }}
+                >
                   Notre objectif est simple : maximiser votre ROAS. Nous analysons, testons
                   et optimisons en continu pour que chaque euro investi travaille davantage.
                 </p>
@@ -113,7 +169,11 @@ export default function ServicesPage() {
                 </div>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center rounded-full bg-black text-white font-sora font-medium text-sm px-6 py-3 hover:bg-dark transition-colors"
+                  className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-colors"
+                  style={{
+                    background: "oklch(0.72 0.11 55)",
+                    color: "oklch(0.13 0.008 55)",
+                  }}
                 >
                   Lancer une campagne
                 </Link>
@@ -128,23 +188,36 @@ export default function ServicesPage() {
                 <div className="flex items-center gap-2 mb-4">
                   <QwillioLogo size={18} />
                   <QwillioName size="13px" />
-                  <span className="font-sora font-light text-xs text-mid">
+                  <span
+                    className="font-sora font-light text-xs"
+                    style={{ color: "oklch(0.42 0.007 62)" }}
+                  >
                     — Exclusif clients Nova
                   </span>
                 </div>
                 <h2
                   className="font-sora font-thin tracking-tighter mb-5"
-                  style={{ fontSize: "clamp(28px, 4vw, 48px)", letterSpacing: "-0.04em" }}
+                  style={{
+                    fontSize: "clamp(28px, 4vw, 48px)",
+                    letterSpacing: "-0.04em",
+                    color: "oklch(0.93 0.012 70)",
+                  }}
                 >
                   Agents IA de Gestion
                 </h2>
-                <p className="font-sora font-light text-sm text-mid leading-relaxed mb-6">
+                <p
+                  className="font-sora font-light text-sm leading-relaxed mb-6"
+                  style={{ color: "oklch(0.52 0.008 65)" }}
+                >
                   En partenariat exclusif avec Qwillio, les clients Nova bénéficient
                   de la suite complète d&apos;agents IA : réceptionniste vocale et textuelle,
                   Email AI (boîte mail entièrement automatisée) et Payments AI (liens de
                   paiement SMS, Stripe natif, facturation automatique).
                 </p>
-                <p className="font-sora font-light text-sm text-mid leading-relaxed mb-8">
+                <p
+                  className="font-sora font-light text-sm leading-relaxed mb-8"
+                  style={{ color: "oklch(0.52 0.008 65)" }}
+                >
                   En plus de ça, Qwillio crée des sites web sur mesure exclusivement
                   pour les clients Nova — une prestation non disponible sur Qwillio.com.
                 </p>
@@ -155,7 +228,11 @@ export default function ServicesPage() {
                 </div>
                 <Link
                   href="/partenaire"
-                  className="inline-flex items-center justify-center rounded-full border border-black text-black font-sora font-medium text-sm px-6 py-3 hover:bg-ghost transition-colors"
+                  className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-colors"
+                  style={{
+                    border: "1px solid oklch(0.26 0.008 55)",
+                    color: "oklch(0.78 0.010 68)",
+                  }}
                 >
                   En savoir plus sur Qwillio
                 </Link>
@@ -164,8 +241,8 @@ export default function ServicesPage() {
                 className="w-full rounded-2xl"
                 style={{
                   aspectRatio: "4/3",
-                  background: "linear-gradient(135deg, #5B6BF5 0%, #9B5CF6 100%)",
-                  opacity: 0.15,
+                  background: "oklch(0.17 0.010 55)",
+                  border: "1px solid oklch(0.26 0.008 55)",
                 }}
               />
             </div>

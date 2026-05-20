@@ -39,75 +39,96 @@ export default function ContactPage() {
     }
   };
 
+  const inputStyle = {
+    background: "oklch(0.17 0.009 55)",
+    border: "1px solid oklch(0.26 0.008 55)",
+    color: "oklch(0.93 0.012 70)",
+  };
+
   const inputClass =
-    "w-full font-sora font-light text-sm text-black bg-white border border-border rounded-xl px-4 py-3 placeholder:text-light focus:outline-none focus:border-black transition-colors";
+    "w-full font-sora font-light text-sm rounded-xl px-4 py-3 focus:outline-none transition-colors placeholder:text-[oklch(0.32_0.007_60)]";
 
   return (
-    <main className="pt-[52px]">
-      <section className="py-20 px-5 bg-white">
+    <main className="pt-[52px]" style={{ background: "oklch(0.13 0.008 55)" }}>
+      <section className="py-20 px-5">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-wider text-light mb-4">
+              <p
+                className="font-mono text-[10px] uppercase tracking-wider mb-4"
+                style={{ color: "oklch(0.42 0.007 62)" }}
+              >
                 Parlons de votre projet
               </p>
               <h1
                 className="font-sora font-thin tracking-tighter mb-6"
-                style={{ fontSize: "clamp(36px, 5vw, 60px)", letterSpacing: "-0.04em" }}
+                style={{
+                  fontSize: "clamp(36px, 5vw, 60px)",
+                  letterSpacing: "-0.04em",
+                  color: "oklch(0.93 0.012 70)",
+                }}
               >
                 Demander un devis
               </h1>
-              <p className="font-sora font-light text-sm text-mid leading-relaxed mb-10">
+              <p
+                className="font-sora font-light text-sm leading-relaxed mb-10"
+                style={{ color: "oklch(0.52 0.008 65)" }}
+              >
                 Remplissez le formulaire et nous vous recontactons sous 24h ouvrées.
                 Chaque projet est unique — nous adaptons notre offre à vos objectifs.
               </p>
 
               <div className="flex flex-col gap-5">
-                <div>
-                  <p className="font-mono text-[9px] uppercase tracking-wider text-light mb-1">
-                    Belgique
-                  </p>
-                  <p className="font-sora font-light text-sm text-black">
-                    +32 2 000 00 00
-                  </p>
-                </div>
-                <div>
-                  <p className="font-mono text-[9px] uppercase tracking-wider text-light mb-1">
-                    France
-                  </p>
-                  <p className="font-sora font-light text-sm text-black">
-                    +33 1 00 00 00 00
-                  </p>
-                </div>
-                <div>
-                  <p className="font-mono text-[9px] uppercase tracking-wider text-light mb-1">
-                    Email
-                  </p>
-                  <p className="font-sora font-light text-sm text-black">
-                    hello@nova-agency.be
-                  </p>
-                </div>
+                {[
+                  { label: "Belgique", value: "+32 2 000 00 00" },
+                  { label: "France", value: "+33 1 00 00 00 00" },
+                  { label: "Email", value: "hello@nova-agency.be" },
+                ].map((item) => (
+                  <div key={item.label}>
+                    <p
+                      className="font-mono text-[9px] uppercase tracking-wider mb-1"
+                      style={{ color: "oklch(0.42 0.007 62)" }}
+                    >
+                      {item.label}
+                    </p>
+                    <p
+                      className="font-sora font-light text-sm"
+                      style={{ color: "oklch(0.78 0.010 68)" }}
+                    >
+                      {item.value}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
             <div>
               {status === "sent" ? (
                 <div className="flex flex-col items-center justify-center h-full text-center py-16">
-                  <div className="w-14 h-14 rounded-full bg-black flex items-center justify-center mb-5">
+                  <div
+                    className="w-14 h-14 rounded-full flex items-center justify-center mb-5"
+                    style={{ background: "oklch(0.72 0.11 55 / 0.15)", border: "1px solid oklch(0.72 0.11 55 / 0.4)" }}
+                  >
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                       <path
                         d="M4 10L8.5 14.5L16 6"
-                        stroke="white"
+                        stroke="oklch(0.72 0.11 55)"
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
                     </svg>
                   </div>
-                  <h2 className="font-sora font-light text-2xl text-black mb-3">
+                  <h2
+                    className="font-sora font-light text-2xl mb-3"
+                    style={{ color: "oklch(0.93 0.012 70)" }}
+                  >
                     Message envoyé
                   </h2>
-                  <p className="font-sora font-light text-sm text-mid">
+                  <p
+                    className="font-sora font-light text-sm"
+                    style={{ color: "oklch(0.52 0.008 65)" }}
+                  >
                     Nous vous recontactons sous 24h ouvrées.
                   </p>
                 </div>
@@ -122,6 +143,7 @@ export default function ContactPage() {
                       value={form.name}
                       onChange={handleChange}
                       className={inputClass}
+                      style={inputStyle}
                     />
                     <input
                       type="email"
@@ -131,6 +153,7 @@ export default function ContactPage() {
                       value={form.email}
                       onChange={handleChange}
                       className={inputClass}
+                      style={inputStyle}
                     />
                   </div>
                   <input
@@ -140,6 +163,7 @@ export default function ContactPage() {
                     value={form.phone}
                     onChange={handleChange}
                     className={inputClass}
+                    style={inputStyle}
                   />
                   <select
                     name="projectType"
@@ -147,10 +171,9 @@ export default function ContactPage() {
                     value={form.projectType}
                     onChange={handleChange}
                     className={`${inputClass} appearance-none`}
+                    style={inputStyle}
                   >
-                    <option value="" disabled>
-                      Type de projet
-                    </option>
+                    <option value="" disabled>Type de projet</option>
                     <option value="video">Production Vidéo Publicitaire</option>
                     <option value="ads">Campagnes Publicitaires Ads</option>
                     <option value="ia">Agents IA (via Qwillio)</option>
@@ -163,10 +186,9 @@ export default function ContactPage() {
                     value={form.budget}
                     onChange={handleChange}
                     className={`${inputClass} appearance-none`}
+                    style={inputStyle}
                   >
-                    <option value="" disabled>
-                      Budget estimé
-                    </option>
+                    <option value="" disabled>Budget estimé</option>
                     <option value="<5k">Moins de 5 000 €</option>
                     <option value="5-15k">5 000 — 15 000 €</option>
                     <option value="15-30k">15 000 — 30 000 €</option>
@@ -180,16 +202,21 @@ export default function ContactPage() {
                     onChange={handleChange}
                     rows={5}
                     className={`${inputClass} resize-none`}
+                    style={inputStyle}
                   />
                   {status === "error" && (
-                    <p className="font-sora font-light text-xs text-red-500">
+                    <p className="font-sora font-light text-xs text-red-400">
                       Une erreur est survenue. Veuillez réessayer.
                     </p>
                   )}
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="inline-flex items-center justify-center rounded-full bg-black text-white font-sora font-medium text-sm px-6 py-3 hover:bg-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={{
+                      background: "oklch(0.72 0.11 55)",
+                      color: "oklch(0.13 0.008 55)",
+                    }}
                   >
                     {status === "sending" ? "Envoi en cours..." : "Envoyer le message"}
                   </button>

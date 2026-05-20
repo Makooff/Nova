@@ -15,7 +15,7 @@ const projects = [
     client: "Groupe Belux",
     category: "Production Vidéo",
     year: "2024",
-    gradient: "from-[#1a1a2e] to-[#16213e]",
+    bg: "oklch(0.15 0.010 55)",
     span: "md:col-span-7",
   },
   {
@@ -23,16 +23,15 @@ const projects = [
     client: "Atelier Nord",
     category: "Motion Design",
     year: "2024",
-    gradient: "from-[#e8e8e8] to-[#d0d0d0]",
+    bg: "oklch(0.20 0.009 55)",
     span: "md:col-span-5",
-    light: true,
   },
   {
     title: "Google Ads Series",
     client: "TechStart Brussels",
     category: "Campagnes Ads",
     year: "2025",
-    gradient: "from-[#1e3a5f] to-[#0d2137]",
+    bg: "oklch(0.17 0.011 55)",
     span: "md:col-span-4",
   },
   {
@@ -40,7 +39,7 @@ const projects = [
     client: "InnovateBE",
     category: "Production Vidéo",
     year: "2025",
-    gradient: "from-[#2a1a1a] to-[#1a0f0f]",
+    bg: "oklch(0.13 0.009 55)",
     span: "md:col-span-5",
   },
   {
@@ -48,16 +47,15 @@ const projects = [
     client: "ModeMarket",
     category: "Meta Ads",
     year: "2025",
-    gradient: "from-[#f0ebe3] to-[#e0d8cc]",
+    bg: "oklch(0.19 0.008 55)",
     span: "md:col-span-3",
-    light: true,
   },
   {
     title: "Launch Campaign",
     client: "NordicFR",
     category: "TikTok Ads",
     year: "2025",
-    gradient: "from-[#0f2027] to-[#203a43]",
+    bg: "oklch(0.14 0.010 55)",
     span: "md:col-span-5",
   },
   {
@@ -65,7 +63,7 @@ const projects = [
     client: "Volta Concept",
     category: "Production Vidéo",
     year: "2024",
-    gradient: "from-[#3d0e61] to-[#1a0530]",
+    bg: "oklch(0.16 0.009 55)",
     span: "md:col-span-7",
   },
 ];
@@ -74,16 +72,23 @@ const categories = ["Tous", "Production Vidéo", "Motion Design", "Campagnes Ads
 
 export default function RealisationsPage() {
   return (
-    <main className="pt-[52px]">
-      <section className="py-20 px-5 bg-white">
+    <main className="pt-[52px]" style={{ background: "oklch(0.13 0.008 55)" }}>
+      <section className="py-20 px-5">
         <div className="max-w-6xl mx-auto">
           <RevealWrapper className="mb-12">
-            <p className="font-mono text-[10px] uppercase tracking-wider text-light mb-4">
+            <p
+              className="font-mono text-[10px] uppercase tracking-wider mb-4"
+              style={{ color: "oklch(0.42 0.007 62)" }}
+            >
               Notre travail
             </p>
             <h1
               className="font-sora font-thin tracking-tighter mb-8"
-              style={{ fontSize: "clamp(40px, 6vw, 72px)", letterSpacing: "-0.04em" }}
+              style={{
+                fontSize: "clamp(40px, 6vw, 72px)",
+                letterSpacing: "-0.04em",
+                color: "oklch(0.93 0.012 70)",
+              }}
             >
               Réalisations
             </h1>
@@ -91,11 +96,12 @@ export default function RealisationsPage() {
               {categories.map((cat) => (
                 <span
                   key={cat}
-                  className={`inline-flex items-center rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-wider cursor-pointer transition-colors ${
+                  className="inline-flex items-center rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-wider cursor-pointer transition-colors"
+                  style={
                     cat === "Tous"
-                      ? "bg-black text-white"
-                      : "border border-border text-mid hover:border-black hover:text-black"
-                  }`}
+                      ? { background: "oklch(0.72 0.11 55)", color: "oklch(0.13 0.008 55)" }
+                      : { border: "1px solid oklch(0.26 0.008 55)", color: "oklch(0.42 0.007 62)" }
+                  }
                 >
                   {cat}
                 </span>
@@ -107,24 +113,42 @@ export default function RealisationsPage() {
             {projects.map((p, i) => (
               <RevealWrapper
                 key={i}
-                className={`portfolio-item ${p.span} rounded-[14px] overflow-hidden relative cursor-pointer`}
-                style={{ aspectRatio: "16/10" } as CSSProperties}
+                className={`${p.span} rounded-[14px] overflow-hidden relative cursor-pointer group`}
+                style={{ aspectRatio: "16/10", background: p.bg, border: "1px solid oklch(0.26 0.008 55)" } as CSSProperties}
                 delay={i * 50}
               >
-                <div
-                  className={`bg-img absolute inset-0 bg-gradient-to-br ${p.gradient}`}
-                />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className={`font-mono text-[9px] uppercase tracking-wider ${p.light ? "text-black/15" : "text-white/15"}`}>
+                  <span
+                    className="font-mono text-[9px] uppercase tracking-wider"
+                    style={{ color: "oklch(0.30 0.007 60)" }}
+                  >
                     {p.category}
                   </span>
                 </div>
-                <div className="overlay absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent">
-                  <p className="font-mono text-[9px] uppercase tracking-wider text-white/60 mb-1">
+                <div
+                  className="absolute bottom-0 left-0 right-0 p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: "linear-gradient(to top, oklch(0.10 0.007 55 / 0.85) 0%, transparent 100%)",
+                  }}
+                >
+                  <p
+                    className="font-mono text-[9px] uppercase tracking-wider mb-1"
+                    style={{ color: "oklch(0.52 0.008 65)" }}
+                  >
                     {p.category} · {p.year}
                   </p>
-                  <p className="font-sora font-light text-white text-sm">{p.title}</p>
-                  <p className="font-sora font-light text-white/50 text-xs mt-0.5">{p.client}</p>
+                  <p
+                    className="font-sora font-light text-sm"
+                    style={{ color: "oklch(0.93 0.012 70)" }}
+                  >
+                    {p.title}
+                  </p>
+                  <p
+                    className="font-sora font-light text-xs mt-0.5"
+                    style={{ color: "oklch(0.42 0.007 62)" }}
+                  >
+                    {p.client}
+                  </p>
                 </div>
               </RevealWrapper>
             ))}

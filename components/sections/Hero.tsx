@@ -1,51 +1,229 @@
-import Button from "@/components/ui/Button";
+"use client";
+
+import { useRef } from "react";
+import Link from "next/link";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  cubicBezier,
+  type Variants,
+} from "framer-motion";
 import Marquee from "@/components/ui/Marquee";
 
+const easeExpo = cubicBezier(0.16, 1, 0.3, 1);
+
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.09,
+      duration: 0.75,
+      ease: easeExpo,
+    },
+  }),
+};
+
+const lines = ["On filme.", "On monte.", "Vos clients regardent."];
+
 export default function Hero() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const rawY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const y = useSpring(rawY, { stiffness: 80, damping: 20 });
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+
   return (
     <section
-      className="flex flex-col pt-[52px]"
+      ref={containerRef}
+      className="relative flex flex-col"
       style={{ minHeight: "100dvh" }}
     >
-      <div className="flex-1 flex flex-col items-center text-center px-5 pt-10 pb-6">
-        <h1
-          className="font-sora font-thin leading-[1.08] mb-6"
-          style={{
-            fontSize: "clamp(44px, 9vw, 100px)",
-            letterSpacing: "-0.04em",
-          }}
-        >
-          On filme.
-          <br />
-          On monte.
-          <br />
-          <span className="text-light">Vos clients regardent.</span>
-        </h1>
+      {/* Ambient glow — fixed pseudo, GPU safe */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 55% at 15% 60%, oklch(0.72 0.11 55 / 0.07) 0%, transparent 65%)",
+        }}
+      />
 
-        <p className="font-sora font-light text-[17px] text-mid max-w-[420px] leading-relaxed mb-8">
-          Vidéos publicitaires tournées et montées pour convertir, campagnes Ads
-          et accès exclusif aux agents IA Qwillio.
-        </p>
+      <motion.div
+        className="flex-1 flex flex-col md:flex-row items-center max-w-6xl mx-auto w-full px-5 pt-[56px]"
+        style={{ y, opacity }}
+      >
+        {/* LEFT — text */}
+        <div className="flex-1 flex flex-col justify-center py-16 md:py-0 md:pr-16">
+          <motion.p
+            className="font-mono text-[10px] uppercase tracking-[3px] mb-8"
+            style={{ color: "oklch(0.52 0.008 65)" }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Agence de Production Vidéo
+          </motion.p>
 
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <Button href="/realisations" variant="fill" size="lg">
-            Voir le showreel
-          </Button>
-          <Button href="/services" variant="outline" size="lg">
-            Nos services
-          </Button>
+          <h1
+            className="font-sora font-thin leading-[1.06] mb-8"
+            style={{
+              fontSize: "clamp(42px, 7.5vw, 88px)",
+              letterSpacing: "-0.04em",
+            }}
+          >
+            {lines.map((line, i) => (
+              <motion.span
+                key={i}
+                className="block"
+                style={{
+                  color:
+                    i === 2
+                      ? "oklch(0.52 0.008 65)"
+                      : "oklch(0.93 0.012 70)",
+                }}
+                custom={i}
+                variants={wordVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {line}
+              </motion.span>
+            ))}
+          </h1>
+
+          <motion.p
+            className="font-sora font-light text-[16px] leading-relaxed mb-10 max-w-[400px]"
+            style={{ color: "oklch(0.52 0.008 65)" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Vidéos publicitaires tournées et montées pour convertir. Campagnes Ads
+            et agents IA Qwillio pour les entreprises BE &amp; FR.
+          </motion.p>
+
+          <motion.div
+            className="flex flex-wrap items-center gap-3"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.58, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Link
+              href="/realisations"
+              className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-all duration-200 active:scale-[0.97]"
+              style={{
+                background: "oklch(0.72 0.11 55)",
+                color: "oklch(0.13 0.008 55)",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "oklch(0.80 0.10 55)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "oklch(0.72 0.11 55)")}
+            >
+              Voir le showreel
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-all duration-200 active:scale-[0.97]"
+              style={{
+                border: "1px solid oklch(0.26 0.008 55)",
+                color: "oklch(0.78 0.010 68)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "oklch(0.52 0.008 65)";
+                e.currentTarget.style.color = "oklch(0.93 0.012 70)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "oklch(0.26 0.008 55)";
+                e.currentTarget.style.color = "oklch(0.78 0.010 68)";
+              }}
+            >
+              Nos services
+            </Link>
+          </motion.div>
         </div>
-      </div>
 
-      <div className="flex flex-col items-center gap-2 pb-3">
+        {/* RIGHT — visual accent */}
+        <motion.div
+          className="hidden md:flex flex-col justify-center items-end shrink-0"
+          style={{ width: "340px" }}
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div
+            className="relative w-full rounded-[20px] overflow-hidden"
+            style={{
+              aspectRatio: "3/4",
+              background: "oklch(0.17 0.009 55)",
+              border: "1px solid oklch(0.26 0.008 55)",
+            }}
+          >
+            {/* Decorative grid lines */}
+            <div className="absolute inset-0 pointer-events-none" style={{
+              backgroundImage: "linear-gradient(oklch(0.26 0.008 55 / 0.4) 1px, transparent 1px), linear-gradient(90deg, oklch(0.26 0.008 55 / 0.4) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }} />
+            {/* Amber orb */}
+            <motion.div
+              className="absolute"
+              style={{
+                width: "180px",
+                height: "180px",
+                borderRadius: "50%",
+                background: "oklch(0.72 0.11 55 / 0.15)",
+                filter: "blur(50px)",
+                top: "20%",
+                left: "50%",
+                transform: "translateX(-50%)",
+              }}
+              animate={{
+                scale: [1, 1.15, 1],
+                opacity: [0.7, 1, 0.7],
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Center text */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+              <motion.div
+                className="font-sora font-thin text-center"
+                style={{ fontSize: "54px", letterSpacing: "-0.04em", color: "oklch(0.72 0.11 55)" }}
+                animate={{ opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                NOVA
+              </motion.div>
+              <div className="font-mono text-[9px] uppercase tracking-[4px]" style={{ color: "oklch(0.52 0.008 65)" }}>
+                Production
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Bottom — scroll indicator + marquee */}
+      <motion.div
+        className="flex flex-col items-center gap-2 pb-3"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.8 }}
+      >
         <div className="flex flex-col items-center gap-1.5">
-          <div className="w-px h-8 bg-black origin-top scroll-line" />
-          <span className="font-mono text-[9px] uppercase tracking-wider text-light">
+          <div
+            className="w-px h-8 origin-top scroll-line"
+            style={{ background: "oklch(0.72 0.11 55)" }}
+          />
+          <span className="font-mono text-[9px] uppercase tracking-wider" style={{ color: "oklch(0.42 0.007 62)" }}>
             Scroll
           </span>
         </div>
         <Marquee />
-      </div>
+      </motion.div>
     </section>
   );
 }

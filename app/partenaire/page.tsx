@@ -40,7 +40,10 @@ const features = [
 
 function Pill({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-border px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-mid">
+    <span
+      className="inline-flex items-center rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-wider"
+      style={{ border: "1px solid oklch(0.26 0.008 55)", color: "oklch(0.52 0.008 65)" }}
+    >
       {label}
     </span>
   );
@@ -48,26 +51,41 @@ function Pill({ label }: { label: string }) {
 
 export default function PartenairePage() {
   return (
-    <main className="pt-[52px]">
-      <section className="py-20 px-5 bg-white">
+    <main className="pt-[52px]" style={{ background: "oklch(0.13 0.008 55)" }}>
+      <section className="py-20 px-5">
         <div className="max-w-6xl mx-auto">
           <RevealWrapper className="mb-16 text-center">
-            <p className="font-mono text-[10px] uppercase tracking-wider text-light mb-6">
+            <p
+              className="font-mono text-[10px] uppercase tracking-wider mb-6"
+              style={{ color: "oklch(0.42 0.007 62)" }}
+            >
               Partenaire exclusif
             </p>
             <div className="flex items-center justify-center gap-4 mb-6">
               <QwillioLogo size={56} />
               <QwillioName size="56px" />
             </div>
-            <p className="font-sora font-light text-sm text-mid max-w-xl mx-auto leading-relaxed mb-6">
+            <p
+              className="font-sora font-light text-sm max-w-xl mx-auto leading-relaxed mb-6"
+              style={{ color: "oklch(0.52 0.008 65)" }}
+            >
               Qwillio propose au grand public une réceptionniste IA, un agent Email AI
               et un agent Payments AI. En plus de ça, Qwillio conçoit des sites web
               sur mesure — uniquement pour les clients Nova, sans les proposer sur
               Qwillio.com. Un avantage exclusif inclus dans votre partenariat Nova.
             </p>
-            <div className="inline-flex items-center gap-2 rounded-full bg-ghost px-4 py-2 mb-6">
-              <span className="w-2 h-2 rounded-full" style={{ background: "#5B6BF5" }} />
-              <span className="font-sora font-light text-xs text-mid">
+            <div
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-6"
+              style={{ background: "oklch(0.17 0.009 55)", border: "1px solid oklch(0.26 0.008 55)" }}
+            >
+              <span
+                className="w-2 h-2 rounded-full"
+                style={{ background: "oklch(0.72 0.11 55)" }}
+              />
+              <span
+                className="font-sora font-light text-xs"
+                style={{ color: "oklch(0.52 0.008 65)" }}
+              >
                 Sites web accessibles uniquement aux clients Nova
               </span>
             </div>
@@ -76,7 +94,8 @@ export default function PartenairePage() {
                 href="https://qwillio.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center font-sora font-light text-sm text-black underline underline-offset-4 hover:text-mid transition-colors"
+                className="inline-flex items-center font-sora font-light text-sm transition-colors"
+                style={{ color: "oklch(0.72 0.11 55)" }}
               >
                 Visiter Qwillio.com
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="inline-block ml-1.5 shrink-0">
@@ -89,28 +108,46 @@ export default function PartenairePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {features.map((f, i) => (
               <RevealWrapper key={i} delay={i * 100}>
-                <div className="p-7 rounded-2xl border border-border h-full flex flex-col">
+                <div
+                  className="p-7 rounded-2xl h-full flex flex-col"
+                  style={{
+                    background: "oklch(0.17 0.009 55)",
+                    border: "1px solid oklch(0.26 0.008 55)",
+                  }}
+                >
                   <div className="flex items-start justify-between mb-5">
                     <div
                       className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-                      style={{ background: "linear-gradient(135deg, #5B6BF5, #9B5CF6)" }}
+                      style={{ background: "oklch(0.72 0.11 55 / 0.15)", border: "1px solid oklch(0.72 0.11 55 / 0.3)" }}
                     >
                       <QwillioLogo size={18} />
                     </div>
                     {f.public ? (
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-mid border border-border rounded-full px-2.5 py-1">
+                      <span
+                        className="font-mono text-[9px] uppercase tracking-wider rounded-full px-2.5 py-1"
+                        style={{ border: "1px solid oklch(0.26 0.008 55)", color: "oklch(0.42 0.007 62)" }}
+                      >
                         Qwillio.com
                       </span>
                     ) : (
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-white rounded-full px-2.5 py-1" style={{ background: "#5B6BF5" }}>
+                      <span
+                        className="font-mono text-[9px] uppercase tracking-wider rounded-full px-2.5 py-1"
+                        style={{ background: "oklch(0.72 0.11 55)", color: "oklch(0.13 0.008 55)" }}
+                      >
                         Exclusif Nova
                       </span>
                     )}
                   </div>
-                  <h3 className="font-sora font-light text-[20px] text-black mb-3 leading-snug">
+                  <h3
+                    className="font-sora font-light text-[20px] mb-3 leading-snug"
+                    style={{ color: "oklch(0.93 0.012 70)" }}
+                  >
                     {f.title}
                   </h3>
-                  <p className="font-sora font-light text-sm text-mid leading-relaxed mb-5 flex-1">
+                  <p
+                    className="font-sora font-light text-sm leading-relaxed mb-5 flex-1"
+                    style={{ color: "oklch(0.52 0.008 65)" }}
+                  >
                     {f.desc}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -125,26 +162,43 @@ export default function PartenairePage() {
         </div>
       </section>
 
-      <section className="py-16 px-5 bg-ghost">
+      <section
+        className="py-16 px-5"
+        style={{ background: "oklch(0.10 0.007 55)" }}
+      >
         <div className="max-w-3xl mx-auto text-center">
           <RevealWrapper>
-            <p className="font-mono text-[10px] uppercase tracking-wider text-light mb-4">
+            <p
+              className="font-mono text-[10px] uppercase tracking-wider mb-4"
+              style={{ color: "oklch(0.42 0.007 62)" }}
+            >
               Comment y accéder
             </p>
             <h2
               className="font-sora font-thin tracking-tighter mb-5"
-              style={{ fontSize: "clamp(28px, 4vw, 48px)", letterSpacing: "-0.04em" }}
+              style={{
+                fontSize: "clamp(28px, 4vw, 48px)",
+                letterSpacing: "-0.04em",
+                color: "oklch(0.93 0.012 70)",
+              }}
             >
               Un avantage inclus dans votre partenariat Nova
             </h2>
-            <p className="font-sora font-light text-sm text-mid leading-relaxed mb-8 max-w-md mx-auto">
+            <p
+              className="font-sora font-light text-sm leading-relaxed mb-8 max-w-md mx-auto"
+              style={{ color: "oklch(0.52 0.008 65)" }}
+            >
               La réceptionniste IA, l&apos;Email AI et le Payments AI sont disponibles
               sur Qwillio.com. Les sites web sur mesure, eux, sont réservés aux
               clients Nova — un avantage que vous activez dès le début de votre projet.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-black text-white font-sora font-medium text-sm px-6 py-3 hover:bg-dark transition-colors"
+              className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-colors"
+              style={{
+                background: "oklch(0.72 0.11 55)",
+                color: "oklch(0.13 0.008 55)",
+              }}
             >
               Démarrer avec Nova
             </Link>

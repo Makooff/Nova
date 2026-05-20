@@ -1,97 +1,94 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, memo } from "react";
+import { motion, useInView } from "framer-motion";
 
 const stats = [
   { value: 120, suffix: "+", label: "Vidéos produites" },
-  { value: 85, suffix: "+", label: "Clients" },
-  { value: 4, suffix: "×", label: "ROAS moyen" },
-  { value: 2, suffix: "", label: "Marchés BE & FR" },
+  { value: 85,  suffix: "+", label: "Clients" },
+  { value: 4,   suffix: "×", label: "ROAS moyen" },
+  { value: 2,   suffix: "",  label: "Marchés BE & FR" },
 ];
 
-function useCountUp(target: number, duration: number, active: boolean) {
+const CountUp = memo(function CountUp({
+  target,
+  suffix,
+  active,
+}: {
+  target: number;
+  suffix: string;
+  active: boolean;
+}) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!active) return;
-    let start = 0;
-    const step = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [active, target, duration]);
-
-  return count;
-}
-
-function StatItem({
-  value,
-  suffix,
-  label,
-  active,
-  index,
-}: {
-  value: number;
-  suffix: string;
-  label: string;
-  active: boolean;
-  index: number;
-}) {
-  const count = useCountUp(value, 1200, active);
+    let frame = 0;
+    const totalFrames = 60;
+    const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+    const tick = () => {
+      frame++;
+      const progress = easeOut(Math.min(frame / totalFrames, 1));
+      setCount(Math.floor(progress * target));
+      if (frame < totalFrames) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [active, target]);
 
   return (
-    <div
-      className="flex flex-col items-center justify-center py-12 px-6"
-      style={{
-        borderRight: index < stats.length - 1 ? "1px solid rgba(255,255,255,0.08)" : undefined,
-      }}
-    >
-      <p
-        className="font-sora font-thin text-white leading-none mb-2"
-        style={{ fontSize: "54px", letterSpacing: "-0.04em" }}
-      >
-        {count}{suffix}
-      </p>
-      <p className="font-sora text-[13px] text-center" style={{ color: "rgba(255,255,255,0.35)" }}>
-        {label}
-      </p>
-    </div>
+    <span>
+      {count}
+      {suffix}
+    </span>
   );
-}
+});
 
 export default function Stats() {
   const ref = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setActive(true);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const inView = useInView(ref, { once: true, margin: "-20%" });
 
   return (
-    <section ref={ref} className="bg-[#1d1d1f]">
+    <section
+      ref={ref}
+      style={{ background: "oklch(0.10 0.007 55)" }}
+    >
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4">
           {stats.map((stat, i) => (
-            <StatItem key={i} {...stat} index={i} active={active} />
+            <motion.div
+              key={i}
+              className="flex flex-col items-center justify-center py-14 px-6"
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                delay: i * 0.1,
+                duration: 0.7,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              style={{
+                borderRight:
+                  i < stats.length - 1
+                    ? "1px solid oklch(0.21 0.007 55)"
+                    : undefined,
+              }}
+            >
+              <p
+                className="font-sora font-thin leading-none mb-2 font-mono tabular-nums"
+                style={{
+                  fontSize: "52px",
+                  letterSpacing: "-0.04em",
+                  color: "oklch(0.72 0.11 55)",
+                }}
+              >
+                <CountUp target={stat.value} suffix={stat.suffix} active={inView} />
+              </p>
+              <p
+                className="font-sora text-[12px] text-center tracking-wide"
+                style={{ color: "oklch(0.42 0.007 62)" }}
+              >
+                {stat.label}
+              </p>
+            </motion.div>
           ))}
         </div>
       </div>
