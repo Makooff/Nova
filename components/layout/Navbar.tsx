@@ -77,7 +77,7 @@ export default function Navbar() {
               onMouseEnter={(e) => (e.currentTarget.style.background = "oklch(0.82 0 0)")}
               onMouseLeave={(e) => (e.currentTarget.style.background = "oklch(0.96 0 0)")}
             >
-              Devis
+              Contact
             </Link>
 
             <button

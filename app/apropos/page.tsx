@@ -14,22 +14,22 @@ const team = [
   {
     name: "Maxime Durand",
     role: "Directeur & Fondateur",
-    seed: "nova-maxime",
+    photo: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
     name: "Léa Fontaine",
     role: "Directrice Artistique",
-    seed: "nova-lea",
+    photo: "https://randomuser.me/api/portraits/women/18.jpg",
   },
   {
     name: "Thomas Berger",
     role: "Chef Opérateur",
-    seed: "nova-thomas",
+    photo: "https://randomuser.me/api/portraits/men/45.jpg",
   },
   {
     name: "Sara Kowalski",
     role: "Stratège Ads",
-    seed: "nova-sara",
+    photo: "https://randomuser.me/api/portraits/women/52.jpg",
   },
 ];
 
@@ -278,10 +278,10 @@ export default function AProposPage() {
                     style={{ aspectRatio: "3/4", border: "1px solid oklch(0.16 0 0)" }}
                   >
                     <Image
-                      src={`https://picsum.photos/seed/${member.seed}/400/533`}
+                      src={member.photo}
                       alt={member.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                     />
                     <div
                       className="absolute inset-0"

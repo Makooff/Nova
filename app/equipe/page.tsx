@@ -14,42 +14,42 @@ const team = [
     name: "Maxime Durand",
     role: "Directeur Créatif & Fondateur",
     bio: "12 ans de publicité à Paris et Bruxelles. A dirigé des campagnes pour des marques comme L'Oréal, Decathlon et BNP Paribas. Obsédé par le rapport entre créativité et conversion.",
-    seed: "nova-max",
+    photo: "https://randomuser.me/api/portraits/men/32.jpg",
     skills: ["Direction artistique", "Stratégie créative", "Copywriting"],
   },
   {
     name: "Léa Fontaine",
     role: "Directrice Photo",
     bio: "Formatée à l'École Louis-Lumière, Léa apporte une maîtrise de la lumière naturelle et artificielle qui définit l'esthétique des vidéos Nova — épurée, contrastée, mémorable.",
-    seed: "nova-lea",
+    photo: "https://randomuser.me/api/portraits/women/18.jpg",
     skills: ["Cinématographie", "Éclairage", "Color grading"],
   },
   {
     name: "Thomas Berger",
     role: "Responsable Campagnes Ads",
     bio: "Certifié Google et Meta, Thomas gère des budgets publicitaires de 500 K€/an. Son mantra : chaque centime doit travailler. ROAS moyen des comptes Nova : 4,2×.",
-    seed: "nova-thomas",
+    photo: "https://randomuser.me/api/portraits/men/45.jpg",
     skills: ["Google Ads", "Meta Ads", "TikTok", "Analytics"],
   },
   {
     name: "Sara Kowalski",
     role: "Chef de Projet & Montage",
     bio: "Sara coordonne chaque production de A à Z et assure le montage final. Rapide, rigoureuse, elle garantit les délais et la cohérence narrative de chaque format livré.",
-    seed: "nova-sara",
+    photo: "https://randomuser.me/api/portraits/women/52.jpg",
     skills: ["Montage Premiere", "Motion graphics", "Gestion de projet"],
   },
   {
     name: "Jules Martin",
     role: "Motion Designer",
     bio: "After Effects, Cinema 4D, Lottie — Jules maîtrise toute la chaîne du motion design. Il transforme les concepts en animations qui retiennent l'attention dans les 3 premières secondes.",
-    seed: "nova-jules",
+    photo: "https://randomuser.me/api/portraits/men/28.jpg",
     skills: ["After Effects", "Cinema 4D", "Animation 2D/3D"],
   },
   {
     name: "Amina Benali",
     role: "Stratège Contenu & SEO",
     bio: "Ancienne journaliste reconvertie au contenu de marque, Amina structure les scripts et les stratégies éditoriales pour que chaque vidéo serve aussi le référencement et le funnel.",
-    seed: "nova-amina",
+    photo: "https://randomuser.me/api/portraits/women/67.jpg",
     skills: ["Scripting", "SEO vidéo", "Content strategy"],
   },
 ];
@@ -103,10 +103,10 @@ export default function EquipePage() {
                   {/* Photo */}
                   <div className="relative w-full" style={{ aspectRatio: "4/3", background: "oklch(0.10 0 0)" }}>
                     <Image
-                      src={`https://picsum.photos/seed/${member.seed}/600/450`}
+                      src={member.photo}
                       alt={member.name}
                       fill
-                      className="object-cover"
+                      className="object-cover object-top"
                     />
                     <div
                       className="absolute inset-0"
@@ -203,7 +203,7 @@ export default function EquipePage() {
                 src="https://picsum.photos/seed/nova-team-full/1400/600"
                 alt="Équipe Nova au complet"
                 fill
-                className="object-cover grayscale"
+                className="object-cover"
               />
               <div
                 className="absolute inset-0"

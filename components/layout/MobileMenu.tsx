@@ -72,7 +72,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-all duration-200 active:scale-[0.97]"
               style={{ background: "oklch(0.96 0 0)", color: "oklch(0.06 0 0)" }}
             >
-              Devis
+              Contact
             </Link>
           </motion.div>
         </motion.div>
