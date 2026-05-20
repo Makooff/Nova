@@ -125,10 +125,6 @@ export default function RealisationsPage() {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div
-                  className="absolute inset-0"
-                  style={{ background: "oklch(0.06 0 0 / 0.35)" }}
-                />
-                <div
                   className="absolute bottom-0 left-0 right-0 p-5 translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
                   style={{
                     background: "linear-gradient(to top, oklch(0.04 0 0 / 0.9) 0%, transparent 100%)",
