@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import RevealWrapper from "@/components/ui/RevealWrapper";
 import QwillioLogo from "@/components/ui/QwillioLogo";
@@ -104,13 +105,23 @@ export default function ServicesPage() {
                 </Link>
               </div>
               <div
-                className="w-full rounded-2xl"
+                className="w-full rounded-2xl overflow-hidden relative"
                 style={{
                   aspectRatio: "4/3",
-                  background: "oklch(0.17 0.010 55)",
                   border: "1px solid oklch(0.22 0 0)",
                 }}
-              />
+              >
+                <Image
+                  src="https://picsum.photos/seed/nova-video-production/800/600"
+                  alt="Production vidéo Nova"
+                  fill
+                  className="object-cover"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to top, oklch(0.06 0 0 / 0.45) 0%, transparent 60%)" }}
+                />
+              </div>
             </div>
           </RevealWrapper>
 
@@ -122,13 +133,23 @@ export default function ServicesPage() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div
-                className="w-full rounded-2xl order-2 md:order-1"
+                className="w-full rounded-2xl overflow-hidden relative order-2 md:order-1"
                 style={{
                   aspectRatio: "4/3",
-                  background: "oklch(0.17 0.010 55)",
                   border: "1px solid oklch(0.22 0 0)",
                 }}
-              />
+              >
+                <Image
+                  src="https://picsum.photos/seed/nova-ads-campaign/800/600"
+                  alt="Campagnes Ads Nova"
+                  fill
+                  className="object-cover"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to top, oklch(0.06 0 0 / 0.45) 0%, transparent 60%)" }}
+                />
+              </div>
               <div className="order-1 md:order-2">
                 <p
                   className="font-mono text-[10px] uppercase tracking-wider mb-4"
@@ -238,13 +259,23 @@ export default function ServicesPage() {
                 </Link>
               </div>
               <div
-                className="w-full rounded-2xl"
+                className="w-full rounded-2xl overflow-hidden relative"
                 style={{
                   aspectRatio: "4/3",
-                  background: "oklch(0.17 0.010 55)",
                   border: "1px solid oklch(0.22 0 0)",
                 }}
-              />
+              >
+                <Image
+                  src="https://picsum.photos/seed/nova-ia-agents/800/600"
+                  alt="Agents IA Qwillio"
+                  fill
+                  className="object-cover"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ background: "linear-gradient(to top, oklch(0.06 0 0 / 0.45) 0%, transparent 60%)" }}
+                />
+              </div>
             </div>
           </RevealWrapper>
         </div>

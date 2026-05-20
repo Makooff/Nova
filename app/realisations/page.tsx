@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CSSProperties } from "react";
 import RevealWrapper from "@/components/ui/RevealWrapper";
 import CTA from "@/components/sections/CTA";
@@ -15,7 +16,7 @@ const projects = [
     client: "Groupe Belux",
     category: "Production Vidéo",
     year: "2024",
-    bg: "oklch(0.15 0.010 55)",
+    seed: "nova-reel-belux",
     span: "md:col-span-7",
   },
   {
@@ -23,7 +24,7 @@ const projects = [
     client: "Atelier Nord",
     category: "Motion Design",
     year: "2024",
-    bg: "oklch(0.20 0.009 55)",
+    seed: "nova-brand-nord",
     span: "md:col-span-5",
   },
   {
@@ -31,7 +32,7 @@ const projects = [
     client: "TechStart Brussels",
     category: "Campagnes Ads",
     year: "2025",
-    bg: "oklch(0.17 0.011 55)",
+    seed: "nova-ads-tech",
     span: "md:col-span-4",
   },
   {
@@ -39,7 +40,7 @@ const projects = [
     client: "InnovateBE",
     category: "Production Vidéo",
     year: "2025",
-    bg: "oklch(0.13 0.009 55)",
+    seed: "nova-corp-innovate",
     span: "md:col-span-5",
   },
   {
@@ -47,7 +48,7 @@ const projects = [
     client: "ModeMarket",
     category: "Meta Ads",
     year: "2025",
-    bg: "oklch(0.19 0.008 55)",
+    seed: "nova-social-mode",
     span: "md:col-span-3",
   },
   {
@@ -55,7 +56,7 @@ const projects = [
     client: "NordicFR",
     category: "TikTok Ads",
     year: "2025",
-    bg: "oklch(0.14 0.010 55)",
+    seed: "nova-tiktok-nordic",
     span: "md:col-span-5",
   },
   {
@@ -63,7 +64,7 @@ const projects = [
     client: "Volta Concept",
     category: "Production Vidéo",
     year: "2024",
-    bg: "oklch(0.16 0.009 55)",
+    seed: "nova-film-volta",
     span: "md:col-span-7",
   },
 ];
@@ -114,21 +115,23 @@ export default function RealisationsPage() {
               <RevealWrapper
                 key={i}
                 className={`${p.span} rounded-[14px] overflow-hidden relative cursor-pointer group`}
-                style={{ aspectRatio: "16/10", background: p.bg, border: "1px solid oklch(0.22 0 0)" } as CSSProperties}
+                style={{ aspectRatio: "16/10", border: "1px solid oklch(0.22 0 0)" } as CSSProperties}
                 delay={i * 50}
               >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span
-                    className="font-mono text-[9px] uppercase tracking-wider"
-                    style={{ color: "oklch(0.30 0.007 60)" }}
-                  >
-                    {p.category}
-                  </span>
-                </div>
+                <Image
+                  src={`https://picsum.photos/seed/${p.seed}/900/563`}
+                  alt={p.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
                 <div
-                  className="absolute bottom-0 left-0 right-0 p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0"
+                  style={{ background: "oklch(0.06 0 0 / 0.35)" }}
+                />
+                <div
+                  className="absolute bottom-0 left-0 right-0 p-5 translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
                   style={{
-                    background: "linear-gradient(to top, oklch(0.10 0.007 55 / 0.85) 0%, transparent 100%)",
+                    background: "linear-gradient(to top, oklch(0.04 0 0 / 0.9) 0%, transparent 100%)",
                   }}
                 >
                   <p
