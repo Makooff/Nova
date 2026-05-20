@@ -107,7 +107,7 @@ export default function CampagneAdsPage() {
                   src="https://picsum.photos/seed/nova-ads-hero/800/600"
                   alt="Campagnes Ads Nova"
                   fill
-                  className="object-cover grayscale"
+                  className="object-cover"
                 />
                 {/* Stat overlay */}
                 <div
@@ -154,7 +154,7 @@ export default function CampagneAdsPage() {
                       src={`https://picsum.photos/seed/${p.seed}/800/350`}
                       alt={p.name}
                       fill
-                      className="object-cover grayscale opacity-50"
+                      className="object-cover opacity-50"
                     />
                     <div className="absolute inset-0 flex items-end p-5">
                       <h3 className="font-sora font-thin text-2xl" style={{ color: "oklch(0.96 0 0)", letterSpacing: "-0.03em" }}>
@@ -256,7 +256,7 @@ export default function CampagneAdsPage() {
                       src={`https://picsum.photos/seed/${r.seed}/640/360`}
                       alt={r.client}
                       fill
-                      className="object-cover grayscale opacity-50"
+                      className="object-cover opacity-50"
                     />
                   </div>
                   <div className="p-6" style={{ background: "oklch(0.06 0 0)" }}>

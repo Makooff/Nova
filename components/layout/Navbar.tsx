@@ -6,11 +6,11 @@ import { motion, useScroll } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 
 const navLinks = [
+  { label: "Accueil", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Campagne Ads", href: "/campagne-ads" },
+  { label: "Ads", href: "/campagne-ads" },
   { label: "Réalisations", href: "/realisations" },
-  { label: "Notre Équipe", href: "/equipe" },
-  { label: "Blog", href: "/blog" },
+  { label: "À propos", href: "/apropos" },
 ];
 
 export default function Navbar() {

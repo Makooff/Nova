@@ -40,7 +40,7 @@ function PortfolioItem({ title, category, seed, cols, index, inView }: {
         src={`https://picsum.photos/seed/${seed}/800/500`}
         alt={title}
         fill
-        className="object-cover grayscale group-hover:scale-105 transition-transform duration-700"
+        className="object-cover group-hover:scale-105 transition-transform duration-700"
       />
       <div
         className="absolute inset-0"

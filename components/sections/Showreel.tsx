@@ -31,7 +31,7 @@ export default function Showreel() {
             src="https://picsum.photos/seed/nova-showreel/1920/1080"
             alt="Nova showreel"
             fill
-            className="object-cover grayscale opacity-40 group-hover:opacity-55 transition-opacity duration-500"
+            className="object-cover opacity-40 group-hover:opacity-55 transition-opacity duration-500"
           />
 
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
@@ -80,7 +80,7 @@ export default function Showreel() {
                 src="https://picsum.photos/seed/nova-showreel/1280/720"
                 alt="Showreel Nova"
                 fill
-                className="object-cover grayscale"
+                className="object-cover"
               />
             </div>
           </div>

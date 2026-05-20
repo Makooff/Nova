@@ -138,7 +138,7 @@ export default function Hero() {
               src="https://picsum.photos/seed/nova-crew/680/906"
               alt="Équipe Nova en tournage"
               fill
-              className="object-cover grayscale"
+              className="object-cover"
               priority
             />
             {/* Dark overlay + label */}

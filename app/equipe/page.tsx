@@ -106,7 +106,7 @@ export default function EquipePage() {
                       src={`https://picsum.photos/seed/${member.seed}/600/450`}
                       alt={member.name}
                       fill
-                      className="object-cover grayscale"
+                      className="object-cover"
                     />
                     <div
                       className="absolute inset-0"

@@ -12,10 +12,9 @@ interface MobileMenuProps {
 const navLinks = [
   { label: "Accueil", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Campagne Ads", href: "/campagne-ads" },
+  { label: "Ads", href: "/campagne-ads" },
   { label: "Réalisations", href: "/realisations" },
-  { label: "Notre Équipe", href: "/equipe" },
-  { label: "Blog", href: "/blog" },
+  { label: "À propos", href: "/apropos" },
   { label: "Contact", href: "/contact" },
 ];
 

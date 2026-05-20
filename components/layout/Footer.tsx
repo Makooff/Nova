@@ -12,10 +12,9 @@ const services = [
 ];
 
 const agency = [
-  { label: "Notre Équipe", href: "/equipe" },
+  { label: "À propos", href: "/apropos" },
   { label: "Réalisations", href: "/realisations" },
   { label: "Process", href: "/process" },
-  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
