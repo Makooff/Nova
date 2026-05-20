@@ -28,7 +28,7 @@ export default function ConfidentialitePage() {
               </h2>
               <p>
                 Nova SRL, BCE BE 0000.000.000, Rue de l&apos;Exemple 42, 1000 Bruxelles.
-                Contact : hello@nova-agency.be
+                Contact : laytored@gmail.com
               </p>
             </div>
 
@@ -85,7 +85,7 @@ export default function ConfidentialitePage() {
                 Conformément au RGPD (Règlement UE 2016/679), vous disposez d&apos;un droit
                 d&apos;accès, de rectification, d&apos;effacement, de portabilité et d&apos;opposition
                 concernant vos données personnelles. Pour exercer ces droits, contactez-nous
-                à : hello@nova-agency.be
+                à : laytored@gmail.com
               </p>
             </div>
 
@@ -106,7 +106,7 @@ export default function ConfidentialitePage() {
               </h2>
               <p>
                 Pour toute question relative à la protection de vos données, vous pouvez
-                nous écrire à hello@nova-agency.be. Vous avez également le droit
+                nous écrire à laytored@gmail.com. Vous avez également le droit
                 d&apos;introduire une plainte auprès de l&apos;Autorité de protection des données
                 (APD) belge : apd-gba.be.
               </p>

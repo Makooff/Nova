@@ -30,7 +30,7 @@ export default function MentionsLegalesPage() {
                 Rue de l&apos;Exemple 42<br />
                 1000 Bruxelles — Belgique<br />
                 BCE : BE 0000.000.000<br />
-                Email : hello@nova-agency.be
+                Email : laytored@gmail.com
               </p>
             </div>
 

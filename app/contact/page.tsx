@@ -80,9 +80,8 @@ export default function ContactPage() {
 
               <div className="flex flex-col gap-5">
                 {[
-                  { label: "Belgique", value: "+32 2 000 00 00" },
-                  { label: "France", value: "+33 1 00 00 00 00" },
-                  { label: "Email", value: "hello@nova-agency.be" },
+                  { label: "Téléphone", value: "+32 492 07 68 37" },
+                  { label: "Email", value: "laytored@gmail.com" },
                 ].map((item) => (
                   <div key={item.label}>
                     <p
