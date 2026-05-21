@@ -112,7 +112,7 @@ export default function ServicesPage() {
                 }}
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&auto=format&fit=crop"
                   alt="Production vidéo Nova"
                   fill
                   className="object-cover"
@@ -140,7 +140,7 @@ export default function ServicesPage() {
                 }}
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop"
                   alt="Campagnes Ads Nova"
                   fill
                   className="object-cover"
@@ -266,7 +266,7 @@ export default function ServicesPage() {
                 }}
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=800&auto=format&fit=crop"
                   alt="Agents IA Qwillio"
                   fill
                   className="object-cover"

@@ -135,7 +135,7 @@ export default function Hero() {
             style={{ aspectRatio: "3/4" }}
           >
             <Image
-              src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=800&auto=format&fit=crop"
               alt="Équipe Nova en tournage"
               fill
               className="object-cover"

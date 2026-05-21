@@ -92,7 +92,7 @@ export default function AProposPage() {
               style={{ aspectRatio: "21/9", border: "1px solid oklch(0.16 0 0)" }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1551817958-d9d86fb29431?w=1400&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=1400&auto=format&fit=crop"
                 alt="Studio Nova"
                 fill
                 className="object-cover"
@@ -182,7 +182,7 @@ export default function AProposPage() {
                 style={{ aspectRatio: "4/3", border: "1px solid oklch(0.16 0 0)" }}
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1560472354-b33ff0ad7a8e?w=800&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&auto=format&fit=crop"
                   alt="Behind the scenes Nova"
                   fill
                   className="object-cover"

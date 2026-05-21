@@ -200,7 +200,7 @@ export default function EquipePage() {
               style={{ aspectRatio: "21/9", background: "oklch(0.10 0 0)" }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&auto=format&fit=crop"
                 alt="Équipe Nova au complet"
                 fill
                 className="object-cover"

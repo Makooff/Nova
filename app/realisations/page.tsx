@@ -16,7 +16,7 @@ const projects = [
     client: "Groupe Belux",
     category: "Production Vidéo",
     year: "2024",
-    photo: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=900&auto=format&fit=crop",
+    photo: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=900&auto=format&fit=crop",
     span: "md:col-span-7",
   },
   {
@@ -24,7 +24,7 @@ const projects = [
     client: "Atelier Nord",
     category: "Motion Design",
     year: "2024",
-    photo: "https://images.unsplash.com/photo-1536240478613-bf4ad1e4f9e0?w=700&auto=format&fit=crop",
+    photo: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=700&auto=format&fit=crop",
     span: "md:col-span-5",
   },
   {
@@ -32,7 +32,7 @@ const projects = [
     client: "TechStart Brussels",
     category: "Campagnes Ads",
     year: "2025",
-    photo: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format&fit=crop",
+    photo: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop",
     span: "md:col-span-4",
   },
   {
@@ -40,7 +40,7 @@ const projects = [
     client: "InnovateBE",
     category: "Production Vidéo",
     year: "2025",
-    photo: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=700&auto=format&fit=crop",
+    photo: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&auto=format&fit=crop",
     span: "md:col-span-5",
   },
   {
@@ -48,7 +48,7 @@ const projects = [
     client: "ModeMarket",
     category: "Meta Ads",
     year: "2025",
-    photo: "https://images.unsplash.com/photo-1598550476439-6a1c3cda0655?w=500&auto=format&fit=crop",
+    photo: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&auto=format&fit=crop",
     span: "md:col-span-3",
   },
   {
@@ -56,7 +56,7 @@ const projects = [
     client: "NordicFR",
     category: "TikTok Ads",
     year: "2025",
-    photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&auto=format&fit=crop",
+    photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&auto=format&fit=crop",
     span: "md:col-span-5",
   },
   {
@@ -64,7 +64,7 @@ const projects = [
     client: "Volta Concept",
     category: "Production Vidéo",
     year: "2024",
-    photo: "https://images.unsplash.com/photo-1551817958-d9d86fb29431?w=900&auto=format&fit=crop",
+    photo: "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=900&auto=format&fit=crop",
     span: "md:col-span-7",
   },
 ];
