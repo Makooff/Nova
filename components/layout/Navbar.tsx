@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 
@@ -46,12 +47,15 @@ export default function Navbar() {
         }}
       >
         <div className="max-w-6xl mx-auto w-full px-5 flex items-center justify-between">
-          <Link
-            href="/"
-            className="font-sora font-semibold text-[17px] tracking-tight"
-            style={{ color: "oklch(0.96 0 0)" }}
-          >
-            Nova
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo-nova.png"
+              alt="Nova"
+              width={72}
+              height={24}
+              style={{ filter: "brightness(0) invert(1)" }}
+              priority
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">

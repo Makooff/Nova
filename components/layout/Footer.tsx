@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import QwillioLogo from "@/components/ui/QwillioLogo";
 import QwillioName from "@/components/ui/QwillioName";
 
@@ -29,9 +30,15 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-5 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
           <div className="col-span-2 md:col-span-1">
-            <p className="font-sora font-semibold text-[17px] mb-3" style={{ color: "oklch(0.96 0 0)" }}>
-              Nova
-            </p>
+            <div className="mb-3">
+              <Image
+                src="/logo-nova.png"
+                alt="Nova"
+                width={72}
+                height={24}
+                style={{ filter: "brightness(0) invert(1)" }}
+              />
+            </div>
             <p className="font-sora font-light text-sm max-w-[200px] leading-relaxed" style={{ color: "oklch(0.35 0 0)" }}>
               Agence de production vidéo publicitaire en Belgique et en France.
             </p>
