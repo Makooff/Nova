@@ -73,6 +73,36 @@ body::before {
 }
 .scroll-line { animation: scrollLine 2.4s ease-in-out infinite; }
 
+/* Ken Burns — slow cinematic zoom drift */
+@keyframes kenBurns {
+  from { transform: scale(1.0) translate(0%, 0%); }
+  to   { transform: scale(1.14) translate(-2%, -1.5%); }
+}
+.ken-burns {
+  animation: kenBurns 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Cinematic vignette overlay */
+.vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, oklch(0.04 0 0 / 0.7) 100%);
+}
+
+/* 3D card perspective wrapper */
+.perspective-800 { perspective: 800px; }
+.perspective-1000 { perspective: 1000px; }
+
+/* Play button pulse */
+@keyframes playPulse {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.96 0 0 / 0.3); }
+  50%       { box-shadow: 0 0 0 18px oklch(0.96 0 0 / 0); }
+}
+.play-pulse { animation: playPulse 2.4s ease-out infinite; }
+
 @layer utilities {
   .text-balance { text-wrap: balance; }
 }
