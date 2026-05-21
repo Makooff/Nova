@@ -68,7 +68,7 @@ export default function ContactPage() {
                   color: "oklch(0.96 0 0)",
                 }}
               >
-                Demander un devis
+                Nous contacter
               </h1>
               <p
                 className="font-sora font-light text-sm leading-relaxed mb-10"

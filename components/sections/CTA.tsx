@@ -152,7 +152,7 @@ export default function CTA() {
           transition={{ delay: 0.35, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <MagneticButton href="/contact" primary>
-            Demander un devis
+            Nous contacter
           </MagneticButton>
           <MagneticButton href="/realisations">
             Voir le showreel

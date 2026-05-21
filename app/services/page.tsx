@@ -101,7 +101,7 @@ export default function ServicesPage() {
                     color: "oklch(0.06 0 0)",
                   }}
                 >
-                  Demander un devis vidéo
+                  Nous contacter
                 </Link>
               </div>
               <div
