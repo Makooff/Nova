@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import RevealWrapper from "@/components/ui/RevealWrapper";
 import CTA from "@/components/sections/CTA";
+import PresentationPreview from "@/components/ui/PresentationPreview";
 
 export const metadata: Metadata = {
   title: "À propos — Nova | Agence Vidéo & Ads Belgique & France",
@@ -85,32 +86,9 @@ export default function AProposPage() {
             </p>
           </RevealWrapper>
 
-          {/* Full-width agency photo */}
+          {/* Presentation video — opens fullscreen with voiceover */}
           <RevealWrapper>
-            <div
-              className="w-full rounded-2xl overflow-hidden relative"
-              style={{ aspectRatio: "21/9", border: "1px solid oklch(0.16 0 0)" }}
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=1400&auto=format&fit=crop"
-                alt="Studio Nova"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div
-                className="absolute inset-0"
-                style={{ background: "linear-gradient(to top, oklch(0.06 0 0 / 0.5) 0%, transparent 60%)" }}
-              />
-              <div className="absolute bottom-6 left-8">
-                <p
-                  className="font-mono text-[10px] uppercase tracking-wider"
-                  style={{ color: "oklch(0.55 0 0)" }}
-                >
-                  Studio Nova — Bruxelles
-                </p>
-              </div>
-            </div>
+            <PresentationPreview />
           </RevealWrapper>
         </div>
       </section>
