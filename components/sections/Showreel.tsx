@@ -1,14 +1,15 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion";
 
 const VIMEO_ID = "850854753";
 
 export default function Showreel() {
   const [open, setOpen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-12%" });
+  const inView = useInView(sectionRef, { once: true, margin: "-10%" });
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -17,6 +18,10 @@ export default function Showreel() {
 
   const rawY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
   const bgY = useSpring(rawY, { stiffness: 60, damping: 18 });
+
+  useEffect(() => {
+    if (inView) setIsPlaying(true);
+  }, [inView]);
 
   return (
     <section
@@ -39,32 +44,40 @@ export default function Showreel() {
           }}
           onClick={() => setOpen(true)}
           role="button"
-          aria-label="Ouvrir le showreel"
+          aria-label="Ouvrir le showreel en plein écran"
           tabIndex={0}
           onKeyDown={(e) => e.key === "Enter" && setOpen(true)}
         >
-          {/* Vimeo thumbnail with parallax */}
-          <motion.div
-            className="absolute inset-0"
-            style={{ y: bgY, willChange: "transform" }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`https://vumbnail.com/${VIMEO_ID}.jpg`}
-              alt="Showreel Nova 2025"
-              className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-700"
+          {/* Video autoplays silently when scrolled into view */}
+          {isPlaying ? (
+            <iframe
+              src={`https://player.vimeo.com/video/${VIMEO_ID}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              style={{ transform: "scale(1.06)" }}
+              frameBorder="0"
+              allow="autoplay; fullscreen"
             />
-          </motion.div>
+          ) : (
+            <motion.div className="absolute inset-0" style={{ y: bgY }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`https://vumbnail.com/${VIMEO_ID}.jpg`}
+                alt="Showreel Nova 2025"
+                className="absolute inset-0 w-full h-full object-cover opacity-60"
+              />
+            </motion.div>
+          )}
 
           {/* Dark gradient overlay */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "linear-gradient(to bottom, oklch(0.04 0 0 / 0.3) 0%, oklch(0.04 0 0 / 0.6) 100%)",
+                "linear-gradient(to bottom, oklch(0.04 0 0 / 0.25) 0%, oklch(0.04 0 0 / 0.55) 100%)",
             }}
           />
 
+          {/* Play button + label */}
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
             <motion.div
               className="relative w-20 h-20 rounded-full flex items-center justify-center"
@@ -105,6 +118,7 @@ export default function Showreel() {
         </div>
       </motion.div>
 
+      {/* Fullscreen modal with sound */}
       {open && (
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center p-5"
