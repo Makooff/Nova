@@ -13,6 +13,7 @@ interface Project {
 }
 
 const projects: Project[] = [
+  { id: "850854753",   source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-12" },
   { id: "1195979120",  source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-8" },
   { id: "1195979118",  source: "vimeo",   vertical: true,  cols: "col-span-2 md:col-span-4" },
   { id: "1195979122",  source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-12" },

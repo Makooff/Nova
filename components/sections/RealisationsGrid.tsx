@@ -13,15 +13,17 @@ interface Project {
 }
 
 const projects: Project[] = [
-  // Row 1: landscape + portrait
+  // Row 1: showreel pleine largeur
+  { id: "850854753",  source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-12" },
+  // Row 2: landscape + portrait
   { id: "1195979120", source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-8" },
   { id: "1195979118", source: "vimeo",   vertical: true,  cols: "col-span-2 md:col-span-4" },
-  // Row 2: pleine largeur Vimeo
+  // Row 3: pleine largeur
   { id: "1195979122", source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-12" },
-  // Row 3: portrait + landscape
+  // Row 4: portrait + landscape
   { id: "1195979451", source: "vimeo",   vertical: true,  cols: "col-span-2 md:col-span-4" },
   { id: "1195979119", source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-8" },
-  // Row 4: YouTube pleine largeur
+  // Row 5: YouTube pleine largeur
   { id: "rv5PLylcqjg", source: "youtube", vertical: false, cols: "col-span-2 md:col-span-12" },
 ];
 
