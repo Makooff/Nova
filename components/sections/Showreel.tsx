@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Image from "next/image";
 import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion";
+
+const VIMEO_ID = "850854753";
 
 export default function Showreel() {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,6 @@ export default function Showreel() {
     offset: ["start end", "end start"],
   });
 
-  /* Subtle parallax on the thumbnail as you scroll past */
   const rawY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
   const bgY = useSpring(rawY, { stiffness: 60, damping: 18 });
 
@@ -31,7 +31,7 @@ export default function Showreel() {
         transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
       >
         <div
-          className="relative w-full rounded-[20px] overflow-hidden cursor-pointer group vignette"
+          className="relative w-full rounded-[20px] overflow-hidden cursor-pointer group"
           style={{
             aspectRatio: "16/9",
             background: "oklch(0.10 0 0)",
@@ -43,19 +43,17 @@ export default function Showreel() {
           tabIndex={0}
           onKeyDown={(e) => e.key === "Enter" && setOpen(true)}
         >
-          {/* Ken Burns background image */}
+          {/* Vimeo thumbnail with parallax */}
           <motion.div
             className="absolute inset-0"
             style={{ y: bgY, willChange: "transform" }}
           >
-            <div className="absolute inset-[-8%] ken-burns">
-              <Image
-                src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=1920&auto=format&fit=crop"
-                alt="Nova showreel"
-                fill
-                className="object-cover opacity-50 group-hover:opacity-65 transition-opacity duration-700"
-              />
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`https://vumbnail.com/${VIMEO_ID}.jpg`}
+              alt="Showreel Nova 2025"
+              className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-75 transition-opacity duration-700"
+            />
           </motion.div>
 
           {/* Dark gradient overlay */}
@@ -68,9 +66,8 @@ export default function Showreel() {
           />
 
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
-            {/* Play button with pulse ring */}
             <motion.div
-              className="relative w-20 h-20 rounded-full flex items-center justify-center play-pulse"
+              className="relative w-20 h-20 rounded-full flex items-center justify-center"
               style={{
                 background: "oklch(0.96 0 0 / 0.1)",
                 border: "1px solid oklch(0.96 0 0 / 0.35)",
@@ -95,7 +92,7 @@ export default function Showreel() {
                 className="font-sora font-thin text-lg tracking-tighter"
                 style={{ color: "oklch(0.92 0 0)", letterSpacing: "-0.03em" }}
               >
-                Showreel 2026
+                Showreel 2025
               </p>
               <p
                 className="font-mono text-[9px] uppercase tracking-wider"
@@ -108,7 +105,6 @@ export default function Showreel() {
         </div>
       </motion.div>
 
-      {/* Lightbox */}
       {open && (
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center p-5"
@@ -130,26 +126,18 @@ export default function Showreel() {
               onClick={() => setOpen(false)}
               className="absolute -top-10 right-0 font-sora text-sm transition-colors"
               style={{ color: "oklch(0.45 0 0)" }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "oklch(0.96 0 0)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "oklch(0.45 0 0)")
-              }
+              onMouseEnter={(e) => (e.currentTarget.style.color = "oklch(0.96 0 0)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "oklch(0.45 0 0)")}
             >
               Fermer
             </button>
-            <div
-              className="w-full h-full rounded-xl overflow-hidden"
-              style={{ border: "1px solid oklch(0.22 0 0)" }}
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=1280&auto=format&fit=crop"
-                alt="Showreel Nova"
-                fill
-                className="object-cover"
-              />
-            </div>
+            <iframe
+              src={`https://player.vimeo.com/video/${VIMEO_ID}?autoplay=1&title=0&byline=0&portrait=0&color=ffffff`}
+              className="absolute inset-0 w-full h-full rounded-xl"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
           </motion.div>
         </motion.div>
       )}
