@@ -3,48 +3,33 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 
-type Source = "vimeo" | "youtube";
+const R2 = "https://pub-a93d9300f3144cee9101e92c2ba03175.r2.dev";
 
-interface Project {
-  id: string;
-  source: Source;
+function r2(filename: string) {
+  return `${R2}/${encodeURIComponent("Vidéo")}/${encodeURIComponent(filename)}`;
+}
+
+type VideoEntry = {
+  type: "r2" | "youtube";
+  src: string;
   vertical: boolean;
   cols: string;
-}
+};
 
-const projects: Project[] = [
-  { id: "850854753",   source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-12" },
-  { id: "1195979120",  source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-8" },
-  { id: "1195979118",  source: "vimeo",   vertical: true,  cols: "col-span-2 md:col-span-4" },
-  { id: "1195979122",  source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-12" },
-  { id: "1195979451",  source: "vimeo",   vertical: true,  cols: "col-span-2 md:col-span-4" },
-  { id: "1195979119",  source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-8" },
-  { id: "rv5PLylcqjg", source: "youtube", vertical: false, cols: "col-span-2 md:col-span-12" },
+const projects: VideoEntry[] = [
+  { type: "r2",      src: r2("BOZAR_Become_a_Bozars_Young_Ambassador_hd 1080p.MP4"), vertical: false, cols: "col-span-2 md:col-span-12" },
+  { type: "r2",      src: r2("AutoSpaV2_hd 1080p.MP4"),                              vertical: false, cols: "col-span-2 md:col-span-6" },
+  { type: "r2",      src: r2("Timeline_2_hd 1080p.MP4"),                             vertical: false, cols: "col-span-2 md:col-span-6" },
+  { type: "r2",      src: r2("260508_CARWASH_COMMERCIAL_MONTAGE_V3_hd 1080p.MP4"),   vertical: false, cols: "col-span-2 md:col-span-12" },
+  { type: "r2",      src: r2("Timeline_3_hd 1080p.MP4"),                             vertical: false, cols: "col-span-2 md:col-span-6" },
+  { type: "r2",      src: r2("VidAoAutospaP2V4_uhd 2160p.MP4"),                      vertical: false, cols: "col-span-2 md:col-span-6" },
+  { type: "youtube", src: "rv5PLylcqjg",                                              vertical: false, cols: "col-span-2 md:col-span-12" },
 ];
-
-function loopSrc(id: string, source: Source) {
-  if (source === "youtube") {
-    return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&rel=0&modestbranding=1&playsinline=1`;
-  }
-  return `https://player.vimeo.com/video/${id}?autoplay=1&muted=1&background=1&loop=1&quality=auto`;
-}
-
-function modalSrc(id: string, source: Source) {
-  if (source === "youtube") {
-    return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
-  }
-  return `https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0&color=ffffff`;
-}
-
-function iframeAllow(source: Source, modal = false) {
-  if (source === "youtube") return "autoplay; encrypted-media; fullscreen";
-  return modal ? "autoplay; fullscreen; picture-in-picture" : "autoplay; fullscreen";
-}
 
 export default function Portfolio() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-8%" });
-  const [selected, setSelected] = useState<Project | null>(null);
+  const [selected, setSelected] = useState<VideoEntry | null>(null);
 
   return (
     <section
@@ -60,28 +45,21 @@ export default function Portfolio() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p
-            className="font-mono text-[10px] uppercase tracking-wider mb-3"
-            style={{ color: "oklch(0.38 0 0)" }}
-          >
+          <p className="font-mono text-[10px] uppercase tracking-wider mb-3" style={{ color: "oklch(0.38 0 0)" }}>
             Notre travail
           </p>
           <h2
             className="font-sora font-thin tracking-tighter"
-            style={{
-              fontSize: "clamp(32px, 5vw, 54px)",
-              letterSpacing: "-0.04em",
-              color: "oklch(0.96 0 0)",
-            }}
+            style={{ fontSize: "clamp(32px, 5vw, 54px)", letterSpacing: "-0.04em", color: "oklch(0.96 0 0)" }}
           >
             Réalisations
           </h2>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-12 gap-3 items-start">
-          {projects.map((p) => (
+          {projects.map((p, i) => (
             <div
-              key={p.id}
+              key={i}
               className={`${p.cols} rounded-[14px] overflow-hidden relative cursor-pointer group`}
               style={{
                 aspectRatio: p.vertical ? "9/16" : "16/9",
@@ -91,34 +69,36 @@ export default function Portfolio() {
               onClick={() => setSelected(p)}
             >
               {inView && (
-                <iframe
-                  src={loopSrc(p.id, p.source)}
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                  style={{ transform: "scale(1.06)" }}
-                  frameBorder="0"
-                  allow={iframeAllow(p.source)}
-                />
+                p.type === "youtube" ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${p.src}?autoplay=1&mute=1&loop=1&playlist=${p.src}&controls=0&rel=0&modestbranding=1&playsinline=1`}
+                    className="absolute inset-0 w-full h-full pointer-events-none"
+                    style={{ transform: "scale(1.06)" }}
+                    frameBorder="0"
+                    allow="autoplay; encrypted-media; fullscreen"
+                  />
+                ) : (
+                  <video
+                    src={p.src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                    style={{ transform: "scale(1.06)" }}
+                  />
+                )
               )}
 
-              {/* Hover blur */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
-                style={{
-                  backdropFilter: "blur(5px)",
-                  WebkitBackdropFilter: "blur(5px)",
-                  background: "oklch(0.04 0 0 / 0.40)",
-                }}
+                style={{ backdropFilter: "blur(5px)", WebkitBackdropFilter: "blur(5px)", background: "oklch(0.04 0 0 / 0.40)" }}
               />
-
-              {/* Hover play button */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <motion.div
                   className="w-14 h-14 rounded-full flex items-center justify-center"
-                  style={{
-                    background: "oklch(0.96 0 0 / 0.12)",
-                    border: "1px solid oklch(0.96 0 0 / 0.40)",
-                    backdropFilter: "blur(8px)",
-                  }}
+                  style={{ background: "oklch(0.96 0 0 / 0.12)", border: "1px solid oklch(0.96 0 0 / 0.40)", backdropFilter: "blur(8px)" }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -160,13 +140,24 @@ export default function Portfolio() {
               >
                 Fermer
               </button>
-              <iframe
-                src={modalSrc(selected.id, selected.source)}
-                className="absolute inset-0 w-full h-full rounded-2xl"
-                frameBorder="0"
-                allow={iframeAllow(selected.source, true)}
-                allowFullScreen
-              />
+              {selected.type === "youtube" ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${selected.src}?autoplay=1&rel=0&modestbranding=1`}
+                  className="absolute inset-0 w-full h-full rounded-2xl"
+                  frameBorder="0"
+                  allow="autoplay; encrypted-media; fullscreen"
+                  allowFullScreen
+                />
+              ) : (
+                <video
+                  src={selected.src}
+                  autoPlay
+                  controls
+                  playsInline
+                  className="absolute inset-0 w-full h-full rounded-2xl"
+                  style={{ objectFit: "contain", background: "#000" }}
+                />
+              )}
             </motion.div>
           </motion.div>
         )}
