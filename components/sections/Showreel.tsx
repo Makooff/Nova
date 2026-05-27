@@ -7,9 +7,11 @@ const VIMEO_ID = "850854753";
 
 export default function Showreel() {
   const [open, setOpen] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, { once: true, margin: "-10%" });
+
+  // Fires the instant even 1px of the section enters the viewport
+  const inView = useInView(sectionRef, { once: true, margin: "0px" });
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -19,9 +21,10 @@ export default function Showreel() {
   const rawY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
   const bgY = useSpring(rawY, { stiffness: 60, damping: 18 });
 
+  // Render iframe immediately on mount so it loads in the background
   useEffect(() => {
-    if (inView) setIsPlaying(true);
-  }, [inView]);
+    setIsMounted(true);
+  }, []);
 
   return (
     <section
@@ -31,15 +34,15 @@ export default function Showreel() {
     >
       <motion.div
         className="max-w-[1080px] mx-auto"
-        initial={{ opacity: 0, scale: 0.93, y: 40 }}
+        initial={{ opacity: 0, scale: 0.97, y: 24 }}
         animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
-        transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         <div
           className="relative w-full rounded-[20px] overflow-hidden cursor-pointer group"
           style={{
             aspectRatio: "16/9",
-            background: "oklch(0.10 0 0)",
+            background: "black",
             border: "1px solid oklch(0.22 0 0)",
           }}
           onClick={() => setOpen(true)}
@@ -48,32 +51,37 @@ export default function Showreel() {
           tabIndex={0}
           onKeyDown={(e) => e.key === "Enter" && setOpen(true)}
         >
-          {/* Video autoplays silently when scrolled into view */}
-          {isPlaying ? (
-            <iframe
-              src={`https://player.vimeo.com/video/${VIMEO_ID}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              style={{ transform: "scale(1.06)" }}
-              frameBorder="0"
-              allow="autoplay; fullscreen"
-            />
-          ) : (
-            <motion.div className="absolute inset-0" style={{ y: bgY }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={`https://vumbnail.com/${VIMEO_ID}.jpg`}
-                alt="Showreel Nova 2025"
-                className="absolute inset-0 w-full h-full object-cover opacity-60"
+          {/* iframe loads on mount — buffering in background before visible */}
+          {isMounted && (
+            <motion.div
+              className="absolute inset-0"
+              style={{ y: bgY }}
+            >
+              <iframe
+                src={`https://player.vimeo.com/video/${VIMEO_ID}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                style={{ transform: "scale(1.06)" }}
+                frameBorder="0"
+                allow="autoplay; fullscreen"
               />
             </motion.div>
           )}
 
-          {/* Dark gradient overlay */}
+          {/* Black overlay — fades out the instant section enters view */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: "black" }}
+            initial={{ opacity: 1 }}
+            animate={{ opacity: inView ? 0 : 1 }}
+            transition={{ duration: 1.1, ease: "easeInOut" }}
+          />
+
+          {/* Permanent dark gradient on top */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "linear-gradient(to bottom, oklch(0.04 0 0 / 0.25) 0%, oklch(0.04 0 0 / 0.55) 100%)",
+                "linear-gradient(to bottom, oklch(0.04 0 0 / 0.2) 0%, oklch(0.04 0 0 / 0.5) 100%)",
             }}
           />
 
