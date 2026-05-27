@@ -3,18 +3,47 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 
-const projects = [
-  { vimeoId: "1195979120", vertical: false, cols: "col-span-2 md:col-span-8" },
-  { vimeoId: "1195979118", vertical: true,  cols: "col-span-2 md:col-span-4" },
-  { vimeoId: "1195979122", vertical: false, cols: "col-span-2 md:col-span-12" },
-  { vimeoId: "1195979451", vertical: true,  cols: "col-span-2 md:col-span-4" },
-  { vimeoId: "1195979119", vertical: false, cols: "col-span-2 md:col-span-8" },
+type Source = "vimeo" | "youtube";
+
+interface Project {
+  id: string;
+  source: Source;
+  vertical: boolean;
+  cols: string;
+}
+
+const projects: Project[] = [
+  { id: "1195979120",  source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-8" },
+  { id: "1195979118",  source: "vimeo",   vertical: true,  cols: "col-span-2 md:col-span-4" },
+  { id: "1195979122",  source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-12" },
+  { id: "1195979451",  source: "vimeo",   vertical: true,  cols: "col-span-2 md:col-span-4" },
+  { id: "1195979119",  source: "vimeo",   vertical: false, cols: "col-span-2 md:col-span-8" },
+  { id: "rv5PLylcqjg", source: "youtube", vertical: false, cols: "col-span-2 md:col-span-12" },
 ];
+
+function loopSrc(id: string, source: Source) {
+  if (source === "youtube") {
+    return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&rel=0&modestbranding=1&playsinline=1`;
+  }
+  return `https://player.vimeo.com/video/${id}?autoplay=1&muted=1&background=1&loop=1&quality=auto`;
+}
+
+function modalSrc(id: string, source: Source) {
+  if (source === "youtube") {
+    return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+  }
+  return `https://player.vimeo.com/video/${id}?autoplay=1&title=0&byline=0&portrait=0&color=ffffff`;
+}
+
+function iframeAllow(source: Source, modal = false) {
+  if (source === "youtube") return "autoplay; encrypted-media; fullscreen";
+  return modal ? "autoplay; fullscreen; picture-in-picture" : "autoplay; fullscreen";
+}
 
 export default function Portfolio() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-8%" });
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selected, setSelected] = useState<Project | null>(null);
 
   return (
     <section
@@ -51,22 +80,22 @@ export default function Portfolio() {
         <div className="grid grid-cols-2 md:grid-cols-12 gap-3 items-start">
           {projects.map((p) => (
             <div
-              key={p.vimeoId}
+              key={p.id}
               className={`${p.cols} rounded-[14px] overflow-hidden relative cursor-pointer group`}
               style={{
                 aspectRatio: p.vertical ? "9/16" : "16/9",
                 border: "1px solid oklch(0.18 0 0)",
                 background: "oklch(0.08 0 0)",
               }}
-              onClick={() => setSelectedId(p.vimeoId)}
+              onClick={() => setSelected(p)}
             >
               {inView && (
                 <iframe
-                  src={`https://player.vimeo.com/video/${p.vimeoId}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
+                  src={loopSrc(p.id, p.source)}
                   className="absolute inset-0 w-full h-full pointer-events-none"
                   style={{ transform: "scale(1.06)" }}
                   frameBorder="0"
-                  allow="autoplay; fullscreen"
+                  allow={iframeAllow(p.source)}
                 />
               )}
 
@@ -103,14 +132,14 @@ export default function Portfolio() {
       </div>
 
       <AnimatePresence>
-        {selectedId && (
+        {selected && (
           <motion.div
             className="fixed inset-0 z-[100] flex items-center justify-center p-5"
             style={{ background: "oklch(0.04 0 0 / 0.96)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedId(null)}
+            onClick={() => setSelected(null)}
           >
             <motion.div
               className="relative w-full max-w-5xl"
@@ -122,7 +151,7 @@ export default function Portfolio() {
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                onClick={() => setSelectedId(null)}
+                onClick={() => setSelected(null)}
                 className="absolute -top-10 right-0 font-sora text-sm transition-colors"
                 style={{ color: "oklch(0.45 0 0)" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "oklch(0.96 0 0)")}
@@ -131,10 +160,10 @@ export default function Portfolio() {
                 Fermer
               </button>
               <iframe
-                src={`https://player.vimeo.com/video/${selectedId}?autoplay=1&title=0&byline=0&portrait=0&color=ffffff`}
+                src={modalSrc(selected.id, selected.source)}
                 className="absolute inset-0 w-full h-full rounded-2xl"
                 frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
+                allow={iframeAllow(selected.source, true)}
                 allowFullScreen
               />
             </motion.div>
