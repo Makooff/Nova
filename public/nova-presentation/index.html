@@ -12,6 +12,10 @@
   body { font-family: "Sora", system-ui, sans-serif; color: #f5f5f0; }
   #root { position: absolute; inset: 0; }
 </style>
+<script>
+  /* Reset saved playhead so each opening starts fresh at t=0 */
+  try { localStorage.removeItem('nova-video:t'); } catch {}
+</script>
 </head>
 <body>
 <div id="root"></div>
@@ -24,48 +28,7 @@
 <script type="text/babel" src="scenes.jsx"></script>
 
 <script type="text/babel">
-  const { Stage, useTimeline } = window;
-
-  // Syncs the voiceover audio with the Stage timeline
-  function AudioSync({ src }) {
-    const audioRef = React.useRef(null);
-    const { time, playing } = useTimeline();
-    const prevPlayingRef = React.useRef(false);
-
-    // On first load, create audio
-    React.useEffect(() => {
-      const audio = new Audio(src);
-      audio.preload = 'auto';
-      audioRef.current = audio;
-      return () => { audio.pause(); audioRef.current = null; };
-    }, [src]);
-
-    // Sync play/pause
-    React.useEffect(() => {
-      const audio = audioRef.current;
-      if (!audio) return;
-      if (playing && !prevPlayingRef.current) {
-        audio.play().catch(() => {});
-      } else if (!playing && prevPlayingRef.current) {
-        audio.pause();
-      }
-      prevPlayingRef.current = playing;
-    }, [playing]);
-
-    // Seek when user scrubs (diff > 0.4s means user dragged the scrubber)
-    const lastSyncedTime = React.useRef(0);
-    React.useEffect(() => {
-      const audio = audioRef.current;
-      if (!audio) return;
-      const diff = Math.abs(audio.currentTime - time);
-      if (diff > 0.4) {
-        audio.currentTime = Math.max(0, time);
-        lastSyncedTime.current = time;
-      }
-    }, [time]);
-
-    return null;
-  }
+  const { Stage } = window;
 
   function App() {
     return (
@@ -74,9 +37,10 @@
         height={1080}
         duration={58.5}
         background="oklch(0.06 0 0)"
+        autoplay={true}
+        loop={false}
         persistKey="nova-video"
       >
-        <AudioSync src="./voix-off.mp3" />
         <window.NovaVideo />
       </Stage>
     );

@@ -1,14 +1,12 @@
 "use client";
 
-import { useRef, useCallback, memo, useState, useEffect } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import {
   motion,
   useScroll,
   useTransform,
   useSpring,
-  useMotionValue,
-  AnimatePresence,
   cubicBezier,
   type Variants,
 } from "framer-motion";
@@ -27,138 +25,6 @@ const wordVariants: Variants = {
 
 const SHOWREEL_ID = "850854753";
 const lines = ["On filme.", "On monte.", "Vos clients regardent."];
-
-// Portfolio videos with their best frame (seconds)
-const REEL_SLIDES = [
-  { vimeoId: "1195979451", seekTo: 10 },
-  { vimeoId: "1195979118", seekTo: 30 },
-  { vimeoId: "1195979119", seekTo: 17 },
-  { vimeoId: "1195979120", seekTo: 9  },
-  { vimeoId: "1195979122", seekTo: 0  },
-];
-
-const TiltCard = memo(function TiltCard() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const [index, setIndex] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  // Auto-advance every 3.5 s with a cross-fade
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setIndex((i) => (i + 1) % REEL_SLIDES.length);
-        setVisible(true);
-      }, 450);
-    }, 3500);
-    return () => clearInterval(timer);
-  }, []);
-
-  const rotateX = useTransform(mouseY, [-0.5, 0.5], [9, -9]);
-  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-9, 9]);
-  const springRotX = useSpring(rotateX, { stiffness: 120, damping: 18 });
-  const springRotY = useSpring(rotateY, { stiffness: 120, damping: 18 });
-
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      const rect = e.currentTarget.getBoundingClientRect();
-      mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
-      mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
-    },
-    [mouseX, mouseY]
-  );
-
-  const handleMouseLeave = useCallback(() => {
-    mouseX.set(0);
-    mouseY.set(0);
-  }, [mouseX, mouseY]);
-
-  const current = REEL_SLIDES[index];
-
-  return (
-    <div
-      className="perspective-800 hidden md:block shrink-0"
-      style={{ width: "340px" }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      <motion.div
-        className="relative w-full rounded-[20px] overflow-hidden"
-        style={{
-          aspectRatio: "3/4",
-          rotateX: springRotX,
-          rotateY: springRotY,
-          transformStyle: "preserve-3d",
-          willChange: "transform",
-          background: "oklch(0.08 0 0)",
-        }}
-      >
-        {/* Cycling thumbnail — fades between réalisations */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current.vimeoId}
-            className="absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: visible ? 1 : 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.45, ease: "easeInOut" }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`https://vumbnail.com/${current.vimeoId}.jpg`}
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Bottom gradient */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to top, oklch(0.06 0 0 / 0.75) 0%, transparent 55%)",
-          }}
-        />
-
-        {/* Specular sheen */}
-        <motion.div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(135deg, oklch(0.96 0 0 / 0.07) 0%, transparent 60%)",
-            rotateX: springRotX,
-            rotateY: springRotY,
-          }}
-        />
-
-        {/* Dots indicator */}
-        <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
-          <p
-            className="font-mono text-[9px] uppercase tracking-wider"
-            style={{ color: "oklch(0.45 0 0)" }}
-          >
-            Nova Production
-          </p>
-          <div className="flex gap-1">
-            {REEL_SLIDES.map((_, i) => (
-              <div
-                key={i}
-                className="rounded-full transition-all duration-400"
-                style={{
-                  width: i === index ? "16px" : "4px",
-                  height: "4px",
-                  background: i === index ? "oklch(0.75 0 0)" : "oklch(0.30 0 0)",
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-});
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
@@ -213,11 +79,11 @@ export default function Hero() {
 
       {/* Main content with parallax */}
       <motion.div
-        className="relative flex-1 flex flex-col md:flex-row items-center max-w-6xl mx-auto w-full px-5 pt-[56px]"
+        className="relative flex-1 flex flex-col items-center justify-center max-w-6xl mx-auto w-full px-5 pt-[56px]"
         style={{ y: textY, opacity: contentOpacity }}
       >
-        {/* LEFT — text */}
-        <div className="flex-1 flex flex-col justify-center py-16 md:py-0 md:pr-16">
+        {/* Text */}
+        <div className="flex flex-col justify-center py-16 max-w-3xl w-full">
           <motion.p
             className="font-mono text-[10px] uppercase tracking-[3px] mb-8"
             style={{ color: "oklch(0.45 0 0)" }}
@@ -303,15 +169,6 @@ export default function Hero() {
             </Link>
           </motion.div>
         </div>
-
-        {/* RIGHT — 3D tilt card with real showreel thumbnail */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <TiltCard />
-        </motion.div>
       </motion.div>
 
       {/* Bottom — scroll indicator + marquee */}
