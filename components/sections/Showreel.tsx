@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion";
+import VimeoLooper from "@/components/ui/VimeoLooper";
 
 const VIMEO_ID = "850854753";
 
@@ -51,30 +52,12 @@ export default function Showreel() {
           tabIndex={0}
           onKeyDown={(e) => e.key === "Enter" && setOpen(true)}
         >
-          {/* iframe loads on mount — buffering in background before visible */}
+          {/* VimeoLooper — thumbnail instant, crossfade vers vidéo live */}
           {isMounted && (
-            <motion.div
-              className="absolute inset-0"
-              style={{ y: bgY }}
-            >
-              <iframe
-                src={`https://player.vimeo.com/video/${VIMEO_ID}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
-                className="absolute inset-0 w-full h-full pointer-events-none"
-                style={{ transform: "scale(1.06)" }}
-                frameBorder="0"
-                allow="autoplay; fullscreen"
-              />
+            <motion.div className="absolute inset-0" style={{ y: bgY }}>
+              <VimeoLooper vimeoId={VIMEO_ID} delay={3500} />
             </motion.div>
           )}
-
-          {/* Black overlay — fades out the instant section enters view */}
-          <motion.div
-            className="absolute inset-0 pointer-events-none"
-            style={{ background: "black" }}
-            initial={{ opacity: 1 }}
-            animate={{ opacity: inView ? 0 : 1 }}
-            transition={{ duration: 1.1, ease: "easeInOut" }}
-          />
 
           {/* Permanent dark gradient on top */}
           <div

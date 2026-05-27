@@ -11,6 +11,7 @@ import {
   type Variants,
 } from "framer-motion";
 import Marquee from "@/components/ui/Marquee";
+import VimeoLooper from "@/components/ui/VimeoLooper";
 
 const easeExpo = cubicBezier(0.16, 1, 0.3, 1);
 
@@ -45,27 +46,13 @@ export default function Hero() {
       className="relative flex flex-col overflow-hidden"
       style={{ minHeight: "100dvh", background: "oklch(0.06 0 0)" }}
     >
-      {/* Showreel background — thumbnail instant + vidéo Vimeo par-dessus */}
+      {/* Showreel background — thumbnail instant, crossfade vers vidéo */}
       <motion.div
         className="absolute inset-0 pointer-events-none overflow-hidden"
         style={{ scale: bgScale, willChange: "transform", opacity: 0.15 }}
         aria-hidden
       >
-        <iframe
-          src={`https://player.vimeo.com/video/${SHOWREEL_ID}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            minWidth: "177.78vh",
-            minHeight: "56.25vw",
-            width: "100%",
-            height: "100%",
-          }}
-          frameBorder="0"
-          allow="autoplay; fullscreen"
-        />
+        <VimeoLooper vimeoId={SHOWREEL_ID} scale={1} delay={3000} />
       </motion.div>
 
       {/* Vignette */}

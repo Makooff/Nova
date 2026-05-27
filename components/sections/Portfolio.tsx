@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import VimeoLooper from "@/components/ui/VimeoLooper";
 
 const projects = [
   { vimeoId: "1195979120", vertical: false, cols: "col-span-2 md:col-span-8" },
@@ -60,15 +61,7 @@ export default function Portfolio() {
               }}
               onClick={() => setSelectedId(p.vimeoId)}
             >
-              {inView && (
-                <iframe
-                  src={`https://player.vimeo.com/video/${p.vimeoId}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
-                  className="absolute inset-0 w-full h-full pointer-events-none"
-                  style={{ transform: "scale(1.06)" }}
-                  frameBorder="0"
-                  allow="autoplay; fullscreen"
-                />
-              )}
+              {inView && <VimeoLooper vimeoId={p.vimeoId} delay={4000} />}
 
               {/* Hover blur */}
               <div

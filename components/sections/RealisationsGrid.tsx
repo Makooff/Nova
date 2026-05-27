@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import VimeoLooper from "@/components/ui/VimeoLooper";
 
 const projects = [
   // Row 1: landscape left + portrait right
@@ -21,12 +22,8 @@ function VideoItem({
   p: (typeof projects)[number];
   onSelect: () => void;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "0px 0px -5% 0px" });
-
   return (
     <div
-      ref={ref}
       className={`${p.cols} rounded-[14px] overflow-hidden relative cursor-pointer group`}
       style={{
         aspectRatio: p.vertical ? "9/16" : "16/9",
@@ -35,15 +32,7 @@ function VideoItem({
       }}
       onClick={onSelect}
     >
-      {inView && (
-        <iframe
-          src={`https://player.vimeo.com/video/${p.vimeoId}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          style={{ transform: "scale(1.06)" }}
-          frameBorder="0"
-          allow="autoplay; fullscreen"
-        />
-      )}
+      <VimeoLooper vimeoId={p.vimeoId} delay={4000} />
 
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
