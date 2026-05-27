@@ -43,6 +43,7 @@
   const { Stage } = window;
 
   function App() {
+    const loop = new URLSearchParams(location.search).has('muted');
     return (
       <Stage
         width={1920}
@@ -50,7 +51,8 @@
         duration={58.5}
         background="oklch(0.06 0 0)"
         autoplay={true}
-        loop={false}
+        loop={loop}
+        hideControls={true}
         persistKey="nova-video"
       >
         <window.NovaVideo />

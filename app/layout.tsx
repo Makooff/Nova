@@ -70,6 +70,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <link rel="preconnect" href="https://player.vimeo.com" />
+        <link rel="preconnect" href="https://i.vimeocdn.com" crossOrigin="" />
+        <link rel="preconnect" href="https://f.vimeocdn.com" crossOrigin="" />
+        <link rel="preconnect" href="https://fresnel.vimeocdn.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://vimeo.com" />
+      </head>
       <body
         className={`${sora.variable} ${jakarta.variable} ${dmMono.variable} font-sora antialiased`}
       >

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const projects = [
   // Row 1: landscape left + portrait right
@@ -14,6 +14,66 @@ const projects = [
   { vimeoId: "1195979119", vertical: false, cols: "col-span-2 md:col-span-8" },
 ];
 
+function VideoItem({
+  p,
+  onSelect,
+}: {
+  p: (typeof projects)[number];
+  onSelect: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "0px 0px -5% 0px" });
+
+  return (
+    <div
+      ref={ref}
+      className={`${p.cols} rounded-[14px] overflow-hidden relative cursor-pointer group`}
+      style={{
+        aspectRatio: p.vertical ? "9/16" : "16/9",
+        border: "1px solid oklch(0.18 0 0)",
+        background: "oklch(0.08 0 0)",
+      }}
+      onClick={onSelect}
+    >
+      {inView && (
+        <iframe
+          src={`https://player.vimeo.com/video/${p.vimeoId}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{ transform: "scale(1.06)" }}
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+        />
+      )}
+
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
+        style={{
+          backdropFilter: "blur(5px)",
+          WebkitBackdropFilter: "blur(5px)",
+          background: "oklch(0.04 0 0 / 0.40)",
+        }}
+      />
+
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <motion.div
+          className="w-14 h-14 rounded-full flex items-center justify-center"
+          style={{
+            background: "oklch(0.96 0 0 / 0.12)",
+            border: "1px solid oklch(0.96 0 0 / 0.40)",
+            backdropFilter: "blur(8px)",
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <svg width="14" height="16" viewBox="0 0 14 16" className="translate-x-0.5">
+            <path d="M0 0L14 8L0 16V0Z" fill="oklch(0.96 0 0)" />
+          </svg>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
 export default function RealisationsGrid() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -21,57 +81,10 @@ export default function RealisationsGrid() {
     <>
       <div className="grid grid-cols-2 md:grid-cols-12 gap-3 items-start">
         {projects.map((p) => (
-          <div
-            key={p.vimeoId}
-            className={`${p.cols} rounded-[14px] overflow-hidden relative cursor-pointer group`}
-            style={{
-              aspectRatio: p.vertical ? "9/16" : "16/9",
-              border: "1px solid oklch(0.18 0 0)",
-              background: "oklch(0.08 0 0)",
-            }}
-            onClick={() => setSelectedId(p.vimeoId)}
-          >
-            {/* Looping video — fills frame */}
-            <iframe
-              src={`https://player.vimeo.com/video/${p.vimeoId}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              style={{ transform: "scale(1.06)" }}
-              frameBorder="0"
-              allow="autoplay; fullscreen"
-            />
-
-            {/* Hover blur */}
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
-              style={{
-                backdropFilter: "blur(5px)",
-                WebkitBackdropFilter: "blur(5px)",
-                background: "oklch(0.04 0 0 / 0.40)",
-              }}
-            />
-
-            {/* Hover play button */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <motion.div
-                className="w-14 h-14 rounded-full flex items-center justify-center"
-                style={{
-                  background: "oklch(0.96 0 0 / 0.12)",
-                  border: "1px solid oklch(0.96 0 0 / 0.40)",
-                  backdropFilter: "blur(8px)",
-                }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <svg width="14" height="16" viewBox="0 0 14 16" className="translate-x-0.5">
-                  <path d="M0 0L14 8L0 16V0Z" fill="oklch(0.96 0 0)" />
-                </svg>
-              </motion.div>
-            </div>
-          </div>
+          <VideoItem key={p.vimeoId} p={p} onSelect={() => setSelectedId(p.vimeoId)} />
         ))}
       </div>
 
-      {/* Fullscreen modal — rounded corners, close on outside click or Fermer */}
       <AnimatePresence>
         {selectedId && (
           <motion.div
