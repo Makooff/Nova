@@ -45,12 +45,20 @@ export default function Hero() {
       className="relative flex flex-col overflow-hidden"
       style={{ minHeight: "100dvh", background: "oklch(0.06 0 0)" }}
     >
-      {/* Showreel video background — muted, looping, very subtle */}
+      {/* Showreel background — thumbnail instant + vidéo Vimeo par-dessus */}
       <motion.div
         className="absolute inset-0 pointer-events-none overflow-hidden"
-        style={{ scale: bgScale, willChange: "transform", opacity: 0.13 }}
+        style={{ scale: bgScale, willChange: "transform", opacity: 0.15 }}
         aria-hidden
       >
+        {/* Thumbnail statique — visible immédiatement, remplacé par la vidéo */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`https://vumbnail.com/${SHOWREEL_ID}.jpg`}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Vimeo charge en arrière-plan et overlay le thumbnail une fois prêt */}
         <iframe
           src={`https://player.vimeo.com/video/${SHOWREEL_ID}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
           style={{

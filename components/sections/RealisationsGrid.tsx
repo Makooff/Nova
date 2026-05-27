@@ -4,11 +4,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
-  { vimeoId: "1195979451", vertical: false, cols: "col-span-2 md:col-span-7" },
-  { vimeoId: "1195979118", vertical: false, cols: "col-span-2 md:col-span-5" },
-  { vimeoId: "1195979119", vertical: true,  cols: "col-span-1 md:col-span-4" },
-  { vimeoId: "1195979120", vertical: true,  cols: "col-span-1 md:col-span-4" },
-  { vimeoId: "1195979122", vertical: false, cols: "col-span-2 md:col-span-4" },
+  // Row 1: portrait left + landscape right
+  { vimeoId: "1195979451", vertical: true,  cols: "col-span-2 md:col-span-4" },
+  { vimeoId: "1195979119", vertical: false, cols: "col-span-2 md:col-span-8" },
+  // Row 2: landscape left + portrait right (portraits séparés)
+  { vimeoId: "1195979120", vertical: false, cols: "col-span-2 md:col-span-8" },
+  { vimeoId: "1195979118", vertical: true,  cols: "col-span-2 md:col-span-4" },
+  // Row 3: pleine largeur
+  { vimeoId: "1195979122", vertical: false, cols: "col-span-2 md:col-span-12" },
 ];
 
 export default function RealisationsGrid() {
