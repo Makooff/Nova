@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import VimeoThumbnail from "@/components/ui/VimeoThumbnail";
 
 const projects = [
-  { vimeoId: "1195979451", category: "Production Vidéo", cols: "col-span-2 md:col-span-7" },
-  { vimeoId: "1195979118", category: "Production Vidéo", cols: "col-span-2 md:col-span-5" },
-  { vimeoId: "1195979119", category: "Production Vidéo", cols: "col-span-2 md:col-span-4" },
-  { vimeoId: "1195979120", category: "Production Vidéo", cols: "col-span-2 md:col-span-5" },
-  { vimeoId: "1195979122", category: "Production Vidéo", cols: "col-span-2 md:col-span-3" },
+  { vimeoId: "1195979451", seekTo: 10,  vertical: false, cols: "col-span-2 md:col-span-7" },
+  { vimeoId: "1195979118", seekTo: 30,  vertical: false, cols: "col-span-2 md:col-span-5" },
+  { vimeoId: "1195979119", seekTo: 17,  vertical: true,  cols: "col-span-1 md:col-span-4" },
+  { vimeoId: "1195979120", seekTo: 9,   vertical: true,  cols: "col-span-1 md:col-span-4" },
+  { vimeoId: "1195979122", seekTo: 0,   vertical: false, cols: "col-span-2 md:col-span-4" },
 ];
 
 export default function RealisationsGrid() {
@@ -16,20 +17,20 @@ export default function RealisationsGrid() {
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-12 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-12 gap-3 items-start">
         {projects.map((p, i) => (
           <div
             key={i}
             className={`${p.cols} rounded-[14px] overflow-hidden relative cursor-pointer group`}
-            style={{ aspectRatio: "16/10", border: "1px solid oklch(0.22 0 0)" }}
+            style={{
+              aspectRatio: p.vertical ? "9/16" : "16/10",
+              border: "1px solid oklch(0.22 0 0)",
+              background: "oklch(0.10 0 0)",
+            }}
             onClick={() => setSelectedId(p.vimeoId)}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`https://vumbnail.com/${p.vimeoId}.jpg`}
-              alt="Réalisation Nova"
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
+            <VimeoThumbnail vimeoId={p.vimeoId} seekTo={p.seekTo} />
+
             {/* Bottom gradient */}
             <div
               className="absolute inset-0"
@@ -37,6 +38,7 @@ export default function RealisationsGrid() {
                 background: "linear-gradient(to top, oklch(0.04 0 0 / 0.85) 0%, transparent 55%)",
               }}
             />
+
             {/* Play button on hover */}
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div
@@ -51,15 +53,6 @@ export default function RealisationsGrid() {
                   <path d="M0 0L14 8L0 16V0Z" fill="oklch(0.96 0 0)" />
                 </svg>
               </div>
-            </div>
-            {/* Category label */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <p
-                className="font-mono text-[9px] uppercase tracking-wider"
-                style={{ color: "oklch(0.50 0 0)" }}
-              >
-                {p.category}
-              </p>
             </div>
           </div>
         ))}

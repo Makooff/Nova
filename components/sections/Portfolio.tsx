@@ -10,15 +10,17 @@ import {
   cubicBezier,
   type Variants,
 } from "framer-motion";
+import VimeoThumbnail from "@/components/ui/VimeoThumbnail";
 
 const easeExpo = cubicBezier(0.16, 1, 0.3, 1);
 
+// seekTo = specific frame in seconds | vertical = portrait aspect ratio
 const items = [
-  { title: "Réalisation 01", category: "Production Vidéo", vimeoId: "1195979451", cols: "md:col-span-7" },
-  { title: "Réalisation 02", category: "Production Vidéo", vimeoId: "1195979118", cols: "md:col-span-5" },
-  { title: "Réalisation 03", category: "Production Vidéo", vimeoId: "1195979119", cols: "md:col-span-4" },
-  { title: "Réalisation 04", category: "Production Vidéo", vimeoId: "1195979120", cols: "md:col-span-5" },
-  { title: "Réalisation 05", category: "Production Vidéo", vimeoId: "1195979122", cols: "md:col-span-3" },
+  { vimeoId: "1195979451", seekTo: 10,  vertical: false, cols: "col-span-2 md:col-span-7" },
+  { vimeoId: "1195979118", seekTo: 30,  vertical: false, cols: "col-span-2 md:col-span-5" },
+  { vimeoId: "1195979119", seekTo: 17,  vertical: true,  cols: "col-span-1 md:col-span-4" },
+  { vimeoId: "1195979120", seekTo: 9,   vertical: true,  cols: "col-span-1 md:col-span-4" },
+  { vimeoId: "1195979122", seekTo: 0,   vertical: false, cols: "col-span-2 md:col-span-4" },
 ];
 
 const itemVariants: Variants = {
@@ -32,9 +34,9 @@ const itemVariants: Variants = {
 };
 
 const TiltItem = memo(function TiltItem({
-  title, category, vimeoId, cols, index, inView, onClick,
+  vimeoId, seekTo, vertical, cols, index, inView, onClick,
 }: {
-  title: string; category: string; vimeoId: string;
+  vimeoId: string; seekTo: number; vertical: boolean;
   cols: string; index: number; inView: boolean;
   onClick: () => void;
 }) {
@@ -60,12 +62,12 @@ const TiltItem = memo(function TiltItem({
   }, [mouseX, mouseY]);
 
   return (
-    <div className={`${cols} perspective-1000`}>
+    <div className={cols}>
       <motion.div
-        className="rounded-[14px] overflow-hidden relative cursor-pointer group w-full h-full"
+        className="rounded-[14px] overflow-hidden relative cursor-pointer group w-full"
         style={
           {
-            aspectRatio: "16/10",
+            aspectRatio: vertical ? "9/16" : "16/10",
             background: "oklch(0.10 0 0)",
             border: "1px solid oklch(0.22 0 0)",
             rotateX: springRX,
@@ -84,13 +86,7 @@ const TiltItem = memo(function TiltItem({
         onMouseLeave={handleMouseLeave}
         onClick={onClick}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`https://vumbnail.com/${vimeoId}.jpg`}
-          alt={title}
-          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          style={{ transition: "transform 700ms cubic-bezier(0.16,1,0.3,1)" }}
-        />
+        <VimeoThumbnail vimeoId={vimeoId} seekTo={seekTo} />
 
         {/* Bottom gradient */}
         <div
@@ -108,7 +104,7 @@ const TiltItem = memo(function TiltItem({
           }}
         />
 
-        {/* Play button (visible on hover) */}
+        {/* Play button on hover */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div
             className="w-12 h-12 rounded-full flex items-center justify-center"
@@ -122,22 +118,6 @@ const TiltItem = memo(function TiltItem({
               <path d="M0 0L14 8L0 16V0Z" fill="oklch(0.96 0 0)" />
             </svg>
           </div>
-        </div>
-
-        {/* Info — slides up on hover */}
-        <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-1 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <p
-            className="font-mono text-[9px] uppercase tracking-wider mb-1"
-            style={{ color: "oklch(0.50 0 0)" }}
-          >
-            {category}
-          </p>
-          <p
-            className="font-sora font-light text-sm"
-            style={{ color: "oklch(0.96 0 0)" }}
-          >
-            {title}
-          </p>
         </div>
       </motion.div>
     </div>
@@ -181,7 +161,7 @@ export default function Portfolio() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-3 items-start">
           {items.map((item, i) => (
             <TiltItem
               key={i}

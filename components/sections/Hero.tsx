@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useCallback, memo } from "react";
+import { useRef, useCallback, memo, useState, useEffect } from "react";
 import Link from "next/link";
 import {
   motion,
@@ -8,6 +8,7 @@ import {
   useTransform,
   useSpring,
   useMotionValue,
+  AnimatePresence,
   cubicBezier,
   type Variants,
 } from "framer-motion";
@@ -27,9 +28,32 @@ const wordVariants: Variants = {
 const SHOWREEL_ID = "850854753";
 const lines = ["On filme.", "On monte.", "Vos clients regardent."];
 
+// Portfolio videos with their best frame (seconds)
+const REEL_SLIDES = [
+  { vimeoId: "1195979451", seekTo: 10 },
+  { vimeoId: "1195979118", seekTo: 30 },
+  { vimeoId: "1195979119", seekTo: 17 },
+  { vimeoId: "1195979120", seekTo: 9  },
+  { vimeoId: "1195979122", seekTo: 0  },
+];
+
 const TiltCard = memo(function TiltCard() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  // Auto-advance every 3.5 s with a cross-fade
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setIndex((i) => (i + 1) % REEL_SLIDES.length);
+        setVisible(true);
+      }, 450);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
 
   const rotateX = useTransform(mouseY, [-0.5, 0.5], [9, -9]);
   const rotateY = useTransform(mouseX, [-0.5, 0.5], [-9, 9]);
@@ -50,6 +74,8 @@ const TiltCard = memo(function TiltCard() {
     mouseY.set(0);
   }, [mouseX, mouseY]);
 
+  const current = REEL_SLIDES[index];
+
   return (
     <div
       className="perspective-800 hidden md:block shrink-0"
@@ -65,14 +91,29 @@ const TiltCard = memo(function TiltCard() {
           rotateY: springRotY,
           transformStyle: "preserve-3d",
           willChange: "transform",
+          background: "oklch(0.08 0 0)",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`https://vumbnail.com/${SHOWREEL_ID}.jpg`}
-          alt="Showreel Nova"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        {/* Cycling thumbnail — fades between réalisations */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current.vimeoId}
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: visible ? 1 : 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.45, ease: "easeInOut" }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`https://vumbnail.com/${current.vimeoId}.jpg`}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Bottom gradient */}
         <div
           className="absolute inset-0"
           style={{
@@ -80,6 +121,8 @@ const TiltCard = memo(function TiltCard() {
               "linear-gradient(to top, oklch(0.06 0 0 / 0.75) 0%, transparent 55%)",
           }}
         />
+
+        {/* Specular sheen */}
         <motion.div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -89,13 +132,28 @@ const TiltCard = memo(function TiltCard() {
             rotateY: springRotY,
           }}
         />
-        <div className="absolute bottom-5 left-5 right-5">
+
+        {/* Dots indicator */}
+        <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
           <p
             className="font-mono text-[9px] uppercase tracking-wider"
             style={{ color: "oklch(0.45 0 0)" }}
           >
-            Nova Production · Showreel 2025
+            Nova Production
           </p>
+          <div className="flex gap-1">
+            {REEL_SLIDES.map((_, i) => (
+              <div
+                key={i}
+                className="rounded-full transition-all duration-400"
+                style={{
+                  width: i === index ? "16px" : "4px",
+                  height: "4px",
+                  background: i === index ? "oklch(0.75 0 0)" : "oklch(0.30 0 0)",
+                }}
+              />
+            ))}
+          </div>
         </div>
       </motion.div>
     </div>
