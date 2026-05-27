@@ -4,14 +4,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
-  // Row 1: portrait left + landscape right
-  { vimeoId: "1195979451", vertical: true,  cols: "col-span-2 md:col-span-4" },
-  { vimeoId: "1195979119", vertical: false, cols: "col-span-2 md:col-span-8" },
-  // Row 2: landscape left + portrait right (portraits séparés)
+  // Row 1: landscape left + portrait right
   { vimeoId: "1195979120", vertical: false, cols: "col-span-2 md:col-span-8" },
   { vimeoId: "1195979118", vertical: true,  cols: "col-span-2 md:col-span-4" },
-  // Row 3: pleine largeur
+  // Row 2: pleine largeur
   { vimeoId: "1195979122", vertical: false, cols: "col-span-2 md:col-span-12" },
+  // Row 3: portrait left + landscape right
+  { vimeoId: "1195979451", vertical: true,  cols: "col-span-2 md:col-span-4" },
+  { vimeoId: "1195979119", vertical: false, cols: "col-span-2 md:col-span-8" },
 ];
 
 export default function RealisationsGrid() {
@@ -20,12 +20,12 @@ export default function RealisationsGrid() {
   return (
     <>
       <div className="grid grid-cols-2 md:grid-cols-12 gap-3 items-start">
-        {projects.map((p, i) => (
+        {projects.map((p) => (
           <div
-            key={i}
+            key={p.vimeoId}
             className={`${p.cols} rounded-[14px] overflow-hidden relative cursor-pointer group`}
             style={{
-              aspectRatio: p.vertical ? "9/16" : "16/10",
+              aspectRatio: p.vertical ? "9/16" : "16/9",
               border: "1px solid oklch(0.18 0 0)",
               background: "oklch(0.08 0 0)",
             }}

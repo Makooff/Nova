@@ -51,14 +51,6 @@ export default function Hero() {
         style={{ scale: bgScale, willChange: "transform", opacity: 0.15 }}
         aria-hidden
       >
-        {/* Thumbnail statique — visible immédiatement, remplacé par la vidéo */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`https://vumbnail.com/${SHOWREEL_ID}.jpg`}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Vimeo charge en arrière-plan et overlay le thumbnail une fois prêt */}
         <iframe
           src={`https://player.vimeo.com/video/${SHOWREEL_ID}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
           style={{

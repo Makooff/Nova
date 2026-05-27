@@ -15,6 +15,18 @@
 <script>
   /* Reset saved playhead so each opening starts fresh at t=0 */
   try { localStorage.removeItem('nova-video:t'); } catch {}
+  /* Mute all audio when ?muted param is present (inline preview mode) */
+  window.__NOVA_MUTED__ = new URLSearchParams(location.search).has('muted');
+  if (window.__NOVA_MUTED__) {
+    let n = 0;
+    const _muteId = setInterval(() => {
+      document.querySelectorAll('audio, video').forEach(function(el) {
+        el.muted = true;
+        el.volume = 0;
+      });
+      if (++n > 120) clearInterval(_muteId);
+    }, 100);
+  }
 </script>
 </head>
 <body>
