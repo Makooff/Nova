@@ -11,27 +11,27 @@ function r2(filename: string) {
 
 type VideoEntry = {
   type: "r2" | "youtube";
-  src: string;            // r2 URL or youtube ID
+  src: string;
   vertical: boolean;
   cols: string;
 };
 
 const projects: VideoEntry[] = [
   // Row 1 — showreel BOZAR pleine largeur
-  { type: "r2", src: r2("BOZAR_Become_a_Bozars_Young_Ambassador_hd 1080p.MP4"), vertical: false, cols: "col-span-2 md:col-span-12" },
-  // Row 2 — AutoSpa + Timeline 2
-  { type: "r2", src: r2("AutoSpaV2_hd 1080p.MP4"),                              vertical: false, cols: "col-span-2 md:col-span-6" },
-  { type: "r2", src: r2("Timeline_2_hd 1080p.MP4"),                             vertical: false, cols: "col-span-2 md:col-span-6" },
+  { type: "r2", src: r2("BOZAR_Become_a_Bozars_Young_Ambassador_(Campaign)_hd 1080p.MP4"), vertical: false, cols: "col-span-2 md:col-span-12" },
+  // Row 2 — AutoSpa portrait + Timeline landscape
+  { type: "r2", src: r2("AutoSpaV2_hd 1080p.MP4"),                                        vertical: true,  cols: "col-span-1 md:col-span-4" },
+  { type: "r2", src: r2("Timeline_2_hd 1080p.MP4"),                                       vertical: false, cols: "col-span-1 md:col-span-8" },
   // Row 3 — CarWash pleine largeur
-  { type: "r2", src: r2("260508_CARWASH_COMMERCIAL_MONTAGE_V3_hd 1080p.MP4"),   vertical: false, cols: "col-span-2 md:col-span-12" },
-  // Row 4 — Timeline 3 + AutoSpa P2
-  { type: "r2", src: r2("Timeline_3_hd 1080p.MP4"),                             vertical: false, cols: "col-span-2 md:col-span-6" },
-  { type: "r2", src: r2("VidAoAutospaP2V4_uhd 2160p.MP4"),                      vertical: false, cols: "col-span-2 md:col-span-6" },
+  { type: "r2", src: r2("260508_CARWASH_COMMERCIAL_MONTAGE_V3_hd 1080p.MP4"),              vertical: false, cols: "col-span-2 md:col-span-12" },
+  // Row 4 — Timeline landscape + AutoSpa portrait
+  { type: "r2", src: r2("Timeline_3_hd 1080p.MP4"),                                       vertical: false, cols: "col-span-1 md:col-span-8" },
+  { type: "r2", src: r2("VidAoAutospaP2V4_uhd 2160p.MP4"),                                vertical: true,  cols: "col-span-1 md:col-span-4" },
   // Row 5 — Caballero YouTube pleine largeur
-  { type: "youtube", src: "rv5PLylcqjg",                                         vertical: false, cols: "col-span-2 md:col-span-12" },
+  { type: "youtube", src: "rv5PLylcqjg",                                                   vertical: false, cols: "col-span-2 md:col-span-12" },
 ];
 
-function loopContent(p: VideoEntry) {
+function LoopContent({ p }: { p: VideoEntry }) {
   if (p.type === "youtube") {
     return (
       <iframe
@@ -57,30 +57,6 @@ function loopContent(p: VideoEntry) {
   );
 }
 
-function modalContent(p: VideoEntry) {
-  if (p.type === "youtube") {
-    return (
-      <iframe
-        src={`https://www.youtube.com/embed/${p.src}?autoplay=1&rel=0&modestbranding=1`}
-        className="absolute inset-0 w-full h-full rounded-2xl"
-        frameBorder="0"
-        allow="autoplay; encrypted-media; fullscreen"
-        allowFullScreen
-      />
-    );
-  }
-  return (
-    <video
-      src={p.src}
-      autoPlay
-      controls
-      playsInline
-      className="absolute inset-0 w-full h-full rounded-2xl"
-      style={{ objectFit: "contain", background: "#000" }}
-    />
-  );
-}
-
 function VideoItem({ p, onSelect }: { p: VideoEntry; onSelect: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "200px 0px" });
@@ -96,24 +72,16 @@ function VideoItem({ p, onSelect }: { p: VideoEntry; onSelect: () => void }) {
       }}
       onClick={onSelect}
     >
-      {inView && loopContent(p)}
+      {inView && <LoopContent p={p} />}
 
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
-        style={{
-          backdropFilter: "blur(5px)",
-          WebkitBackdropFilter: "blur(5px)",
-          background: "oklch(0.04 0 0 / 0.40)",
-        }}
+        style={{ backdropFilter: "blur(5px)", WebkitBackdropFilter: "blur(5px)", background: "oklch(0.04 0 0 / 0.40)" }}
       />
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <motion.div
           className="w-14 h-14 rounded-full flex items-center justify-center"
-          style={{
-            background: "oklch(0.96 0 0 / 0.12)",
-            border: "1px solid oklch(0.96 0 0 / 0.40)",
-            backdropFilter: "blur(8px)",
-          }}
+          style={{ background: "oklch(0.96 0 0 / 0.12)", border: "1px solid oklch(0.96 0 0 / 0.40)", backdropFilter: "blur(8px)" }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -149,7 +117,7 @@ export default function RealisationsGrid() {
           >
             <motion.div
               className="relative w-full max-w-5xl"
-              style={{ aspectRatio: "16/9" }}
+              style={{ aspectRatio: selected.vertical ? "9/16" : "16/9" }}
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
@@ -165,7 +133,24 @@ export default function RealisationsGrid() {
               >
                 Fermer
               </button>
-              {modalContent(selected)}
+              {selected.type === "youtube" ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${selected.src}?autoplay=1&rel=0&modestbranding=1`}
+                  className="absolute inset-0 w-full h-full rounded-2xl"
+                  frameBorder="0"
+                  allow="autoplay; encrypted-media; fullscreen"
+                  allowFullScreen
+                />
+              ) : (
+                <video
+                  src={selected.src}
+                  autoPlay
+                  controls
+                  playsInline
+                  className="absolute inset-0 w-full h-full rounded-2xl"
+                  style={{ objectFit: "contain", background: "#000" }}
+                />
+              )}
             </motion.div>
           </motion.div>
         )}

@@ -3,6 +3,9 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 
+const PRESENTATION_URL =
+  `https://pub-a93d9300f3144cee9101e92c2ba03175.r2.dev/${encodeURIComponent("Vidéo")}/${encodeURIComponent("48A22DD7-4B93-4DCE-BC1C-13C3FBD13E25.mov")}`;
+
 export default function PresentationPreview() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -10,14 +13,11 @@ export default function PresentationPreview() {
 
   return (
     <>
-      {/* Preview card — auto-plays muted when scrolled into view */}
+      {/* Preview — autoplay muted dès que la section entre dans le viewport */}
       <div ref={ref} className="w-full" style={{ aspectRatio: "16/9" }}>
         <motion.div
           className="w-full h-full rounded-2xl overflow-hidden relative cursor-pointer group"
-          style={{
-            background: "oklch(0.06 0 0)",
-            border: "1px solid oklch(0.16 0 0)",
-          }}
+          style={{ background: "oklch(0.06 0 0)", border: "1px solid oklch(0.16 0 0)" }}
           onClick={() => setOpen(true)}
           whileHover={{ borderColor: "oklch(0.30 0 0)" }}
           transition={{ duration: 0.2 }}
@@ -26,28 +26,26 @@ export default function PresentationPreview() {
           tabIndex={0}
           onKeyDown={(e) => e.key === "Enter" && setOpen(true)}
         >
-          {/* Muted inline preview — loads once in view */}
           {inView && (
-            <iframe
-              src="/nova-presentation/index.html?muted"
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              style={{ border: "none" }}
-              allow="autoplay"
+            <video
+              src={PRESENTATION_URL}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
             />
           )}
 
-          {/* Hover overlay with play hint */}
+          {/* Hover overlay */}
           <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
             style={{ background: "oklch(0.04 0 0 / 0.50)" }}
           >
             <motion.div
               className="w-16 h-16 rounded-full flex items-center justify-center"
-              style={{
-                background: "oklch(0.96 0 0 / 0.12)",
-                border: "1px solid oklch(0.96 0 0 / 0.40)",
-                backdropFilter: "blur(8px)",
-              }}
+              style={{ background: "oklch(0.96 0 0 / 0.12)", border: "1px solid oklch(0.96 0 0 / 0.40)", backdropFilter: "blur(8px)" }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -57,19 +55,15 @@ export default function PresentationPreview() {
             </motion.div>
           </div>
 
-          {/* Corner label */}
           <div className="absolute bottom-5 left-6 pointer-events-none">
-            <p
-              className="font-mono text-[9px] uppercase tracking-wider"
-              style={{ color: "oklch(0.45 0 0)" }}
-            >
+            <p className="font-mono text-[9px] uppercase tracking-wider" style={{ color: "oklch(0.45 0 0)" }}>
               Nova Production — Bruxelles · Cliquer pour le son
             </p>
           </div>
         </motion.div>
       </div>
 
-      {/* Fullscreen modal — with audio */}
+      {/* Fullscreen modal — avec son */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -98,13 +92,13 @@ export default function PresentationPreview() {
               >
                 Fermer ✕
               </button>
-
-              <iframe
-                src="/nova-presentation/index.html"
+              <video
+                src={PRESENTATION_URL}
+                autoPlay
+                controls
+                playsInline
                 className="absolute inset-0 w-full h-full"
-                style={{ border: "none" }}
-                allow="autoplay; fullscreen"
-                allowFullScreen
+                style={{ objectFit: "contain", background: "#000" }}
               />
             </motion.div>
           </motion.div>
