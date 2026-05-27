@@ -17,18 +17,18 @@ type VideoEntry = {
 };
 
 const projects: VideoEntry[] = [
-  // Row 1 — showreel BOZAR pleine largeur
-  { type: "r2", src: r2("BOZAR_Become_a_Bozars_Young_Ambassador_(Campaign)_hd 1080p.MP4"), vertical: false, cols: "col-span-2 md:col-span-12" },
-  // Row 2 — AutoSpa portrait + Timeline landscape
-  { type: "r2", src: r2("AutoSpaV2_hd 1080p.MP4"),                                        vertical: true,  cols: "col-span-1 md:col-span-4" },
-  { type: "r2", src: r2("Timeline_2_hd 1080p.MP4"),                                       vertical: false, cols: "col-span-1 md:col-span-8" },
-  // Row 3 — CarWash pleine largeur
-  { type: "r2", src: r2("260508_CARWASH_COMMERCIAL_MONTAGE_V3_hd 1080p.MP4"),              vertical: false, cols: "col-span-2 md:col-span-12" },
-  // Row 4 — Timeline landscape + AutoSpa portrait
-  { type: "r2", src: r2("Timeline_3_hd 1080p.MP4"),                                       vertical: false, cols: "col-span-1 md:col-span-8" },
-  { type: "r2", src: r2("VidAoAutospaP2V4_uhd 2160p.MP4"),                                vertical: true,  cols: "col-span-1 md:col-span-4" },
+  // Row 1 — CarWash pleine largeur
+  { type: "r2",      src: r2("260508_CARWASH_COMMERCIAL_MONTAGE_V3_hd 1080p.MP4"),               vertical: false, cols: "col-span-2 md:col-span-12" },
+  // Row 2 — Les deux Timeline côte à côte (même ratio → même hauteur, aucun vide)
+  { type: "r2",      src: r2("Timeline_2_hd 1080p.MP4"),                                         vertical: false, cols: "col-span-1 md:col-span-6" },
+  { type: "r2",      src: r2("Timeline_3_hd 1080p.MP4"),                                         vertical: false, cols: "col-span-1 md:col-span-6" },
+  // Row 3 — BOZAR pleine largeur
+  { type: "r2",      src: r2("BOZAR_Become_a_Bozars_Young_Ambassador_(Campaign)_hd 1080p.MP4"), vertical: false, cols: "col-span-2 md:col-span-12" },
+  // Row 4 — Les deux portraits côte à côte (même ratio → même hauteur, aucun vide)
+  { type: "r2",      src: r2("AutoSpaV2_hd 1080p.MP4"),                                          vertical: true,  cols: "col-span-1 md:col-span-6" },
+  { type: "r2",      src: r2("VidAoAutospaP2V4_uhd 2160p.MP4"),                                 vertical: true,  cols: "col-span-1 md:col-span-6" },
   // Row 5 — Caballero YouTube pleine largeur
-  { type: "youtube", src: "rv5PLylcqjg",                                                   vertical: false, cols: "col-span-2 md:col-span-12" },
+  { type: "youtube", src: "rv5PLylcqjg",                                                          vertical: false, cols: "col-span-2 md:col-span-12" },
 ];
 
 function LoopContent({ p }: { p: VideoEntry }) {
