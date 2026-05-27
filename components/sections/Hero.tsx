@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useCallback, memo } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import {
   motion,
@@ -25,6 +24,7 @@ const wordVariants: Variants = {
   }),
 };
 
+const SHOWREEL_ID = "850854753";
 const lines = ["On filme.", "On monte.", "Vos clients regardent."];
 
 const TiltCard = memo(function TiltCard() {
@@ -67,12 +67,11 @@ const TiltCard = memo(function TiltCard() {
           willChange: "transform",
         }}
       >
-        <Image
-          src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=800&auto=format&fit=crop"
-          alt="Équipe Nova en tournage"
-          fill
-          className="object-cover"
-          priority
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`https://vumbnail.com/${SHOWREEL_ID}.jpg`}
+          alt="Showreel Nova"
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div
           className="absolute inset-0"
@@ -81,7 +80,6 @@ const TiltCard = memo(function TiltCard() {
               "linear-gradient(to top, oklch(0.06 0 0 / 0.75) 0%, transparent 55%)",
           }}
         />
-        {/* Specular sheen that follows tilt */}
         <motion.div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -96,7 +94,7 @@ const TiltCard = memo(function TiltCard() {
             className="font-mono text-[9px] uppercase tracking-wider"
             style={{ color: "oklch(0.45 0 0)" }}
           >
-            Nova Production · Tournage
+            Nova Production · Showreel 2025
           </p>
         </div>
       </motion.div>
@@ -111,12 +109,10 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  /* Text parallax — moves up faster than scroll = depth */
   const rawTextY = useTransform(scrollYProgress, [0, 1], [0, -140]);
   const textY = useSpring(rawTextY, { stiffness: 60, damping: 18 });
   const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
 
-  /* Background image zoom-out as you scroll */
   const bgScale = useTransform(scrollYProgress, [0, 1], [1.12, 1.0]);
 
   return (
@@ -125,18 +121,26 @@ export default function Hero() {
       className="relative flex flex-col overflow-hidden"
       style={{ minHeight: "100dvh", background: "oklch(0.06 0 0)" }}
     >
-      {/* Cinematic full-bleed background image with scroll zoom */}
+      {/* Showreel video background — muted, looping, very subtle */}
       <motion.div
-        className="absolute inset-0 pointer-events-none"
-        style={{ scale: bgScale, willChange: "transform" }}
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        style={{ scale: bgScale, willChange: "transform", opacity: 0.13 }}
+        aria-hidden
       >
-        <Image
-          src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=1600&auto=format&fit=crop&q=80"
-          alt=""
-          fill
-          className="object-cover opacity-[0.07]"
-          priority
-          aria-hidden
+        <iframe
+          src={`https://player.vimeo.com/video/${SHOWREEL_ID}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            minWidth: "177.78vh",
+            minHeight: "56.25vw",
+            width: "100%",
+            height: "100%",
+          }}
+          frameBorder="0"
+          allow="autoplay; fullscreen"
         />
       </motion.div>
 
@@ -242,7 +246,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT — 3D tilt card */}
+        {/* RIGHT — 3D tilt card with real showreel thumbnail */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
