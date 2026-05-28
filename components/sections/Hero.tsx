@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import {
   motion,
@@ -28,6 +28,7 @@ const lines = ["On filme.", "On monte.", "Vos clients regardent."];
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -45,14 +46,21 @@ export default function Hero() {
       className="relative flex flex-col overflow-hidden"
       style={{ minHeight: "100dvh", background: "oklch(0.06 0 0)" }}
     >
-      {/* Showreel background — thumbnail instant + vidéo Vimeo par-dessus */}
+      {/* Showreel background — flou sur première frame, puis vidéo nette */}
       <motion.div
         className="absolute inset-0 pointer-events-none overflow-hidden"
-        style={{ scale: bgScale, willChange: "transform", opacity: 0.15 }}
+        style={{ scale: bgScale, willChange: "transform" }}
+        initial={{ filter: "blur(28px)", opacity: 0.38 }}
+        animate={{
+          filter: videoReady ? "blur(0px)" : "blur(28px)",
+          opacity: videoReady ? 0.15 : 0.38,
+        }}
+        transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1] }}
         aria-hidden
       >
         <iframe
           src={`https://player.vimeo.com/video/${SHOWREEL_ID}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
+          onLoad={() => setTimeout(() => setVideoReady(true), 900)}
           style={{
             position: "absolute",
             top: "50%",

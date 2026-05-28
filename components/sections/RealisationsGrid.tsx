@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 const R2 = "https://pub-a93d9300f3144cee9101e92c2ba03175.r2.dev";
 
@@ -32,17 +38,6 @@ const projects: VideoEntry[] = [
 ];
 
 function LoopContent({ p }: { p: VideoEntry }) {
-  if (p.type === "youtube") {
-    return (
-      <iframe
-        src={`https://www.youtube.com/embed/${p.src}?autoplay=1&mute=1&loop=1&playlist=${p.src}&controls=0&rel=0&modestbranding=1&playsinline=1`}
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        style={{ transform: "scale(1.06)" }}
-        frameBorder="0"
-        allow="autoplay; encrypted-media; fullscreen"
-      />
-    );
-  }
   return (
     <video
       src={p.src}
@@ -57,36 +52,75 @@ function LoopContent({ p }: { p: VideoEntry }) {
   );
 }
 
-function VideoItem({ p, onSelect }: { p: VideoEntry; onSelect: () => void }) {
-  return (
-    <div
-      className={`${p.cols} rounded-[14px] overflow-hidden relative cursor-pointer group`}
-      style={{
-        aspectRatio: p.vertical ? "9/16" : "16/9",
-        border: "1px solid oklch(0.18 0 0)",
-        background: "oklch(0.08 0 0)",
-      }}
-      onClick={onSelect}
-    >
-      <LoopContent p={p} />
+// Float durations / delays staggered so cards never sync
+const FLOAT_DURATION = [3.2, 4.1, 3.7, 4.4, 3.5, 4.2, 3.9];
+const FLOAT_DELAY    = [0,   0.9, 1.8, 0.4, 1.3, 2.2, 0.7];
 
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
-        style={{ backdropFilter: "blur(5px)", WebkitBackdropFilter: "blur(5px)", background: "oklch(0.04 0 0 / 0.40)" }}
-      />
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <motion.div
-          className="w-14 h-14 rounded-full flex items-center justify-center"
-          style={{ background: "oklch(0.96 0 0 / 0.12)", border: "1px solid oklch(0.96 0 0 / 0.40)", backdropFilter: "blur(8px)" }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <svg width="14" height="16" viewBox="0 0 14 16" className="translate-x-0.5">
-            <path d="M0 0L14 8L0 16V0Z" fill="oklch(0.96 0 0)" />
-          </svg>
-        </motion.div>
-      </div>
-    </div>
+function VideoItem({ p, index, onSelect }: { p: VideoEntry; index: number; onSelect: () => void }) {
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [9, -9]), { stiffness: 180, damping: 22 });
+  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-9, 9]), { stiffness: 180, damping: 22 });
+
+  function handleMove(e: React.MouseEvent<HTMLDivElement>) {
+    const r = e.currentTarget.getBoundingClientRect();
+    mx.set((e.clientX - r.left) / r.width - 0.5);
+    my.set((e.clientY - r.top) / r.height - 0.5);
+  }
+
+  function handleLeave() {
+    mx.set(0);
+    my.set(0);
+  }
+
+  return (
+    <motion.div
+      className={p.cols}
+      style={{ perspective: "900px" }}
+      animate={{ y: [0, -7, 0] }}
+      transition={{
+        duration: FLOAT_DURATION[index] ?? 3.8,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay: FLOAT_DELAY[index] ?? 0,
+      }}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+    >
+      <motion.div
+        className="w-full rounded-[14px] overflow-hidden relative cursor-pointer group"
+        style={{
+          aspectRatio: p.vertical ? "9/16" : "16/9",
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+          border: "1px solid oklch(0.18 0 0)",
+          background: "oklch(0.08 0 0)",
+          boxShadow: "0 24px 56px oklch(0 0 0 / 0.55)",
+        }}
+        onClick={onSelect}
+        whileTap={{ scale: 0.97 }}
+      >
+        <LoopContent p={p} />
+
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
+          style={{ backdropFilter: "blur(5px)", WebkitBackdropFilter: "blur(5px)", background: "oklch(0.04 0 0 / 0.40)" }}
+        />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <motion.div
+            className="w-14 h-14 rounded-full flex items-center justify-center"
+            style={{ background: "oklch(0.96 0 0 / 0.12)", border: "1px solid oklch(0.96 0 0 / 0.40)", backdropFilter: "blur(8px)" }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg width="14" height="16" viewBox="0 0 14 16" className="translate-x-0.5">
+              <path d="M0 0L14 8L0 16V0Z" fill="oklch(0.96 0 0)" />
+            </svg>
+          </motion.div>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -97,7 +131,7 @@ export default function RealisationsGrid() {
     <>
       <div className="grid grid-cols-2 md:grid-cols-12 gap-3 items-start">
         {projects.map((p, i) => (
-          <VideoItem key={i} p={p} onSelect={() => setSelected(p)} />
+          <VideoItem key={i} index={i} p={p} onSelect={() => setSelected(p)} />
         ))}
       </div>
 
@@ -129,24 +163,14 @@ export default function RealisationsGrid() {
               >
                 Fermer
               </button>
-              {selected.type === "youtube" ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/${selected.src}?autoplay=1&rel=0&modestbranding=1`}
-                  className="absolute inset-0 w-full h-full rounded-2xl"
-                  frameBorder="0"
-                  allow="autoplay; encrypted-media; fullscreen"
-                  allowFullScreen
-                />
-              ) : (
-                <video
-                  src={selected.src}
-                  autoPlay
-                  controls
-                  playsInline
-                  className="absolute inset-0 w-full h-full rounded-2xl"
-                  style={{ objectFit: "contain", background: "#000" }}
-                />
-              )}
+              <video
+                src={selected.src}
+                autoPlay
+                controls
+                playsInline
+                className="absolute inset-0 w-full h-full rounded-2xl"
+                style={{ objectFit: "contain", background: "#000" }}
+              />
             </motion.div>
           </motion.div>
         )}
