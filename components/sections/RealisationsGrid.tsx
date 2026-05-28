@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const R2 = "https://pub-a93d9300f3144cee9101e92c2ba03175.r2.dev";
 
@@ -58,12 +58,8 @@ function LoopContent({ p }: { p: VideoEntry }) {
 }
 
 function VideoItem({ p, onSelect }: { p: VideoEntry; onSelect: () => void }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "200px 0px" });
-
   return (
     <div
-      ref={ref}
       className={`${p.cols} rounded-[14px] overflow-hidden relative cursor-pointer group`}
       style={{
         aspectRatio: p.vertical ? "9/16" : "16/9",
@@ -72,7 +68,7 @@ function VideoItem({ p, onSelect }: { p: VideoEntry; onSelect: () => void }) {
       }}
       onClick={onSelect}
     >
-      {inView && <LoopContent p={p} />}
+      <LoopContent p={p} />
 
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300"
