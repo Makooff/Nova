@@ -17,13 +17,13 @@ type VideoEntry = {
 };
 
 const projects: VideoEntry[] = [
-  { type: "r2",      src: r2("260508_CARWASH_COMMERCIAL_MONTAGE_V3_hd 1080p.MP4"),               vertical: false, cols: "col-span-2 md:col-span-12" },
+  { type: "r2",      src: r2("BOZAR_Become_a_Bozars_Young_Ambassador_(Campaign)_hd 1080p.MP4"), vertical: false, cols: "col-span-2 md:col-span-12" },
   { type: "r2",      src: r2("Timeline_2_hd 1080p.MP4"),                                         vertical: false, cols: "col-span-1 md:col-span-6" },
   { type: "r2",      src: r2("Timeline_3_hd 1080p.MP4"),                                         vertical: false, cols: "col-span-1 md:col-span-6" },
-  { type: "r2",      src: r2("BOZAR_Become_a_Bozars_Young_Ambassador_(Campaign)_hd 1080p.MP4"), vertical: false, cols: "col-span-2 md:col-span-12" },
+  { type: "youtube", src: "rv5PLylcqjg",                                                          vertical: false, cols: "col-span-2 md:col-span-12" },
   { type: "r2",      src: r2("AutoSpaV2_hd 1080p.MP4"),                                          vertical: true,  cols: "col-span-1 md:col-span-6" },
   { type: "r2",      src: r2("VidAoAutospaP2V4_uhd 2160p.MP4"),                                 vertical: true,  cols: "col-span-1 md:col-span-6" },
-  { type: "youtube", src: "rv5PLylcqjg",                                                          vertical: false, cols: "col-span-2 md:col-span-12" },
+  { type: "r2",      src: r2("260508_CARWASH_COMMERCIAL_MONTAGE_V3_hd 1080p.MP4"),               vertical: false, cols: "col-span-2 md:col-span-12" },
 ];
 
 export default function Portfolio() {
