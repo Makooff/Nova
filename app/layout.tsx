@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import ConditionalShell from "@/components/layout/ConditionalShell";
 import PreventZoom from "@/components/ui/PreventZoom";
 
 const sora = Sora({
@@ -81,9 +80,9 @@ export default function RootLayout({
         className={`${sora.variable} ${jakarta.variable} ${dmMono.variable} font-sora antialiased`}
       >
         <PreventZoom />
-        <Navbar />
-        {children}
-        <Footer />
+        <ConditionalShell>
+          {children}
+        </ConditionalShell>
       </body>
     </html>
   );
