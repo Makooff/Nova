@@ -70,7 +70,7 @@ export default function StatsBand() {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.25, duration: 0.7 }}
         >
-          — Un client agréablement surpris.
+          — Sophie M., Directrice marketing
         </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-6">

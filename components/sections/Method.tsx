@@ -63,7 +63,24 @@ function MethodCard({ card, index, total }: { card: (typeof cards)[0]; index: nu
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease }}
       >
-        <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12 items-center" style={{ background: "var(--ink-2)" }}>
+        <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12 items-center" style={{ background: "var(--ink-2)", position: "relative" }}>
+          {/* Ghost number */}
+          <span
+            aria-hidden
+            className="absolute pointer-events-none select-none font-poppins font-extrabold"
+            style={{
+              fontSize: "clamp(100px, 12vw, 160px)",
+              color: "var(--cream)",
+              opacity: 0.04,
+              top: "50%",
+              right: "3%",
+              transform: "translateY(-50%)",
+              letterSpacing: "-0.05em",
+              lineHeight: 1,
+            }}
+          >
+            {card.num}
+          </span>
           {/* Left — text */}
           <div>
             <div className="flex items-baseline gap-3 mb-3">

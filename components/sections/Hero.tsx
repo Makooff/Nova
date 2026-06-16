@@ -73,12 +73,17 @@ export default function Hero() {
           scale: glowScale,
           width: "120vw",
           height: "90vh",
-          background:
-            "radial-gradient(ellipse 50% 50% at 50% 40%, rgba(255,61,119,0.20) 0%, rgba(255,138,61,0.14) 35%, transparent 70%)",
           filter: "blur(20px)",
         }}
         aria-hidden
-      />
+      >
+        <motion.div
+          className="w-full h-full"
+          style={{ background: "radial-gradient(ellipse 50% 50% at 50% 40%, rgba(255,61,119,0.20) 0%, rgba(255,138,61,0.14) 35%, transparent 70%)" }}
+          animate={{ scale: [1, 1.07, 1] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </motion.div>
 
       {/* Content */}
       <motion.div
@@ -86,7 +91,7 @@ export default function Hero() {
         style={{ y: contentY, opacity: contentOpacity }}
       >
         <motion.p
-          className="font-mono text-[10px] uppercase tracking-[3px] mb-7"
+          className="font-mono text-[10px] uppercase tracking-[3px] mb-3"
           style={{ color: "var(--cream-faint)" }}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -95,15 +100,23 @@ export default function Hero() {
           Agence de production vidéo · BE &amp; FR
         </motion.p>
 
+        <motion.div
+          className="h-px w-12 origin-left mt-1 mb-6"
+          style={{ background: "var(--sun-1)", opacity: 0.6 }}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 0.35, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        />
+
         <h1
           className="font-poppins font-extrabold leading-[1.02] mb-7"
           style={{ fontSize: "clamp(40px, 7vw, 86px)", letterSpacing: "-0.03em" }}
         >
           <motion.span className="block" style={{ color: "var(--cream)" }} custom={0} variants={wordVariants} initial="hidden" animate="visible">
-            On filme. On monte.
+            Multipliez votre
           </motion.span>
           <motion.span className="block text-shimmer" custom={1} variants={wordVariants} initial="hidden" animate="visible">
-            Vous convertissez.
+            chiffre d&apos;affaires.
           </motion.span>
         </h1>
 
@@ -114,8 +127,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7, ease: easeExpo }}
         >
-          Des vidéos publicitaires pensées pour la performance, et des campagnes
-          Ads qui transforment l&apos;attention en clients.
+          Vidéo publicitaire et campagnes Ads conçues pour faire croître vos ventes&nbsp;— de la stratégie au tournage en passant par la diffusion.
         </motion.p>
 
         <motion.div
@@ -140,55 +152,61 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* VSL video card — 3D tilt */}
+      {/* VSL video card — ambient float + 3D tilt */}
       <motion.div
         className="relative z-10 w-full max-w-3xl mt-14"
-        style={{ perspective: "1100px", opacity: contentOpacity }}
+        style={{ opacity: contentOpacity }}
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7, duration: 1.0, ease: easeExpo }}
-        onMouseMove={handleMove}
-        onMouseLeave={handleLeave}
       >
-        <motion.button
-          onClick={() => setOpen(true)}
-          className="relative w-full rounded-[20px] overflow-hidden block cursor-pointer group"
-          style={{
-            aspectRatio: "16/9",
-            rotateX,
-            rotateY,
-            transformStyle: "preserve-3d",
-            border: "1px solid rgba(245,240,236,0.12)",
-            background: "var(--ink-2)",
-            boxShadow: "0 40px 100px rgba(255,61,119,0.18), 0 20px 60px rgba(0,0,0,0.6)",
-          }}
+        <motion.div
+          style={{ perspective: "1100px" }}
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.7 }}
+          onMouseMove={handleMove}
+          onMouseLeave={handleLeave}
         >
-          <iframe
-            src={`https://player.vimeo.com/video/${SHOWREEL_ID}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            style={{ transform: "scale(1.02)" }}
-            frameBorder="0"
-            allow="autoplay; fullscreen"
-            aria-hidden
-          />
-          <div className="absolute inset-0" style={{ background: "rgba(14,11,16,0.18)" }} />
-          {/* Play button */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div
-              className="w-[72px] h-[72px] rounded-full flex items-center justify-center"
-              style={{
-                background: "linear-gradient(120deg, var(--sun-1), var(--sun-2))",
-                boxShadow: "0 0 0 10px rgba(255,61,119,0.12), 0 10px 40px rgba(255,61,119,0.45)",
-              }}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <svg width="22" height="24" viewBox="0 0 22 24" className="translate-x-0.5">
-                <path d="M0 0L22 12L0 24V0Z" fill="#fff" />
-              </svg>
-            </motion.div>
-          </div>
-        </motion.button>
+          <motion.button
+            onClick={() => setOpen(true)}
+            className="relative w-full rounded-[20px] overflow-hidden block cursor-pointer group"
+            style={{
+              aspectRatio: "16/9",
+              rotateX,
+              rotateY,
+              transformStyle: "preserve-3d",
+              border: "1px solid rgba(245,240,236,0.12)",
+              background: "var(--ink-2)",
+              boxShadow: "0 40px 100px rgba(255,61,119,0.18), 0 20px 60px rgba(0,0,0,0.6)",
+            }}
+          >
+            <iframe
+              src={`https://player.vimeo.com/video/${SHOWREEL_ID}?autoplay=1&muted=1&background=1&loop=1&quality=auto`}
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              style={{ transform: "scale(1.02)" }}
+              frameBorder="0"
+              allow="autoplay; fullscreen"
+              aria-hidden
+            />
+            <div className="absolute inset-0" style={{ background: "rgba(14,11,16,0.18)" }} />
+            {/* Play button */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                className="w-[72px] h-[72px] rounded-full flex items-center justify-center"
+                style={{
+                  background: "linear-gradient(120deg, var(--sun-1), var(--sun-2))",
+                  boxShadow: "0 0 0 10px rgba(255,61,119,0.12), 0 10px 40px rgba(255,61,119,0.45)",
+                }}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <svg width="22" height="24" viewBox="0 0 22 24" className="translate-x-0.5">
+                  <path d="M0 0L22 12L0 24V0Z" fill="#fff" />
+                </svg>
+              </motion.div>
+            </div>
+          </motion.button>
+        </motion.div>
       </motion.div>
 
       {/* Fullscreen modal */}
