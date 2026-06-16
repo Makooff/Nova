@@ -6,9 +6,9 @@ import QwillioName from "@/components/ui/QwillioName";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Partenaire Qwillio — Nova | Email AI, Payments AI & Sites sur mesure",
+  title: "Partenaire Qwillio — Fovea | Email AI, Payments AI & Sites sur mesure",
   description:
-    "Qwillio est le partenaire exclusif de Nova. Réceptionniste IA, Email AI, Payments AI disponibles sur Qwillio.com — et des sites web sur mesure exclusivement pour les clients Nova.",
+    "Qwillio est le partenaire exclusif de Fovea. Réceptionniste IA, Email AI, Payments AI disponibles sur Qwillio.com — et des sites web sur mesure exclusivement pour les clients Fovea.",
 };
 
 const features = [
@@ -32,8 +32,8 @@ const features = [
   },
   {
     title: "Sites web sur mesure",
-    desc: "Qwillio conçoit des sites web performants — mais cette prestation n'est pas proposée sur Qwillio.com. Elle est réservée exclusivement aux clients Nova.",
-    pills: ["Design sur mesure", "Performance", "SEO", "Exclusif Nova"],
+    desc: "Qwillio conçoit des sites web performants — mais cette prestation n'est pas proposée sur Qwillio.com. Elle est réservée exclusivement aux clients Fovea.",
+    pills: ["Design sur mesure", "Performance", "SEO", "Exclusif Fovea"],
     public: false,
   },
 ];
@@ -71,8 +71,8 @@ export default function PartenairePage() {
             >
               Qwillio propose au grand public une réceptionniste IA, un agent Email AI
               et un agent Payments AI. En plus de ça, Qwillio conçoit des sites web
-              sur mesure — uniquement pour les clients Nova, sans les proposer sur
-              Qwillio.com. Un avantage exclusif inclus dans votre partenariat Nova.
+              sur mesure — uniquement pour les clients Fovea, sans les proposer sur
+              Qwillio.com. Un avantage exclusif inclus dans votre partenariat Fovea.
             </p>
             <div
               className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-6"
@@ -86,7 +86,7 @@ export default function PartenairePage() {
                 className="font-sora font-light text-xs"
                 style={{ color: "oklch(0.45 0 0)" }}
               >
-                Sites web accessibles uniquement aux clients Nova
+                Sites web accessibles uniquement aux clients Fovea
               </span>
             </div>
             <div className="flex justify-center">
@@ -134,7 +134,7 @@ export default function PartenairePage() {
                         className="font-mono text-[9px] uppercase tracking-wider rounded-full px-2.5 py-1"
                         style={{ background: "oklch(0.96 0 0)", color: "oklch(0.06 0 0)" }}
                       >
-                        Exclusif Nova
+                        Exclusif Fovea
                       </span>
                     )}
                   </div>
@@ -182,7 +182,7 @@ export default function PartenairePage() {
                 color: "oklch(0.96 0 0)",
               }}
             >
-              Un avantage inclus dans votre partenariat Nova
+              Un avantage inclus dans votre partenariat Fovea
             </h2>
             <p
               className="font-sora font-light text-sm leading-relaxed mb-8 max-w-md mx-auto"
@@ -190,7 +190,7 @@ export default function PartenairePage() {
             >
               La réceptionniste IA, l&apos;Email AI et le Payments AI sont disponibles
               sur Qwillio.com. Les sites web sur mesure, eux, sont réservés aux
-              clients Nova — un avantage que vous activez dès le début de votre projet.
+              clients Fovea — un avantage que vous activez dès le début de votre projet.
             </p>
             <Link
               href="/contact"
@@ -200,7 +200,7 @@ export default function PartenairePage() {
                 color: "oklch(0.06 0 0)",
               }}
             >
-              Démarrer avec Nova
+              Démarrer avec Fovea
             </Link>
           </RevealWrapper>
         </div>

@@ -4,7 +4,7 @@ import RevealWrapper from "@/components/ui/RevealWrapper";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Process — Nova | Comment on travaille",
+  title: "Process — Fovea | Comment on travaille",
   description:
     "Notre process en 4 étapes : brief stratégique, tournage, post-production et lancement de campagne avec suivi des performances.",
 };

@@ -33,7 +33,7 @@ export default function Footer() {
             <div className="mb-3">
               <Image
                 src="/logo-nova.png"
-                alt="Nova"
+                alt="Fovea"
                 width={72}
                 height={24}
                 style={{ filter: "brightness(0) invert(1)" }}
@@ -76,14 +76,14 @@ export default function Footer() {
               <QwillioName size="15px" />
             </Link>
             <p className="font-sora font-light text-xs max-w-[160px] leading-relaxed" style={{ color: "oklch(0.28 0 0)" }}>
-              Agents IA et réceptionniste digitale exclusifs Nova.
+              Agents IA et réceptionniste digitale exclusifs Fovea.
             </p>
           </div>
         </div>
 
         <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderTop: "1px solid oklch(0.12 0 0)" }}>
           <p className="font-sora font-light text-xs" style={{ color: "oklch(0.28 0 0)" }}>
-            &copy; {new Date().getFullYear()} Nova. Tous droits réservés.
+            &copy; {new Date().getFullYear()} Fovea. Tous droits réservés.
           </p>
           <div className="flex items-center gap-5">
             {legal.map((l) => (

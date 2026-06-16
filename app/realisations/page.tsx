@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import RevealWrapper from "@/components/ui/RevealWrapper";
-import CTA from "@/components/sections/CTA";
 import RealisationsGrid from "@/components/sections/RealisationsGrid";
 
 export const metadata: Metadata = {
-  title: "Réalisations — Nova | Portfolio Vidéo Publicitaire",
+  title: "Réalisations — Fovea | Portfolio Vidéo Publicitaire",
   description:
     "Découvrez nos réalisations vidéo pour des clients en Belgique et en France : spots publicitaires, films corporate, créatifs Ads.",
 };
 
 export default function RealisationsPage() {
   return (
-    <main className="pt-[52px]" style={{ background: "oklch(0.06 0 0)" }}>
+    <main className="pt-[60px]" style={{ background: "oklch(0.06 0 0)" }}>
       <section className="py-20 px-5">
         <div className="max-w-6xl mx-auto">
           <RevealWrapper className="mb-12">
@@ -22,7 +21,7 @@ export default function RealisationsPage() {
               Notre travail
             </p>
             <h1
-              className="font-sora font-thin tracking-tighter mb-8"
+              className="font-sora font-thin tracking-tighter"
               style={{
                 fontSize: "clamp(40px, 6vw, 72px)",
                 letterSpacing: "-0.04em",
@@ -36,8 +35,6 @@ export default function RealisationsPage() {
           <RealisationsGrid />
         </div>
       </section>
-
-      <CTA />
     </main>
   );
 }

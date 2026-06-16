@@ -10,7 +10,7 @@ const features = [
   { title: "Réceptionniste IA", desc: "Agent vocal et textuel — accueil, qualification et redirection 24h/24" },
   { title: "Email AI",          desc: "Boîte mail automatisée — lecture, classification, réponses et relances" },
   { title: "Payments AI",       desc: "Paiements SMS via Stripe, dépôts automatiques, dashboard revenus" },
-  { title: "Sites web sur mesure", desc: "Non proposé sur Qwillio.com — exclusif clients Nova" },
+  { title: "Sites web sur mesure", desc: "Non proposé sur Qwillio.com — exclusif clients Fovea" },
 ];
 
 export default function Partner() {
@@ -35,7 +35,7 @@ export default function Partner() {
             </div>
             <p className="font-sora font-light text-sm leading-relaxed mb-8 max-w-md" style={{ color: "oklch(0.45 0 0)" }}>
               Qwillio propose au grand public une réceptionniste IA, un agent Email AI et un agent Payments AI.
-              En plus, Qwillio conçoit des sites web sur mesure — uniquement pour les clients Nova.
+              En plus, Qwillio conçoit des sites web sur mesure — uniquement pour les clients Fovea.
               Un avantage exclusif inclus dans le partenariat.
             </p>
             <Link

@@ -1,17 +1,15 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import MinimalHeader from "./MinimalHeader";
 
 export default function ConditionalShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isPrivate = pathname.startsWith("/prive");
+  const hideShell = pathname.startsWith("/prive") || pathname.startsWith("/presentation");
   return (
     <>
-      {!isPrivate && <Navbar />}
+      {!hideShell && <MinimalHeader />}
       {children}
-      {!isPrivate && <Footer />}
     </>
   );
 }

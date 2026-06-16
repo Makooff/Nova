@@ -4,9 +4,9 @@ import RevealWrapper from "@/components/ui/RevealWrapper";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Notre Équipe — Nova | L'équipe derrière vos vidéos",
+  title: "Notre Équipe — Fovea | L'équipe derrière vos vidéos",
   description:
-    "Réalisateurs, directeurs photo, monteurs, stratèges Ads — rencontrez l'équipe Nova qui tourne et optimise vos campagnes en Belgique et en France.",
+    "Réalisateurs, directeurs photo, monteurs, stratèges Ads — rencontrez l'équipe Fovea qui tourne et optimise vos campagnes en Belgique et en France.",
 };
 
 const team = [
@@ -20,14 +20,14 @@ const team = [
   {
     name: "Léa Fontaine",
     role: "Directrice Photo",
-    bio: "Formatée à l'École Louis-Lumière, Léa apporte une maîtrise de la lumière naturelle et artificielle qui définit l'esthétique des vidéos Nova — épurée, contrastée, mémorable.",
+    bio: "Formatée à l'École Louis-Lumière, Léa apporte une maîtrise de la lumière naturelle et artificielle qui définit l'esthétique des vidéos Fovea — épurée, contrastée, mémorable.",
     photo: "https://randomuser.me/api/portraits/women/18.jpg",
     skills: ["Cinématographie", "Éclairage", "Color grading"],
   },
   {
     name: "Thomas Berger",
     role: "Responsable Campagnes Ads",
-    bio: "Certifié Google et Meta, Thomas gère des budgets publicitaires de 500 K€/an. Son mantra : chaque centime doit travailler. ROAS moyen des comptes Nova : 4,2×.",
+    bio: "Certifié Google et Meta, Thomas gère des budgets publicitaires de 500 K€/an. Son mantra : chaque centime doit travailler. ROAS moyen des comptes Fovea : 4,2×.",
     photo: "https://randomuser.me/api/portraits/men/45.jpg",
     skills: ["Google Ads", "Meta Ads", "TikTok", "Analytics"],
   },
@@ -201,7 +201,7 @@ export default function EquipePage() {
             >
               <Image
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&auto=format&fit=crop"
-                alt="Équipe Nova au complet"
+                alt="Équipe Fovea au complet"
                 fill
                 className="object-cover"
               />
@@ -211,7 +211,7 @@ export default function EquipePage() {
               />
               <div className="absolute bottom-6 left-8">
                 <p className="font-mono text-[9px] uppercase tracking-wider" style={{ color: "oklch(0.38 0 0)" }}>
-                  Nova Production — Bruxelles, 2026
+                  Fovea Production — Bruxelles, 2026
                 </p>
               </div>
             </div>

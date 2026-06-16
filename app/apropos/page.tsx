@@ -6,9 +6,9 @@ import CTA from "@/components/sections/CTA";
 import PresentationPreview from "@/components/ui/PresentationPreview";
 
 export const metadata: Metadata = {
-  title: "À propos — Nova | Agence Vidéo & Ads Belgique & France",
+  title: "À propos — Fovea | Agence Vidéo & Ads Belgique & France",
   description:
-    "Nova est une agence de production vidéo publicitaire fondée en Belgique. Découvrez notre histoire, notre équipe et les valeurs qui guident chaque projet.",
+    "Fovea est une agence de production vidéo publicitaire fondée en Belgique. Découvrez notre histoire, notre équipe et les valeurs qui guident chaque projet.",
 };
 
 const team = [
@@ -80,7 +80,7 @@ export default function AProposPage() {
               className="font-sora font-light text-base leading-relaxed max-w-2xl"
               style={{ color: "oklch(0.45 0 0)" }}
             >
-              Nova est née d&apos;un constat simple : la plupart des agences produisent de belles vidéos,
+              Fovea est née d&apos;un constat simple : la plupart des agences produisent de belles vidéos,
               mais peu s&apos;assurent qu&apos;elles performent. Depuis notre fondation en Belgique, nous avons
               choisi de tout aligner sur un seul objectif — la croissance de nos clients.
             </p>
@@ -161,7 +161,7 @@ export default function AProposPage() {
               >
                 <Image
                   src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&auto=format&fit=crop"
-                  alt="Behind the scenes Nova"
+                  alt="Behind the scenes Fovea"
                   fill
                   className="object-cover"
                 />
@@ -243,7 +243,7 @@ export default function AProposPage() {
                 color: "oklch(0.96 0 0)",
               }}
             >
-              Les personnes derrière Nova
+              Les personnes derrière Fovea
             </h2>
           </RevealWrapper>
 

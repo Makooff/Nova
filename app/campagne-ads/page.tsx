@@ -5,9 +5,9 @@ import RevealWrapper from "@/components/ui/RevealWrapper";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Campagnes Ads — Nova | Google, Meta, TikTok & LinkedIn",
+  title: "Campagnes Ads — Fovea | Google, Meta, TikTok & LinkedIn",
   description:
-    "Gestion de campagnes publicitaires sur Google Ads, Meta Ads, TikTok et LinkedIn. Créatifs vidéo inclus. ROAS moyen 4×. Agence Nova — BE & FR.",
+    "Gestion de campagnes publicitaires sur Google Ads, Meta Ads, TikTok et LinkedIn. Créatifs vidéo inclus. ROAS moyen 4×. Agence Fovea — BE & FR.",
 };
 
 const platforms = [
@@ -47,7 +47,7 @@ const process = [
 const results = [
   { client: "Groupe Belux", sector: "Retail BE", stat: "+347%", label: "ROAS en 3 mois", photo: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=640&auto=format&fit=crop" },
   { client: "TechStart Brussels", sector: "SaaS B2B", stat: "2.3M", label: "Vues organiques", photo: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=640&auto=format&fit=crop" },
-  { client: "ModeMarket", sector: "E-commerce FR", stat: "−62%", label: "CPA vs avant Nova", photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&auto=format&fit=crop" },
+  { client: "ModeMarket", sector: "E-commerce FR", stat: "−62%", label: "CPA vs avant Fovea", photo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&auto=format&fit=crop" },
 ];
 
 function Pill({ label }: { label: string }) {
@@ -105,7 +105,7 @@ export default function CampagneAdsPage() {
               >
                 <Image
                   src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&auto=format&fit=crop"
-                  alt="Campagnes Ads Nova"
+                  alt="Campagnes Ads Fovea"
                   fill
                   className="object-cover"
                 />
@@ -115,7 +115,7 @@ export default function CampagneAdsPage() {
                   style={{ background: "oklch(0.06 0 0 / 0.85)", border: "1px solid oklch(0.18 0 0)", backdropFilter: "blur(12px)" }}
                 >
                   <p className="font-mono text-[9px] uppercase tracking-wider mb-1" style={{ color: "oklch(0.38 0 0)" }}>
-                    Performance moyenne clients Nova
+                    Performance moyenne clients Fovea
                   </p>
                   <p className="font-sora font-thin text-3xl" style={{ color: "oklch(0.96 0 0)", letterSpacing: "-0.04em" }}>
                     ROAS 4.2×

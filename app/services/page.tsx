@@ -7,9 +7,9 @@ import QwillioName from "@/components/ui/QwillioName";
 import CTA from "@/components/sections/CTA";
 
 export const metadata: Metadata = {
-  title: "Services — Nova | Production Vidéo & Campagnes Ads",
+  title: "Services — Fovea | Production Vidéo & Campagnes Ads",
   description:
-    "Découvrez nos 3 services : production vidéo publicitaire, gestion de campagnes Ads et agents IA Qwillio en exclusivité pour les clients Nova.",
+    "Découvrez nos 3 services : production vidéo publicitaire, gestion de campagnes Ads et agents IA Qwillio en exclusivité pour les clients Fovea.",
 };
 
 function Pill({ label }: { label: string }) {
@@ -113,7 +113,7 @@ export default function ServicesPage() {
               >
                 <Image
                   src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&auto=format&fit=crop"
-                  alt="Production vidéo Nova"
+                  alt="Production vidéo Fovea"
                   fill
                   className="object-cover"
                 />
@@ -141,7 +141,7 @@ export default function ServicesPage() {
               >
                 <Image
                   src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop"
-                  alt="Campagnes Ads Nova"
+                  alt="Campagnes Ads Fovea"
                   fill
                   className="object-cover"
                 />
@@ -213,7 +213,7 @@ export default function ServicesPage() {
                     className="font-sora font-light text-xs"
                     style={{ color: "oklch(0.38 0 0)" }}
                   >
-                    — Exclusif clients Nova
+                    — Exclusif clients Fovea
                   </span>
                 </div>
                 <h2
@@ -230,7 +230,7 @@ export default function ServicesPage() {
                   className="font-sora font-light text-sm leading-relaxed mb-6"
                   style={{ color: "oklch(0.45 0 0)" }}
                 >
-                  En partenariat exclusif avec Qwillio, les clients Nova bénéficient
+                  En partenariat exclusif avec Qwillio, les clients Fovea bénéficient
                   de la suite complète d&apos;agents IA : réceptionniste vocale et textuelle,
                   Email AI (boîte mail entièrement automatisée) et Payments AI (liens de
                   paiement SMS, Stripe natif, facturation automatique).
@@ -240,10 +240,10 @@ export default function ServicesPage() {
                   style={{ color: "oklch(0.45 0 0)" }}
                 >
                   En plus de ça, Qwillio crée des sites web sur mesure exclusivement
-                  pour les clients Nova — une prestation non disponible sur Qwillio.com.
+                  pour les clients Fovea — une prestation non disponible sur Qwillio.com.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-8">
-                  {["Réceptionniste IA", "Email AI", "Payments AI", "Sites sur mesure", "Exclusif Nova"].map((p) => (
+                  {["Réceptionniste IA", "Email AI", "Payments AI", "Sites sur mesure", "Exclusif Fovea"].map((p) => (
                     <Pill key={p} label={p} />
                   ))}
                 </div>

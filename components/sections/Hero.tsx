@@ -10,8 +10,6 @@ import {
   cubicBezier,
   type Variants,
 } from "framer-motion";
-import Marquee from "@/components/ui/Marquee";
-
 const easeExpo = cubicBezier(0.16, 1, 0.3, 1);
 
 const wordVariants: Variants = {
@@ -99,7 +97,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            Agence de Production Vidéo
+            Production Vidéo · BE &amp; FR
           </motion.p>
 
           <h1
@@ -127,22 +125,11 @@ export default function Hero() {
             ))}
           </h1>
 
-          <motion.p
-            className="font-sora font-light text-[16px] leading-relaxed mb-10 max-w-[400px]"
-            style={{ color: "oklch(0.48 0 0)" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          >
-            Vidéos publicitaires tournées et montées pour convertir. Campagnes
-            Ads et agents IA Qwillio pour les entreprises BE &amp; FR.
-          </motion.p>
-
           <motion.div
             className="flex flex-wrap items-center gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.58, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.45, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <Link
               href="/realisations"
@@ -155,10 +142,10 @@ export default function Hero() {
                 (e.currentTarget.style.background = "oklch(0.96 0 0)")
               }
             >
-              Voir le showreel
+              Nos réalisations
             </Link>
             <Link
-              href="/services"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-full font-sora font-medium text-sm px-6 py-3 transition-all duration-200 active:scale-[0.97]"
               style={{
                 border: "1px solid oklch(0.22 0 0)",
@@ -173,32 +160,29 @@ export default function Hero() {
                 e.currentTarget.style.color = "oklch(0.65 0 0)";
               }}
             >
-              Nos services
+              Nous contacter
             </Link>
           </motion.div>
         </div>
       </motion.div>
 
-      {/* Bottom — scroll indicator + marquee */}
+      {/* Scroll indicator */}
       <motion.div
-        className="relative flex flex-col items-center gap-2 pb-3"
+        className="relative flex flex-col items-center gap-1.5 pb-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.8 }}
+        transition={{ delay: 1.0, duration: 0.8 }}
       >
-        <div className="flex flex-col items-center gap-1.5">
-          <div
-            className="w-px h-8 origin-top scroll-line"
-            style={{ background: "oklch(0.75 0 0)" }}
-          />
-          <span
-            className="font-mono text-[9px] uppercase tracking-wider"
-            style={{ color: "oklch(0.38 0 0)" }}
-          >
-            Scroll
-          </span>
-        </div>
-        <Marquee />
+        <div
+          className="w-px h-8 origin-top scroll-line"
+          style={{ background: "oklch(0.75 0 0)" }}
+        />
+        <span
+          className="font-mono text-[9px] uppercase tracking-wider"
+          style={{ color: "oklch(0.38 0 0)" }}
+        >
+          Scroll
+        </span>
       </motion.div>
     </section>
   );

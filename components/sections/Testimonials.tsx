@@ -7,7 +7,7 @@ const easeExpo = cubicBezier(0.16, 1, 0.3, 1);
 
 const testimonials = [
   {
-    quote: "Nova a transformé notre communication visuelle. Le ROAS de nos campagnes a plus que quadruplé en trois mois. Une équipe réactive et vraiment créative.",
+    quote: "Fovea a transformé notre communication visuelle. Le ROAS de nos campagnes a plus que quadruplé en trois mois. Une équipe réactive et vraiment créative.",
     name: "Sophie Marchand",
     role: "Directrice Marketing, Groupe Belux",
     initials: "SM",

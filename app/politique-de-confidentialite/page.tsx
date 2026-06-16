@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Politique de confidentialité — Nova",
+  title: "Politique de confidentialité — Fovea",
   description:
     "Politique de confidentialité et traitement des données personnelles conformément au RGPD.",
 };
@@ -27,7 +27,7 @@ export default function ConfidentialitePage() {
                 Responsable du traitement
               </h2>
               <p>
-                Nova SRL, BCE BE 0000.000.000, Rue de l&apos;Exemple 42, 1000 Bruxelles.
+                Fovea SRL, BCE BE 0000.000.000, Rue de l&apos;Exemple 42, 1000 Bruxelles.
                 Contact : laytored@gmail.com
               </p>
             </div>

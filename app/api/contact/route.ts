@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 
     // If RESEND_API_KEY is set, send via Resend; otherwise log to console.
     const apiKey = process.env.RESEND_API_KEY;
-    const toEmail = process.env.CONTACT_TO_EMAIL ?? "hello@nova-agency.be";
+    const toEmail = process.env.CONTACT_TO_EMAIL ?? "hello@fovea-agency.be";
 
     if (apiKey) {
       const res = await fetch("https://api.resend.com/emails", {
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Nova Site <onboarding@resend.dev>",
+          from: "Fovea Site <onboarding@resend.dev>",
           to: toEmail,
           subject: `Nouveau devis — ${name} (${projectType})`,
           html: `

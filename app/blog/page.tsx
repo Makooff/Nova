@@ -3,7 +3,7 @@ import Link from "next/link";
 import RevealWrapper from "@/components/ui/RevealWrapper";
 
 export const metadata: Metadata = {
-  title: "Blog — Nova | Conseils Vidéo & Publicité",
+  title: "Blog — Fovea | Conseils Vidéo & Publicité",
   description:
     "Conseils, tendances et retours d'expérience en production vidéo publicitaire, campagnes Ads et stratégie digitale.",
 };

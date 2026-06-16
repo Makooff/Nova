@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
+import { Sora, Plus_Jakarta_Sans, DM_Mono, Fredoka } from "next/font/google";
 import "./globals.css";
 import ConditionalShell from "@/components/layout/ConditionalShell";
 import PreventZoom from "@/components/ui/PreventZoom";
@@ -25,6 +25,13 @@ const dmMono = DM_Mono({
   display: "swap",
 });
 
+const fredoka = Fredoka({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-fredoka",
+  display: "swap",
+});
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -34,9 +41,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Nova — Agence de Production Vidéo Publicitaire | Belgique & France",
+  title: "Fovea — Agence de Production Vidéo Publicitaire | Belgique & France",
   description:
-    "Nova produit des vidéos publicitaires qui convertissent. Tournage, montage, campagnes Ads et agents IA Qwillio pour les entreprises en Belgique et en France.",
+    "Fovea produit des vidéos publicitaires qui convertissent. Tournage, montage, campagnes Ads et agents IA Qwillio pour les entreprises en Belgique et en France.",
   keywords: [
     "production vidéo",
     "publicité",
@@ -51,10 +58,10 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Nova",
+    title: "Fovea",
   },
   openGraph: {
-    title: "Nova — Production Vidéo Publicitaire",
+    title: "Fovea — Production Vidéo Publicitaire",
     description:
       "Vidéos publicitaires tournées et montées pour convertir, campagnes Ads et accès exclusif aux agents IA Qwillio.",
     type: "website",
@@ -77,7 +84,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://vimeo.com" />
       </head>
       <body
-        className={`${sora.variable} ${jakarta.variable} ${dmMono.variable} font-sora antialiased`}
+        className={`${sora.variable} ${jakarta.variable} ${dmMono.variable} ${fredoka.variable} font-sora antialiased`}
       >
         <PreventZoom />
         <ConditionalShell>

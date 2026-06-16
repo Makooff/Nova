@@ -22,7 +22,7 @@ export default function PresentationPreview() {
           whileHover={{ borderColor: "oklch(0.30 0 0)" }}
           transition={{ duration: 0.2 }}
           role="button"
-          aria-label="Voir la présentation Nova en plein écran"
+          aria-label="Voir la présentation Fovea en plein écran"
           tabIndex={0}
           onKeyDown={(e) => e.key === "Enter" && setOpen(true)}
         >
@@ -57,7 +57,7 @@ export default function PresentationPreview() {
 
           <div className="absolute bottom-5 left-6 pointer-events-none">
             <p className="font-mono text-[9px] uppercase tracking-wider" style={{ color: "oklch(0.45 0 0)" }}>
-              Nova Production — Bruxelles · Cliquer pour le son
+              Fovea Production — Bruxelles · Cliquer pour le son
             </p>
           </div>
         </motion.div>

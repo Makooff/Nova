@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mentions légales — Nova",
-  description: "Mentions légales, informations légales et CGV de Nova, agence de production vidéo.",
+  title: "Mentions légales — Fovea",
+  description: "Mentions légales, informations légales et CGV de Fovea, agence de production vidéo.",
 };
 
 export default function MentionsLegalesPage() {
@@ -26,7 +26,7 @@ export default function MentionsLegalesPage() {
                 Éditeur du site
               </h2>
               <p>
-                Nova SRL<br />
+                Fovea SRL<br />
                 Rue de l&apos;Exemple 42<br />
                 1000 Bruxelles — Belgique<br />
                 BCE : BE 0000.000.000<br />
@@ -52,7 +52,7 @@ export default function MentionsLegalesPage() {
               </h2>
               <p>
                 L&apos;ensemble des contenus présents sur ce site (textes, images, vidéos,
-                logos, graphismes) est la propriété exclusive de Nova SRL et est protégé
+                logos, graphismes) est la propriété exclusive de Fovea SRL et est protégé
                 par les lois relatives à la propriété intellectuelle. Toute reproduction,
                 même partielle, est strictement interdite sans autorisation préalable.
               </p>
@@ -64,7 +64,7 @@ export default function MentionsLegalesPage() {
               </h2>
               <p className="mb-3">
                 Les présentes conditions générales de vente régissent l&apos;ensemble des
-                relations commerciales entre Nova SRL et ses clients.
+                relations commerciales entre Fovea SRL et ses clients.
               </p>
               <p className="mb-3">
                 Tout devis accepté par le client vaut bon de commande et engage les deux

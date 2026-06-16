@@ -119,7 +119,7 @@ export default function Showreel() {
                 className="font-mono text-[9px] uppercase tracking-wider"
                 style={{ color: "oklch(0.45 0 0)" }}
               >
-                Nova Production
+                Fovea Production
               </p>
             </div>
           </div>
