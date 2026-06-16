@@ -1,15 +1,17 @@
 import Hero from "@/components/sections/Hero";
-import SelectedWork from "@/components/sections/SelectedWork";
-import ServicesSimple from "@/components/sections/ServicesSimple";
-import CTA from "@/components/sections/CTA";
+import StatsBand from "@/components/sections/StatsBand";
+import Testimonials from "@/components/sections/Testimonials";
+import Method from "@/components/sections/Method";
+import FinalCTA from "@/components/sections/FinalCTA";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <SelectedWork />
-      <ServicesSimple />
-      <CTA />
+      <StatsBand />
+      <Testimonials />
+      <Method />
+      <FinalCTA />
     </main>
   );
 }

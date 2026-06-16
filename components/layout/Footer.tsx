@@ -1,21 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import QwillioLogo from "@/components/ui/QwillioLogo";
-import QwillioName from "@/components/ui/QwillioName";
 
-const services = [
-  { label: "Production Vidéo", href: "/services#video" },
-  { label: "Campagne Ads", href: "/campagne-ads" },
-  { label: "Agents IA", href: "/services#ia" },
-  { label: "Tarifs", href: "/contact" },
-];
-
-const agency = [
-  { label: "À propos", href: "/apropos" },
+const links = [
+  { label: "Accueil", href: "/" },
   { label: "Réalisations", href: "/realisations" },
-  { label: "Process", href: "/process" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -26,63 +15,50 @@ const legal = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: "oklch(0.06 0 0)" }}>
+    <footer style={{ background: "var(--ink)", borderTop: "1px solid var(--rule)" }}>
       <div className="max-w-6xl mx-auto px-5 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
-          <div className="col-span-2 md:col-span-1">
-            <div className="mb-3">
-              <Image
-                src="/logo-nova.png"
-                alt="Fovea"
-                width={72}
-                height={24}
-                style={{ filter: "brightness(0) invert(1)" }}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-12">
+          <div>
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <span
+                style={{
+                  fontFamily: "var(--font-poppins)",
+                  fontWeight: 800,
+                  fontSize: "26px",
+                  letterSpacing: "-0.02em",
+                  color: "var(--cream)",
+                }}
+              >
+                FOVEA
+              </span>
+              <span
+                className="inline-block w-[8px] h-[8px] rounded-full"
+                style={{ background: "linear-gradient(120deg, var(--sun-1), var(--sun-2))" }}
               />
-            </div>
-            <p className="font-sora font-light text-sm max-w-[200px] leading-relaxed" style={{ color: "oklch(0.35 0 0)" }}>
+            </Link>
+            <p className="font-poppins font-normal text-sm max-w-[260px] leading-relaxed" style={{ color: "var(--cream-faint)" }}>
               Agence de production vidéo publicitaire en Belgique et en France.
             </p>
           </div>
 
-          {[{ label: "Services", links: services }, { label: "Agence", links: agency }].map((col) => (
-            <div key={col.label}>
-              <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: "oklch(0.28 0 0)" }}>
-                {col.label}
-              </p>
-              <ul className="flex flex-col gap-2.5">
-                {col.links.map((s) => (
-                  <li key={s.href}>
-                    <Link
-                      href={s.href}
-                      className="font-sora font-light text-sm transition-colors duration-200"
-                      style={{ color: "oklch(0.38 0 0)" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "oklch(0.75 0 0)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "oklch(0.38 0 0)")}
-                    >
-                      {s.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          <div>
-            <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: "oklch(0.28 0 0)" }}>
-              Partenaire
-            </p>
-            <Link href="https://qwillio.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mb-2">
-              <QwillioLogo size={20} />
-              <QwillioName size="15px" />
-            </Link>
-            <p className="font-sora font-light text-xs max-w-[160px] leading-relaxed" style={{ color: "oklch(0.28 0 0)" }}>
-              Agents IA et réceptionniste digitale exclusifs Fovea.
-            </p>
-          </div>
+          <nav className="flex flex-wrap gap-6">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="font-poppins font-medium text-sm transition-colors duration-200"
+                style={{ color: "var(--cream-dim)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--cream)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--cream-dim)")}
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
         </div>
 
-        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderTop: "1px solid oklch(0.12 0 0)" }}>
-          <p className="font-sora font-light text-xs" style={{ color: "oklch(0.28 0 0)" }}>
+        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderTop: "1px solid var(--rule)" }}>
+          <p className="font-poppins text-xs" style={{ color: "var(--cream-faint)" }}>
             &copy; {new Date().getFullYear()} Fovea. Tous droits réservés.
           </p>
           <div className="flex items-center gap-5">
@@ -90,10 +66,10 @@ export default function Footer() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="font-sora font-light text-xs transition-colors duration-200"
-                style={{ color: "oklch(0.28 0 0)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "oklch(0.55 0 0)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "oklch(0.28 0 0)")}
+                className="font-poppins text-xs transition-colors duration-200"
+                style={{ color: "var(--cream-faint)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--cream-dim)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--cream-faint)")}
               >
                 {l.label}
               </Link>

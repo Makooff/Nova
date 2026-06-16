@@ -3,26 +3,33 @@
 @tailwind utilities;
 
 :root {
-  /* Strict monochrome palette */
-  --bg:          oklch(0.06 0 0);
-  --bg-2:        oklch(0.10 0 0);
-  --bg-3:        oklch(0.14 0 0);
-  --surface:     oklch(0.12 0 0);
-  --cream:       oklch(0.96 0 0);
-  --cream-dim:   oklch(0.75 0 0);
-  --cream-faint: oklch(0.48 0 0);
-  --rule:        oklch(0.22 0 0);
-  --rule-subtle: oklch(0.16 0 0);
+  /* Fovea — "Sunset Film" palette */
+  --ink:          #0E0B10;  /* page background (warm near-black) */
+  --ink-2:        #161019;  /* section / card background */
+  --ink-3:        #1E1622;  /* elevated surface */
+  --cream:        #F5F0EC;  /* primary text (warm off-white) */
+  --cream-dim:    #B7ACB0;  /* secondary text */
+  --cream-faint:  #7A6E74;  /* faint labels */
+  --rule:         rgba(245, 240, 236, 0.10);
+  --rule-2:       rgba(245, 240, 236, 0.06);
+  --sun-1:        #FF8A3D;  /* orange */
+  --sun-2:        #FF3D77;  /* rose */
 
-  /* Legacy compat */
-  --black:   oklch(0.06 0 0);
-  --dark:    oklch(0.12 0 0);
-  --mid:     oklch(0.48 0 0);
-  --light:   oklch(0.38 0 0);
-  --border:  oklch(0.22 0 0);
-  --ghost:   oklch(0.10 0 0);
-  --offwhite:oklch(0.96 0 0);
-  --white:   oklch(0.98 0 0);
+  /* Compat aliases (older sections still reference these) */
+  --bg:          var(--ink);
+  --bg-2:        var(--ink-2);
+  --bg-3:        var(--ink-3);
+  --surface:     var(--ink-2);
+  --cream-subtle:var(--cream-dim);
+  --rule-subtle: var(--rule-2);
+  --black:   var(--ink);
+  --dark:    var(--ink-2);
+  --mid:     var(--cream-faint);
+  --light:   var(--cream-faint);
+  --border:  var(--rule);
+  --ghost:   var(--ink-2);
+  --offwhite:var(--cream);
+  --white:   #ffffff;
 }
 
 * {
@@ -38,11 +45,52 @@ html {
 
 body {
   color: var(--cream);
-  background: var(--bg);
-  font-family: var(--font-sora), sans-serif;
-  font-weight: 300;
+  background: var(--ink);
+  font-family: var(--font-poppins), var(--font-sora), sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Warm gradient text (accent words, big numbers) */
+.text-gradient {
+  background: linear-gradient(120deg, var(--sun-1) 0%, var(--sun-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Shimmering accent text */
+.text-shimmer {
+  background: linear-gradient(120deg, #FF8A3D 0%, #FF3D77 35%, #FFB36B 50%, #FF3D77 65%, #FF8A3D 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  from { background-position: 0% 50%; }
+  to   { background-position: 250% 50%; }
+}
+
+/* Gentle float */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.float-y { animation: floatY 6s ease-in-out infinite; }
+
+/* Warm gradient border helper (use as wrapper bg with inner inset) */
+.grad-border {
+  position: relative;
+  background:
+    linear-gradient(var(--ink-2), var(--ink-2)) padding-box,
+    linear-gradient(120deg, rgba(255,138,61,0.55), rgba(255,61,119,0.55)) border-box;
+  border: 1px solid transparent;
 }
 
 /* Grain overlay — fixed, pointer-events-none */

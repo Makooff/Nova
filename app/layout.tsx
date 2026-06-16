@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Plus_Jakarta_Sans, DM_Mono, Fredoka } from "next/font/google";
+import { Sora, Plus_Jakarta_Sans, DM_Mono, Fredoka, Poppins } from "next/font/google";
 import "./globals.css";
 import ConditionalShell from "@/components/layout/ConditionalShell";
 import PreventZoom from "@/components/ui/PreventZoom";
@@ -29,6 +29,13 @@ const fredoka = Fredoka({
   subsets: ["latin"],
   weight: ["700"],
   variable: "--font-fredoka",
+  display: "swap",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -84,7 +91,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://vimeo.com" />
       </head>
       <body
-        className={`${sora.variable} ${jakarta.variable} ${dmMono.variable} ${fredoka.variable} font-sora antialiased`}
+        className={`${sora.variable} ${jakarta.variable} ${dmMono.variable} ${fredoka.variable} ${poppins.variable} antialiased`}
       >
         <PreventZoom />
         <ConditionalShell>

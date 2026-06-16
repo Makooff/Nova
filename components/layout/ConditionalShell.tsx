@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import MinimalHeader from "./MinimalHeader";
+import Footer from "./Footer";
 
 export default function ConditionalShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -10,6 +11,7 @@ export default function ConditionalShell({ children }: { children: React.ReactNo
     <>
       {!hideShell && <MinimalHeader />}
       {children}
+      {!hideShell && <Footer />}
     </>
   );
 }
