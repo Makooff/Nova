@@ -4,9 +4,9 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 
 const lines = [
-  { text: "On filme.", color: "var(--cream)", band: [0.05, 0.22] as const },
-  { text: "On monte.", color: "var(--cream)", band: [0.22, 0.4] as const },
-  { text: "Vos clients regardent.", color: "var(--cream-dim)", band: [0.4, 0.6] as const },
+  { text: "On filme.", color: "var(--cream)", band: [0.04, 0.16] as const },
+  { text: "On monte.", color: "var(--cream)", band: [0.16, 0.28] as const },
+  { text: "Vos clients regardent.", color: "var(--cream-dim)", band: [0.28, 0.42] as const },
 ];
 
 function Line({
@@ -51,9 +51,13 @@ export default function ManifestoStroke() {
   // Organic stroke traced as the section scrolls.
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
-  // Bottom card rises from below in the final third.
-  const cardY = useTransform(scrollYProgress, [0.6, 1], ["120%", "0%"]);
-  const cardOpacity = useTransform(scrollYProgress, [0.62, 0.75], [0, 1]);
+  // Manifesto lines clear out before the brand reveal collides with them.
+  const manifestoOpacity = useTransform(scrollYProgress, [0.46, 0.58], [1, 0]);
+  const manifestoY = useTransform(scrollYProgress, [0.46, 0.58], [0, -50]);
+
+  // Brand reveal rises into a full-screen foreground card and HOLDS to the end.
+  const foveaY = useTransform(scrollYProgress, [0.5, 0.72], ["55%", "0%"]);
+  const foveaOpacity = useTransform(scrollYProgress, [0.5, 0.62], [0, 1]);
 
   return (
     <section ref={ref} className="relative h-[300vh] bg-[var(--ink)]">
@@ -81,39 +85,40 @@ export default function ManifestoStroke() {
         </svg>
 
         {/* Manifesto lines */}
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-10">
+        <motion.div
+          style={{ opacity: manifestoOpacity, y: manifestoY }}
+          className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-10"
+        >
           {lines.map((l) => (
             <Line key={l.text} {...l} progress={scrollYProgress} />
           ))}
-        </div>
+        </motion.div>
 
-        {/* Bottom reveal card */}
+        {/* Full-screen brand reveal — foreground, opaque, holds to the end */}
         <motion.div
-          style={{ y: cardY, opacity: cardOpacity }}
-          className="absolute inset-x-0 bottom-0 z-20"
+          style={{ y: foveaY, opacity: foveaOpacity }}
+          className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-[var(--ink)] text-center"
         >
-          <div className="mx-3 mb-3 flex flex-col items-center justify-center rounded-3xl bg-[var(--ink-2)] px-6 py-[7vh] text-center">
-            <span
-              style={{
-                fontFamily: "var(--font-poppins)",
-                fontWeight: 800,
-                fontSize: "15vw",
-                lineHeight: 0.9,
-                background: "linear-gradient(120deg, var(--sun-1), var(--sun-2))",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                color: "transparent",
-              }}
-            >
-              Fovea.
-            </span>
-            <p
-              className="mt-4 text-sm uppercase tracking-[0.3em] text-[var(--cream-dim)]"
-              style={{ fontFamily: "var(--font-dm-mono)" }}
-            >
-              Belgique · France · contact@fovea.be
-            </p>
-          </div>
+          <span
+            style={{
+              fontFamily: "var(--font-poppins)",
+              fontWeight: 800,
+              fontSize: "15vw",
+              lineHeight: 0.9,
+              background: "linear-gradient(120deg, var(--sun-1), var(--sun-2))",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            Fovea.
+          </span>
+          <p
+            className="mt-5 text-sm uppercase tracking-[0.3em] text-[var(--cream-dim)]"
+            style={{ fontFamily: "var(--font-dm-mono)" }}
+          >
+            Belgique · France · contact@fovea.be
+          </p>
         </motion.div>
       </div>
     </section>

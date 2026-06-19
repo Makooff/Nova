@@ -44,7 +44,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative flex min-h-[100dvh] w-full flex-col items-start justify-center overflow-hidden px-6 md:px-12 pt-[120px] pb-24"
+      className="relative flex min-h-[100dvh] w-full items-center overflow-hidden pt-[120px] pb-24"
       style={{ background: "var(--ink)" }}
     >
       {/* Blurred video background */}
@@ -95,12 +95,13 @@ export default function Hero() {
         aria-hidden
       />
 
-      {/* Content — left aligned */}
+      {/* Content — left aligned to the header gutter (max-w-6xl + px-5) */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-5">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 flex w-full max-w-4xl flex-col items-start text-left"
+        className="flex w-full max-w-3xl flex-col items-start text-left"
         style={{ y: contentY, opacity: contentOpacity }}
       >
         <motion.p
@@ -152,6 +153,7 @@ export default function Hero() {
           </Link>
         </motion.div>
       </motion.div>
+      </div>
     </section>
   );
 }
