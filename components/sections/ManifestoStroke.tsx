@@ -3,6 +3,10 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 
+// Shared window where all lines fade out for good.
+const OUT_START = 0.46;
+const OUT_END = 0.54;
+
 const lines = [
   { text: "On filme.", color: "var(--cream)", band: [0.04, 0.16] as const },
   { text: "On monte.", color: "var(--cream)", band: [0.16, 0.28] as const },
@@ -20,7 +24,12 @@ function Line({
   band: readonly [number, number];
   progress: MotionValue<number>;
 }) {
-  const opacity = useTransform(progress, [band[0], band[1]], [0, 1]);
+  // Appear over `band`, then disappear over the shared out-window and stay 0.
+  const opacity = useTransform(
+    progress,
+    [band[0], band[1], OUT_START, OUT_END],
+    [0, 1, 1, 0]
+  );
   const y = useTransform(progress, [band[0], band[1]], [60, 0]);
 
   return (
@@ -51,13 +60,9 @@ export default function ManifestoStroke() {
   // Organic stroke traced as the section scrolls.
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
-  // Manifesto lines clear out fully once they finish, then stay gone.
-  const manifestoOpacity = useTransform(scrollYProgress, [0.44, 0.54], [1, 0]);
-  const manifestoY = useTransform(scrollYProgress, [0.44, 0.54], [0, -60]);
-
-  // Brand reveal arrives later and replaces the lines, then holds to the end.
-  const foveaOpacity = useTransform(scrollYProgress, [0.66, 0.8], [0, 1]);
-  const foveaY = useTransform(scrollYProgress, [0.66, 0.85], ["40%", "0%"]);
+  // Brand reveal arrives after the lines are fully gone, then holds to the end.
+  const foveaOpacity = useTransform(scrollYProgress, [0.62, 0.76], [0, 1]);
+  const foveaY = useTransform(scrollYProgress, [0.62, 0.82], ["40%", "0%"]);
 
   return (
     <section ref={ref} className="relative h-[300vh] bg-[var(--ink)]">
@@ -85,14 +90,11 @@ export default function ManifestoStroke() {
         </svg>
 
         {/* Manifesto lines */}
-        <motion.div
-          style={{ opacity: manifestoOpacity, y: manifestoY }}
-          className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-10"
-        >
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-10">
           {lines.map((l) => (
             <Line key={l.text} {...l} progress={scrollYProgress} />
           ))}
-        </motion.div>
+        </div>
 
         {/* Brand reveal — transparent, layers over the existing scroll background */}
         <motion.div
