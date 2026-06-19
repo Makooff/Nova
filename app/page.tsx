@@ -1,5 +1,7 @@
 import Hero from "@/components/sections/Hero";
+import ManifestoStroke from "@/components/sections/ManifestoStroke";
 import StatsBand from "@/components/sections/StatsBand";
+import ZoomParallaxWork from "@/components/sections/ZoomParallaxWork";
 import ServicesBlock from "@/components/sections/ServicesBlock";
 import Testimonials from "@/components/sections/Testimonials";
 import Method from "@/components/sections/Method";
@@ -9,7 +11,9 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <ManifestoStroke />
       <StatsBand />
+      <ZoomParallaxWork />
       <ServicesBlock />
       <Testimonials />
       <Method />
