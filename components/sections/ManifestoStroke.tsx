@@ -51,9 +51,9 @@ export default function ManifestoStroke() {
   // Organic stroke traced as the section scrolls.
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
-  // Manifesto lines clear out once they finish.
-  const manifestoOpacity = useTransform(scrollYProgress, [0.5, 0.62], [1, 0]);
-  const manifestoY = useTransform(scrollYProgress, [0.5, 0.62], [0, -50]);
+  // Manifesto lines clear out fully once they finish, then stay gone.
+  const manifestoOpacity = useTransform(scrollYProgress, [0.44, 0.54], [1, 0]);
+  const manifestoY = useTransform(scrollYProgress, [0.44, 0.54], [0, -60]);
 
   // Brand reveal arrives later and replaces the lines, then holds to the end.
   const foveaOpacity = useTransform(scrollYProgress, [0.66, 0.8], [0, 1]);
