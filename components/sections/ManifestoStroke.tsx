@@ -94,15 +94,12 @@ export default function ManifestoStroke() {
           ))}
         </motion.div>
 
-        {/* Brand reveal — opaque card that takes the lines' place, later in scroll */}
+        {/* Brand reveal — transparent, layers over the existing scroll background */}
         <motion.div
           style={{ opacity: foveaOpacity, y: foveaY }}
-          className="absolute inset-0 z-30 flex items-center justify-center bg-[var(--ink)] px-5"
+          className="pointer-events-none absolute inset-0 z-30 flex items-center justify-center px-5"
         >
-          <div
-            className="flex w-full max-w-5xl flex-col items-center justify-center rounded-[2.5rem] px-6 py-[10vh] text-center"
-            style={{ background: "var(--ink-2)", border: "1px solid var(--rule)" }}
-          >
+          <div className="flex w-full max-w-5xl flex-col items-center justify-center px-6 text-center">
             <span
               style={{
                 fontFamily: "var(--font-poppins)",
