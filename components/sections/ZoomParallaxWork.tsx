@@ -91,7 +91,7 @@ export default function ZoomParallaxWork() {
   const headerY = useTransform(scrollYProgress, [0, 0.12], [0, -40]);
 
   return (
-    <section ref={ref} className="relative h-[300vh] bg-[var(--ink)]">
+    <section ref={ref} className="relative h-[220vh] md:h-[300vh] bg-[var(--ink)]">
       <div className="sticky top-0 h-screen overflow-hidden">
         {slides.map((slide, i) => (
           <Slide key={i} slide={slide} progress={scrollYProgress} />
@@ -115,7 +115,7 @@ export default function ZoomParallaxWork() {
         <div className="pointer-events-none absolute inset-x-0 bottom-[8vh] z-10 flex justify-center">
           <Link
             href="/realisations"
-            className="pointer-events-auto rounded-full border border-[var(--rule)] bg-[var(--ink-2)]/70 px-7 py-3 text-sm font-semibold text-[var(--cream)] backdrop-blur-md transition-colors hover:border-[var(--sun-1)] hover:text-[var(--sun-1)]"
+            className="pointer-events-auto rounded-full border border-[var(--rule)] bg-[var(--ink-2)]/70 px-5 sm:px-7 py-2.5 sm:py-3 text-[13px] sm:text-sm font-semibold text-[var(--cream)] backdrop-blur-md transition-colors hover:border-[var(--sun-1)] hover:text-[var(--sun-1)]"
           >
             Voir toutes nos réalisations
           </Link>

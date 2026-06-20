@@ -107,8 +107,8 @@ export default function ServicesCarousel() {
   };
 
   return (
-    <section ref={sectionRef} className="py-28 px-5" style={{ background: "var(--ink)" }}>
-      <div className="max-w-5xl mx-auto mb-12">
+    <section ref={sectionRef} className="py-20 sm:py-28 px-5" style={{ background: "var(--ink)" }}>
+      <div className="max-w-5xl mx-auto mb-10 sm:mb-12">
         <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: "var(--cream-faint)" }}>
           Ce qu&apos;on fait
         </p>
@@ -127,12 +127,12 @@ export default function ServicesCarousel() {
         transition={{ duration: 0.8, ease }}
       >
         <div
-          className="relative overflow-hidden rounded-[2rem] lg:rounded-[3rem] flex flex-col lg:flex-row min-h-[560px] lg:aspect-video"
+          className="relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[3rem] flex flex-col lg:flex-row min-h-[520px] sm:min-h-[560px] lg:aspect-video"
           style={{ border: "1px solid var(--rule)" }}
         >
           {/* Left — rotating chips on sunset panel */}
           <div
-            className="w-full lg:w-[42%] min-h-[300px] lg:h-full relative z-30 flex items-center justify-center lg:justify-start overflow-hidden px-8 md:px-14"
+            className="w-full lg:w-[42%] min-h-[230px] sm:min-h-[280px] lg:h-full relative z-30 flex items-center justify-center lg:justify-start overflow-hidden px-6 sm:px-8 md:px-14"
             style={{ background: "linear-gradient(150deg, var(--sun-1) 0%, var(--sun-2) 100%)" }}
           >
             <div
@@ -183,10 +183,10 @@ export default function ServicesCarousel() {
 
           {/* Right — media carousel */}
           <div
-            className="flex-1 min-h-[420px] lg:h-full relative flex items-center justify-center py-14 px-6 md:px-10 overflow-hidden"
+            className="flex-1 min-h-[380px] sm:min-h-[420px] lg:h-full relative flex items-center justify-center py-10 sm:py-14 px-6 md:px-10 overflow-hidden"
             style={{ background: "var(--ink-2)", borderTop: "1px solid var(--rule)" }}
           >
-            <div className="relative w-full max-w-[380px] aspect-[4/5] flex items-center justify-center">
+            <div className="relative w-full max-w-[300px] sm:max-w-[380px] aspect-[4/5] flex items-center justify-center">
               {FEATURES.map((feature, index) => {
                 const status = getCardStatus(index);
                 const isActive = status === "active";

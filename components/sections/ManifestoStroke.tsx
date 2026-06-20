@@ -40,8 +40,8 @@ function Line({
         color,
         fontFamily: "var(--font-poppins)",
         fontWeight: 800,
-        fontSize: "clamp(52px, 8vw, 110px)",
-        lineHeight: 1.02,
+        fontSize: "clamp(34px, 9vw, 110px)",
+        lineHeight: 1.05,
       }}
       className="block"
     >
@@ -65,7 +65,7 @@ export default function ManifestoStroke() {
   const foveaY = useTransform(scrollYProgress, [0.62, 0.82], ["40%", "0%"]);
 
   return (
-    <section ref={ref} className="relative h-[300vh] bg-[var(--ink)]">
+    <section ref={ref} className="relative h-[240vh] md:h-[300vh] bg-[var(--ink)]">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         {/* Traced organic path */}
         <svg
@@ -90,7 +90,7 @@ export default function ManifestoStroke() {
         </svg>
 
         {/* Manifesto lines */}
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-10">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-6 md:px-10">
           {lines.map((l) => (
             <Line key={l.text} {...l} progress={scrollYProgress} />
           ))}
@@ -106,7 +106,7 @@ export default function ManifestoStroke() {
               style={{
                 fontFamily: "var(--font-poppins)",
                 fontWeight: 800,
-                fontSize: "15vw",
+                fontSize: "clamp(72px, 16vw, 240px)",
                 lineHeight: 0.9,
                 background: "linear-gradient(120deg, var(--sun-1), var(--sun-2))",
                 WebkitBackgroundClip: "text",
@@ -117,7 +117,7 @@ export default function ManifestoStroke() {
               Fovea.
             </span>
             <p
-              className="mt-5 text-sm uppercase tracking-[0.3em] text-[var(--cream-dim)]"
+              className="mt-4 sm:mt-5 text-[11px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[var(--cream-dim)]"
               style={{ fontFamily: "var(--font-dm-mono)" }}
             >
               Belgique · France · contact@fovea.be

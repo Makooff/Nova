@@ -44,7 +44,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative flex min-h-[100dvh] w-full items-center overflow-hidden pt-[120px] pb-24"
+      className="relative flex min-h-[100dvh] w-full items-center overflow-hidden pt-28 pb-20 sm:pt-[120px] sm:pb-24"
       style={{ background: "var(--ink)" }}
     >
       {/* Blurred video background */}
@@ -129,10 +129,10 @@ export default function Hero() {
           Vidéo publicitaire et campagnes Ads conçues pour faire croître vos ventes&nbsp;— de la stratégie au tournage en passant par la diffusion.
         </motion.p>
 
-        <motion.div variants={itemVariants} className="mt-10 flex flex-wrap items-center gap-4">
+        <motion.div variants={itemVariants} className="mt-10 flex w-full flex-col sm:flex-row sm:w-auto sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
           <Link
             href="/contact"
-            className="group inline-flex items-center gap-2 rounded-full font-poppins font-semibold text-[15px] px-7 py-3.5 transition-all duration-200 active:scale-[0.97]"
+            className="group inline-flex items-center justify-center gap-2 rounded-full font-poppins font-semibold text-[15px] px-7 py-3.5 transition-all duration-200 active:scale-[0.97]"
             style={{
               background: "linear-gradient(120deg, var(--sun-1), var(--sun-2))",
               color: "#fff",
@@ -147,7 +147,7 @@ export default function Hero() {
 
           <Link
             href="/realisations"
-            className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-7 py-3.5 font-poppins font-semibold text-[15px] text-[var(--cream)] backdrop-blur-sm transition-colors hover:bg-white/20"
+            className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-7 py-3.5 font-poppins font-semibold text-[15px] text-[var(--cream)] backdrop-blur-sm transition-colors hover:bg-white/20"
           >
             Voir nos réalisations
           </Link>
