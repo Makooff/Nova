@@ -126,8 +126,49 @@ export default function ServicesCarousel() {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease }}
       >
+        {/* Mobile — simple stacked list (titles always visible, no swipe) */}
+        <div className="flex flex-col gap-5 lg:hidden">
+          {FEATURES.map((feature) => (
+            <div
+              key={feature.id}
+              className="overflow-hidden rounded-[1.5rem]"
+              style={{ background: "var(--ink-2)", border: "1px solid var(--rule)" }}
+            >
+              <div className="relative aspect-video overflow-hidden">
+                <video
+                  src={feature.video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(8,6,9,0.55), transparent 55%)" }} />
+              </div>
+              <div className="p-5">
+                <div className="mb-3 flex items-center gap-3">
+                  <span
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
+                    style={{ background: "linear-gradient(150deg, var(--sun-1), var(--sun-2))", color: "#fff" }}
+                  >
+                    {feature.icon}
+                  </span>
+                  <h3 className="font-poppins font-bold text-[17px] uppercase tracking-tight" style={{ color: "var(--cream)" }}>
+                    {feature.label}
+                  </h3>
+                </div>
+                <p className="font-poppins text-[14px] leading-relaxed" style={{ color: "var(--cream-dim)" }}>
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop — animated chip + media carousel */}
         <div
-          className="relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[3rem] flex flex-col lg:flex-row min-h-[520px] sm:min-h-[560px] lg:aspect-video"
+          className="relative overflow-hidden rounded-[2rem] lg:rounded-[3rem] hidden lg:flex lg:flex-row lg:aspect-video"
           style={{ border: "1px solid var(--rule)" }}
         >
           {/* Left — rotating chips on sunset panel */}
