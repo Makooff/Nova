@@ -5,11 +5,6 @@ import { motion, AnimatePresence, useInView, cubicBezier } from "framer-motion";
 
 const ease = cubicBezier(0.16, 1, 0.3, 1);
 
-const R2 = "https://pub-a93d9300f3144cee9101e92c2ba03175.r2.dev";
-function r2(f: string) {
-  return `${R2}/${encodeURIComponent("Vidéo")}/${encodeURIComponent(f)}`;
-}
-
 function FilmIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 40 40" fill="none" aria-hidden>
@@ -44,7 +39,7 @@ const FEATURES = [
     num: "01",
     label: "Production vidéo",
     icon: <FilmIcon />,
-    video: r2("BOZAR_Become_a_Bozars_Young_Ambassador_(Campaign)_hd 1080p.MP4"),
+    video: "/videos/bozar.mp4",
     description: "Tournage et montage de vidéos pensées pour convertir — chaque plan a un objectif.",
   },
   {
@@ -52,7 +47,7 @@ const FEATURES = [
     num: "02",
     label: "Campagnes Ads",
     icon: <ChartIcon />,
-    video: r2("260508_CARWASH_COMMERCIAL_MONTAGE_V3_hd 1080p.MP4"),
+    video: "/videos/carwash.mp4",
     description: "Lancement et gestion de vos campagnes sur Meta, Google, TikTok & LinkedIn.",
   },
   {
@@ -60,7 +55,7 @@ const FEATURES = [
     num: "03",
     label: "Agents IA Qwillio",
     icon: <SparkIcon />,
-    video: r2("AutoSpaV2_hd 1080p.MP4"),
+    video: "/videos/autospa.mp4",
     description: "Des agents IA sur-mesure pour automatiser vos workflows marketing.",
   },
 ];

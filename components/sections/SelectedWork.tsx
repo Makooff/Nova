@@ -2,11 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-
-const R2 = "https://pub-a93d9300f3144cee9101e92c2ba03175.r2.dev";
-function r2(f: string) {
-  return `${R2}/${encodeURIComponent("Vidéo")}/${encodeURIComponent(f)}`;
-}
+import { mediaSrc as r2 } from "@/lib/media";
 
 const works = [
   { src: r2("BOZAR_Become_a_Bozars_Young_Ambassador_(Campaign)_hd 1080p.MP4"), vertical: false },

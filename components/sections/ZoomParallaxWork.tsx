@@ -4,53 +4,21 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 
-const R2 = "https://pub-a93d9300f3144cee9101e92c2ba03175.r2.dev";
-function r2(f: string) {
-  return `${R2}/${encodeURIComponent("Vidéo")}/${encodeURIComponent(f)}`;
-}
-
 type Slide = {
   src: string;
   scale: number;
   className: string; // position + size of the inner frame
 };
 
+// Served locally from /public/videos (compressed, same-origin → instant load).
 const slides: Slide[] = [
-  {
-    src: r2("BOZAR_Become_a_Bozars_Young_Ambassador_(Campaign)_hd 1080p.MP4"),
-    scale: 4,
-    className: "h-[25vh] w-[25vw]",
-  },
-  {
-    src: r2("Timeline_2_hd 1080p.MP4"),
-    scale: 5,
-    className: "-top-[30vh] left-[5vw] h-[30vh] w-[35vw]",
-  },
-  {
-    src: r2("Timeline_3_hd 1080p.MP4"),
-    scale: 6,
-    className: "-top-[10vh] -left-[25vw] h-[45vh] w-[20vw]",
-  },
-  {
-    src: r2("Caballero - Rose Orangé (Clip Officiel).mp4"),
-    scale: 5,
-    className: "left-[27.5vw] h-[25vh] w-[25vw]",
-  },
-  {
-    src: r2("AutoSpaV2_hd 1080p.MP4"),
-    scale: 6,
-    className: "top-[27.5vh] left-[5vw] h-[25vh] w-[20vw]",
-  },
-  {
-    src: r2("VidAoAutospaP2V4_uhd 2160p.MP4"),
-    scale: 8,
-    className: "top-[27.5vh] -left-[22.5vw] h-[25vh] w-[30vw]",
-  },
-  {
-    src: r2("260508_CARWASH_COMMERCIAL_MONTAGE_V3_hd 1080p.MP4"),
-    scale: 9,
-    className: "top-[22.5vh] left-[25vw] h-[15vh] w-[15vw]",
-  },
+  { src: "/videos/bozar.mp4", scale: 4, className: "h-[25vh] w-[25vw]" },
+  { src: "/videos/timeline-2.mp4", scale: 5, className: "-top-[30vh] left-[5vw] h-[30vh] w-[35vw]" },
+  { src: "/videos/timeline-3.mp4", scale: 6, className: "-top-[10vh] -left-[25vw] h-[45vh] w-[20vw]" },
+  { src: "/videos/caballero.mp4", scale: 5, className: "left-[27.5vw] h-[25vh] w-[25vw]" },
+  { src: "/videos/autospa.mp4", scale: 6, className: "top-[27.5vh] left-[5vw] h-[25vh] w-[20vw]" },
+  { src: "/videos/vidao-autospa.mp4", scale: 8, className: "top-[27.5vh] -left-[22.5vw] h-[25vh] w-[30vw]" },
+  { src: "/videos/carwash.mp4", scale: 9, className: "top-[22.5vh] left-[25vw] h-[15vh] w-[15vw]" },
 ];
 
 function Slide({

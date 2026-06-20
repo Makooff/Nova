@@ -2,12 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-
-const R2 = "https://pub-a93d9300f3144cee9101e92c2ba03175.r2.dev";
-
-function r2(filename: string) {
-  return `${R2}/${encodeURIComponent("Vidéo")}/${encodeURIComponent(filename)}`;
-}
+import { mediaSrc as r2 } from "@/lib/media";
 
 type VideoEntry = {
   type: "r2" | "youtube";
