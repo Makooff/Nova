@@ -20,7 +20,7 @@ export default function Partner() {
   return (
     <section ref={ref} id="partenaire" className="py-20 px-5" style={{ background: "oklch(0.10 0 0)" }}>
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}

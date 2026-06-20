@@ -66,9 +66,9 @@ export default function CampagneAdsPage() {
     <main className="pt-[56px]" style={{ background: "oklch(0.06 0 0)" }}>
 
       {/* Hero */}
-      <section className="py-24 px-5">
+      <section className="py-16 sm:py-24 px-5">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <RevealWrapper>
               <p className="font-mono text-[10px] uppercase tracking-wider mb-4" style={{ color: "oklch(0.38 0 0)" }}>
                 Campagnes publicitaires
