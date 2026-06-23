@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, cubicBezier } from "framer-motion";
+import { motion, useScroll, useTransform, cubicBezier, type MotionValue } from "framer-motion";
 
 const ease = cubicBezier(0.16, 1, 0.3, 1);
 
@@ -11,7 +11,7 @@ const lines = [
   { text: "Vos clients regardent.", color: "var(--cream-dim)", delay: 0.85 },
 ];
 
-function SvgPath({ pathLength }: { pathLength: ReturnType<typeof useTransform> }) {
+function SvgPath({ pathLength }: { pathLength: MotionValue<number> }) {
   return (
     <svg
       width="900"
